@@ -1,0 +1,123 @@
+\documentclass[../Main.tex]{subfiles}
+\setcounter{chapter}{0}
+\begin{document}
+\chapter{Lecture 1}
+\begin{dfn}[title= Rings and Fields]
+	A \textbf{ring} $R$ is a set with two binary operations $+,\rdot$ (addition and multiplication), i.e 
+	\begin{align*}
+		+: R \times R \to &R \\
+		\rdot \hspace{3pt}: R \times R \to &R 
+	\end{align*}
+such that:
+\begin{enumerate}
+	\item $(R,+)$ is an \textbf{abelian group}, i.e
+	\begin{itemize}
+		\item (Additive Identity) There exists a unique $0_R \in R$, such that $\forall a \in R$ \[a+0_R=0_R+a=a\]
+		\item (Additive Inverse) $\forall a\in R$ there exists a unique $(-a) \in R$ such that
+		\[a+(-a)=(-a)+a=0_R\]
+		\item (Associativity) For all $a,b,c \in R, \,\, (a+b)+c=a+(b+c)$
+		\item
+		(Commutativity) For all $a,b\in R,\,\, a+b=b+a$
+	\end{itemize} 
+	\item $\rdot$ is \textbf{associative}, i.e  $\forall a,b,c\in R$
+	\[(a\rdot b)\rdot c = a\rdot (b\rdot c)\]
+	\item $\rdot$ is \textbf{distributive} over $+$, i.e $\forall a,b,c\in R$
+	\[a\rdot(b+c)=a\rdot b+a\rdot c\]
+\end{enumerate}
+Now we see variations and the extension of a ring, the field:
+\begin{itemize}
+	\item We say $R$ has an \textbf{identity element}, $1_R$, if there exists a $1_R \in R$ such that $\forall a \in R$
+	\[a\rdot 1_R =1_R \rdot a = a\]
+	\item We say $R$ is \textbf{commutative} if $\forall a,b \in R$
+	\[a\rdot b=b\rdot a\]	
+	\item If $R$ is a commutative ring with $1_R \ne 0_R$,then we say $R$ is a \textbf{field} if every non-zero element has a multiplicative inverse, i.e $\forall a\ne0 \in R, \exists\, a^{-1}\in R$ such that
+	\[ a\rdot(a^{-1})=(a^{-1})\rdot a = 1_R \]
+\end{itemize}
+\end{dfn}
+For the rest of the notes, I will omit the $R$ subscript from the additive and multiplicative identity, unless necessary. Anyways, now we can look at some examples of rings:
+\begin{example}
+	$(\Z,+,\rdot)$, The integers with the usual addition and multiplication is a ring.
+\end{example}
+\begin{example}
+	$(\R, +, \rdot)$, $(\C, +, \rdot)$, $(\Q, +, \rdot)$ are fields.
+\end{example}
+\begin{example}
+	$(\N, +, \rdot)$ is \textbf{not} a ring, since there are no additive inverses.
+\end{example}
+\begin{example}
+	$(\R^3, +, \rdot)$ is \textbf{not} a ring. It has addition $\vv,\vw \in \R^3 \Rightarrow \vv+\vw \in \R^3$, but no proper multiplication operator. You can check that the cross product, $\times$, not distributive.
+\end{example}
+\begin{dfn}[title= Unit]
+	We say $a \in R$ is a \textbf{unit} if there exists a $ b \in R$ such that $a\rdot b=b\rdot a=1$. \newline Basically, a unit is an element whose multiplicative inverse is also in the ring.
+\end{dfn}
+\begin{example}
+	In $\R$, every element except $0$ is a unit.
+\end{example}
+\begin{example}
+	In $\Z$, the only units are $\{1,-1\}$.
+\end{example}
+Now let us look at examples of rings other than the standard number types $\Z,\Q,\R,\C$:
+\begin{example}
+	The integers modulo $n$ are also a ring. This set is written as $\modZ{n}$. To understand this, first define the set of multiples of an integer $n$ as
+	\[n\Z \coloneqq \{n\rdot a|a\in \Z\} \]
+	Then,
+	\[\modZ{n} \coloneqq \Z/\!\sim\]
+	where $\sim$ is the equivalence relation for $x,y\in\Z$
+	\[x\sim y\iff x-y\in n\Z\]
+	which basically means two integers are equivalent if their difference is a multiple of $n$. Think about it like this, if $x$ and $y$ are multiples of $n$ plus the same remainder, i.e
+	\[x = nk+r \quad y = nl+r\]
+	for some $k,l\in \Z$ then their difference is exactly a multiple of $n$,
+	\[x-y = nk+r - (nl+r) = n(k-l) = nm\]
+	for $m\in \Z$. They are equivalent in the sense of producing the same remainder when $n$ is divided by them. This can be written in modulo arithmetic as
+	\[x\equiv y \Mod{n}\]
+	So, $\modZ{n}$ will contain equivalence classes of remainders when dividing any integer by $n$, and each of these classes contain all integers that produce such remainder
+	\[\modZ{n} \coloneqq \{\obar{0},\bar{1},\bar{2},\dots,\obar{n-1}\}\]
+	The numbers with bars indicate the equivalence classes generated when taking the integers modulo $n$. For example $\modZ{3}$ are the integers modulo $3$
+	\[\Z/3\Z = \{\obar{0},\obar{1},\obar{2}\}\]
+	where
+	\begin{align*}
+	&\obar{0} = \{0,3,6,9,\dots\}\\
+	&\obar{1} = \{1,4,7,10,\dots\}\\
+	&\obar{2} = \{2,5,8,11,\dots\}\\
+	\end{align*}
+	Now, if $\obar{a}, \obar{b} \in \modZ{n}$ and $a\in \obar{a}, b\in\obar{b}$ then we define
+	\[\obar{a}+\obar{b}=\obar{a+b},\quad \obar{a}\rdot\obar{b}=\obar{a\rdot b}\]
+	This set with the two operations is a ring.
+	(Exercise to show these operations are well defined).
+\end{example}
+\begin{example}
+	We can also have a rings of functions. Let $R$ be a ring and $X$ a set, define the set $\mathfrak{F}$
+	\[\mathcal{F}\coloneqq\{f: X\to R\}\]
+	which is the set of functions which take elements of the set $X$ to elements of the ring $R$.
+	Then
+	\begin{align*}
+		(f+g): &X\to R &(f\rdot g):&X\to R\\
+		&x\mapsto f(x)+g(x)&&x\mapsto f(x)\rdot g(x)
+	\end{align*}
+	are operations which with $\mathfrak{F}$, form a ring.
+\end{example}
+\begin{example}
+	Define the set of continuous functions on the closed interval $[0,1]$ \[C[0,1] \coloneqq \{f:[0,1] \to \R| f \,\,\textrm{continuous}\}\]
+	We know from calculus that if $f,g \in C[0,1]$, then $f+g$ and $f\rdot g$ are also in $C[0,1]$. 
+	\newline Hence, $C[0,1]$ is a ring.
+\end{example}
+\begin{example}
+	Sets of matrices can also be rings. Define
+	\[M_n(\R) \coloneqq \{n \times n \,\, \textrm{matrices with real coefficients}\}\]
+	Then for matrices $A, B$:
+	\[A=\begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n}\\ a_{21} & a_{22} & \cdots & a_{2n}\\ \vdots & \vdots & \ddots & \vdots\\ a_{n1} & a_{n2} & \cdots & a_{nn} \end{pmatrix}, B=\begin{pmatrix} b_{11} & b_{12} & \cdots & b_{1n}\\ b_{21} & b_{22} & \cdots & b_{2n}\\ \vdots & \vdots & \ddots & \vdots\\ b_{n1} & b_{n2} & \cdots & b_{nn} \end{pmatrix}
+	\]
+	we have
+	\begin{align*}
+		&A+B \coloneqq \begin{pmatrix} a_{11}+b_{11} & a_{12}+b_{12} & \cdots & a_{1n}+b_{1n}\\ a_{21}+b_{21} & a_{22}+b_{22} & \cdots & a_{2n}+b_{2n}\\ \vdots & \vdots & \ddots & \vdots\\ a_{n1}+b_{n1} & a_{n2}+b_{n2} & \cdots & a_{nn}+b_{nn} \end{pmatrix}\\
+		&A \rdot B \coloneqq \left(a_{ik}\rdot b_{ki}\right)
+	\end{align*} 
+	In the product, the notation indicates that each element is the dot product of a row vector in $A$ and a column vector in $B$ (the variable $i$ indicates the $i$th row and $i$th column, while the $k$ varies to multiply the $k$th element of each vector). This is the usual matrix multiplication we are all aware of.
+	\newline Also, the additive and multiplicative identity are
+	\begin{align*}
+		0 = \begin{pmatrix} 0 & 0 & \cdots & 0\\ 0 & 0 & \cdots &0\\ \vdots & \vdots & \ddots & \vdots\\ 0 & 0 & \cdots & 0 \end{pmatrix}, 1 =
+		\begin{pmatrix} 1 & 0 & \cdots & 0\\ 0 & 1 & \cdots &0\\ \vdots & \vdots & \ddots & \vdots\\ 0 & 0 & \cdots & 1 \end{pmatrix}
+	\end{align*}
+\noindent\rule{\textwidth}{1pt}
+\end{example}
+\end{document}

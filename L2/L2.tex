@@ -1,0 +1,233 @@
+\documentclass[../Main.tex]{subfiles}
+\setcounter{chapter}{1}
+
+\begin{document}
+\chapter{Lecture 2}
+Let's see some basic properties of a ring $R$:
+\begin{enumerate}
+	\item $0\rdot a= a\rdot 0=0 \quad \forall a \in R$
+	\begin{proof}
+		Let $a$ be in $R$, then:
+		\begin{align*}
+			0=0+0\Rightarrow & 0\rdot a = (0+0)\rdot a  \\
+			\Rightarrow& 0 \rdot a= 0\rdot a + 0\rdot a   \\
+			\Rightarrow& 0\rdot a +(-0\rdot a) = 0\rdot a + 0\rdot a + (-0\rdot a)  \\
+			\Rightarrow& 0 = 0 \rdot a
+		\end{align*}
+	\end{proof}
+	\item $(-a)\rdot b = a\rdot (-b) = -(a\rdot b) \quad \forall a,b \in R$
+	\begin{proof}
+		Let $a,b$ be in $R$, then:
+		\[a\rdot b + -(a \rdot b) = 0 \quad \textrm{(by definition)}\]
+		then
+		\begin{align*}
+			&a\rdot b +(-a)\rdot b = (a+(-a))\rdot b = 0\rdot b=0\\
+			\Rightarrow& -(a\rdot b) = (-a)\rdot b
+		\end{align*}
+	\end{proof}
+	\item $(-a)\rdot (-b)=a\rdot b \quad a,b \in R$
+	\begin{proof}
+		Let $a,b$ be in $R$, then:
+		\[(-a)\rdot (-b) = - (a\rdot (-b)) = -(-(a\rdot b)) \]
+		But by definition we of additive inverse:
+			\[-(-(a\rdot b))+(-(a\rdot b))=0\]
+		So
+		\[(-a)\rdot (-b)=-(-(a\rdot b))=a\rdot b\]	
+	\end{proof}
+	\item If $R$ has $1$, then $1$ is unique and $(-a) = (-1)\rdot a$
+	\begin{proof}
+		First, the multiplicative identity. Assume $1$ and $1'$ are distinct identities. But
+		\[1= 1\rdot 1'=1'\]
+		So, in fact, they are the same and it is unique.\newline
+		Now, by definition additive inverses are unique, so $-a = (-1)\rdot a$ must both sum with $a$ to $0$. We check 
+		\[a+(-1)\rdot -a = 1\rdot a + (-1) \rdot  a = (1+(-1))\rdot a = 0\rdot a = 0\]
+		which confirms it.
+	\end{proof}
+\end{enumerate}
+\begin{dfn}[title=Zero Divisor]
+	We say a non-zero element $a\in R$ is a \textbf{zero divisor} if $\exists b \ne 0$ such that $a\rdot b=0$
+\end{dfn}
+\begin{example}
+	Recall that $M_2(\R)$ is the set of 2x2 matrices with real valued entries and $0 = \begin{pmatrix}
+		0&0\\0&0
+	\end{pmatrix}$. Then,
+	\[\begin{pmatrix}
+	1&0\\0&0
+	\end{pmatrix}\begin{pmatrix}
+	0&0\\0&1
+	\end{pmatrix}=\begin{pmatrix}
+	0&0\\0&0
+	\end{pmatrix}\]
+	implies $\begin{pmatrix}
+	1&0\\0&0
+	\end{pmatrix}$ is a zero divsor.
+\end{example}
+\begin{example}
+	Let $\Z/6\Z = \{\obar{0},\obar{1},\obar{2},\obar{3},\obar{4},\obar{5} \}$. Then
+	\[\obar{2}\rdot \obar{3} = \obar{0} \]
+	implies $\obar{2}$ is a zero divisor.
+\end{example}
+\begin{claim}
+	If $\obar{0}\ne\obar{a}\in \Z/n\Z$ is not a zero divisor, then it is a unit.
+\end{claim}
+\begin{proof}
+	Let $a\in\Z$ with $a\ne0$ be relatively prime to $n$. Then Euclid's algorithm (more specifically Bezout's Identity) constructs $x,y\in \Z$ such that\
+	\[a\rdot x+n\rdot y=1 \implies \obar{a}\rdot \obar{x}=\obar{1}\]
+	Hence, $\obar{a}$ is a unit.\\
+	On the other hand, if $\gcd(a,n)>1$, then let $\gcd(a,n)=d$. Hence, since n is a multiple $d$ we can write for some $q,k\in Z$
+	\[n=d\rdot q \quad a = d\rdot k\]
+	Then,
+	\[\obar{a}\rdot \obar{q}=\obar{a\rdot q}= \obar{d\rdot k\rdot q} = \obar{n \rdot k}=\obar{n}=\obar{0}\] 
+	Thus, $\obar{a}$ is a zero divisor.
+\end{proof}
+\begin{crl}{}{}
+	If $n$ is prime, then $\Z/n\Z$ is a field.
+\end{crl}
+\begin{proof}
+	If $0<m<n$ and $n$ is prime, then $\gcd(m,n)=1$. From the previous claim, this would mean every element is a unit and therefore $\modZ{n}$ is a field.
+\end{proof}
+\begin{example}
+	$\modZ{2}$ and $\modZ{3}$ are fields but $\modZ{4}$ is not (since $\obar{2}\rdot \obar{2} = \obar{0}$, therefore $\obar{2}$ is a zero divisor and not a unit).
+\end{example}
+\newpage
+\begin{claim}
+	If $a\in R$ is a zero divisor, then it is not a unit
+\end{claim}
+\begin{proof}
+	Let $b\ne 0$ and $a\rdot b=0$.\newline
+	Assume $\exists c\in R$ such that $a\rdot c=1=c\rdot a$, then
+	\[c\rdot a\rdot b=c\rdot (a\rdot b)=c\rdot 0=0\]
+	but similarly,
+	\[c\rdot a\rdot b=(c\rdot a)\rdot b=1\rdot b=b\]
+	contradicting the fact of $b\ne0$. Hence our assumption is wrong and $a$ is not a unit.
+\end{proof}
+\begin{dfn}[title=Group of Units]
+	If $R$ is a ring with $1\ne0$, we denote the set of units by 
+	\[R^\times \coloneqq\{a\in R|\, \exists b\in R \quad a\rdot b=b\rdot a=1\}\]
+\end{dfn}
+\begin{claim}
+	$(R^\times,\rdot )$ is a group.
+\end{claim}
+\begin{proof} We check the properties of a group
+	\begin{enumerate}
+		\item $1 \in R^\times \quad (1\rdot 1=1)$
+		\item $\forall a \in \R^\times,\, a\rdot 1=1\rdot a=a$
+		\item Associativity follows since $\rdot$ is associative in $R$
+		\item $\forall a \in R^\times$, by the definition of $R^\times$ there exists $b\in R$ such that
+		\[a\rdot b=b\rdot a=1\]
+		but this is the same as
+		\[b\rdot a=a\rdot b=1\]
+		hence $b$, the inverse of $a$, is also a unit and therefore $b\in R^\times$.
+	\end{enumerate}
+\end{proof}
+A field $F$ is a commutative ring with $1\ne 0$ such that $F^\times = F \setminus\{0\}$
+\begin{dfn}[title= Integral Domain]
+	We say a commutative ring $R$ with $1\ne 0$ is an \textbf{integral domain} if it has no zero divisors
+\end{dfn}
+\begin{example}
+	$\modZ{4}$ is \textbf{not} an integral domain. ($\obar{2}\rdot \obar{2}=\obar{0}\implies \obar{2} \textrm{ is a zero divisor}$)
+\end{example}
+\begin{example}
+	$M_2(\R)$ is \textbf{not} an integral domain. Then,
+	\[\begin{pmatrix}
+	1&0\\0&0
+	\end{pmatrix}\begin{pmatrix}
+	0&0\\0&1
+	\end{pmatrix}=\begin{pmatrix}
+	0&0\\0&0
+	\end{pmatrix}\]
+	implies $\begin{pmatrix}
+	1&0\\0&0
+	\end{pmatrix}$ is a zero divsor.
+\end{example}
+\begin{example}
+	$\Z$ is an integral domain
+\end{example}
+\begin{prop}[title=Cancellation Law]
+	Let $R$ be a ring and $a,b,c\in R$.\newline
+	Suppose $a$ is not a zero divisor, then
+		\[ab=ac\implies b=c\]
+\end{prop}
+\begin{proof}
+	If $a\ne0$, then $a\rdot (b-c)=0$. Since we supposed $a$ is not a zero divisor then it must be
+	\[b-c=0 \implies b=c\]
+\end{proof}
+\begin{example}
+	To show why $a$ must \textbf{not} be a zero divisor, consider $\modZ{4}$. We have $\obar{2}\rdot \obar{2}=\obar{0}$ and $\obar{2}\rdot \obar{0}=\obar{0}$. So
+	\[\obar{2}\rdot \obar{2}=\obar{2}\rdot \obar{0}\]
+	but
+	\[\obar{2}\ne \obar{0}\]
+\end{example}
+\begin{crl}
+	If $R$ is a finite (as a set) integral domain then $R$ is a field
+\end{crl}
+\begin{proof}
+	Fix $a\in R$ and $a\ne 0$. Then define a map
+	\begin{align*}
+		f_a:&R\to R\\
+		&x\mapsto a\rdot x
+	\end{align*}
+	\begin{claim}
+		$f_a$ is an injective map by cancellation
+	\end{claim}
+	\begin{proof}
+		Suppose $f_a(x)=f_a(y)$, then
+		\[a\rdot x = a\rdot y \implies x=y\]
+		hence, it is injective.
+	\end{proof}
+	By the Pigeonhole Principle $f_a$ is also surjective. This bijection implies that there exists $x\in R$ such that $a\rdot x=1$. Hence, $a$ is a unit and is an element of the group of units, i.e $a\in R^\times$. \newline Since every non-zero $a$ is shown to be in $R^\times$ this way, they are all units, and hence $R$ is a field (since every element in the ring has a multiplicative inverse).
+\end{proof}
+\begin{dfn}[title=Subring]
+	A subring $S$ of a ring $R$ is a subgroup that is closed under multiplication. That is $S\subset R$ such that $\forall a,b \in S$,
+	 \[\begin{tabular}{ l }
+		$\left.\kern-\nulldelimiterspace
+		\begin{tabular}{@{} l @{}}
+		(i) $a + b \in S$ \quad (closure under $+$) \\
+		(ii) $0 \in S$ \qquad\, (additive identity)                               \\
+		(iii) $-a \in S$ \quad\, (additive inverse)
+		\end{tabular}\right\} S \text{ is a subgroup}$ \\
+		(iv) $a \rdot b \in S$ \quad  (closure under $\rdot$)
+	\end{tabular}\]
+\end{dfn}
+\begin{prop}[title=Subgroup Criterion]
+	If $S\subset R$ is a subset of a ring such that $\forall a,b \in S$ 
+	\begin{enumerate}
+		\item $S \ne \emptyset$
+		\item $a-b \in S$
+		\item $a\rdot b \in S$
+	\end{enumerate}
+	then $S$ is a subring.
+\end{prop}
+\begin{proof}
+	Suppose $a,b\in S$ and the conditions above are true, then
+	\begin{enumerate}
+		\item $a-a=0\in S$
+		\item $0-a=-a\in S$
+		\item $a-b = a+(-b) \in S$
+		\item $a\rdot b \in S$
+	\end{enumerate}
+	thus satisfying the definition of a subring.
+\end{proof}
+\begin{example}
+	$\Z \subset \Q, \Q \subset \R, \Z \subset \R$ are all subrings.
+\end{example}
+\begin{example}
+	$2\Z \subset \Z$ is a subring and more generally $n\Z \subset \Z$ is a subring.
+\end{example}
+\begin{example}
+	$C[0,1] \subset \mathcal{F} \coloneqq \{f: [0,1]\to \R\}$ is a subring.
+\end{example}
+\begin{dfn}[title=Subfield]
+	If $F$ is a field and $F' \subset F$ is a subring such that
+	\begin{enumerate}
+		\item $1 \in F'$
+		\item $\forall a \in F', a^{-1} \in F'$
+	\end{enumerate}
+	then we say $F'$ is a \textbf{subfield} of $F$.
+\end{dfn}
+\textbf{\textcolor{BrickRed}{\underline{Warning}}}: Not all subrings of fields are subfields! (e.g $\Z\subset \R$)
+\begin{claim}
+	If $R \subset F$ is a subring of a field with $1\in R$, then $R$ is an integral domain.
+\end{claim}
+\noindent\rule{\textwidth}{1pt}
+\end{document}

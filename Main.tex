@@ -1,0 +1,168 @@
+\documentclass[12pt]{report}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+\usepackage{empheq}
+\usepackage[most]{tcolorbox}
+\usepackage{amsmath , amsthm , amssymb, mathtools}
+\usepackage[all]{xy}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{fullpage}  
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{xpatch}
+
+\setlist[enumerate]{label=(\roman*)}
+
+\makeatletter
+\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
+\makeatother
+\usepackage{sectsty}
+\chapterfont{\centering}
+
+\tcbuselibrary{theorems}
+
+\setkeys{Gin}{width=\linewidth, totalheight=\textheight, keepaspectratio}
+
+\xpatchcmd{\proof}{\itshape}{\bfseries\itshape}{}{}
+
+\tcolorboxenvironment{proof}{
+	fonttitle=\bfseries,
+	enhanced,
+	top=0mm,
+	boxrule=0pt,frame empty,
+	borderline west={3pt}{0pt}{blue},
+	coltitle=blue,
+	colback=white,
+	sharp corners
+}
+
+\ExplSyntaxOn
+
+\NewDocumentCommand{\betternewtcbtheorem}{O{}mmmm}
+{
+	\newtcbtheorem[#1]{#2inner}{#3}{#4}{#5}
+	\NewDocumentEnvironment{#2}{O{}}
+	{
+		\keys_set:nn { hushus/tcb } { ##1 }
+		\hushus_tcb_begin:nVV {#2inner} \l__hushus_tcb_title_tl \l__hushus_tcb_label_tl
+	}
+	{
+	\end{#2inner}
+}
+\cs_if_exist:cF { c@#5} { \newcounter{#5} }
+}
+
+\cs_new_protected:Nn \hushus_tcb_begin:nnn
+{
+\begin{#1}{#2}{#3}
+}
+\cs_generate_variant:Nn \hushus_tcb_begin:nnn { nVV }
+\keys_define:nn { hushus/tcb }
+{
+	title .tl_set:N = \l__hushus_tcb_title_tl,
+	label .tl_set:N = \l__hushus_tcb_label_tl,
+}
+
+\ExplSyntaxOff
+
+\betternewtcbtheorem[number within = chapter]{dfn}{Definition}%
+{
+	enhanced,
+	before title = {\stepcounter{dfn}},
+	colback=blue!10,
+	colframe=blue!35!black,
+	fonttitle=\bfseries,
+	top=3mm,
+	attach boxed title to top left={xshift = 5mm, yshift=-1.5mm},
+	boxed title style = {colback=blue!35!black}
+}{dfn}
+
+\betternewtcbtheorem[number within = chapter]{thm}{Theorem}%
+{
+enhanced,
+before title = {\stepcounter{thm}},
+colback=green!10,
+colframe=green!35!black,
+fonttitle=\bfseries,
+top=3mm,
+attach boxed title to top left={xshift = 5mm, yshift=-1.5mm},
+boxed title style = {colback=green!35!black}
+}{thm}
+
+\betternewtcbtheorem[number within = chapter]{prop}{Proposition}%
+{
+	enhanced,
+	before title = {\stepcounter{thm}},
+	colback=cyan!10,
+	colframe=cyan!35!black,
+	fonttitle=\bfseries,
+	top=3mm,
+	attach boxed title to top left={xshift = 5mm, yshift=-1.5mm},
+	boxed title style = {colback=cyan!35!black}
+}{prop}
+
+\betternewtcbtheorem[number within= chapter]% init options
+{crl}% name environment
+{Corollary}% Title
+{enhanced,
+	before title = {\stepcounter{co}},
+	colback=red!10,
+	colframe=red!35!black,
+	fonttitle=\bfseries,
+	top=3mm,
+	attach boxed title to top left={xshift = 5mm, yshift=-1.5mm},
+	boxed title style = {colback=red!35!black}
+}% options
+{co}% label prefix
+
+\frenchspacing
+
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\vw}{\vec{w}}
+\newcommand{\vk}{\vec{k}}
+\newcommand{\modZ}[1]{\Z/#1\Z}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand*\obar[1]{\overline{#1}}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+
+
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\newcommand\rdot[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
+
+\newenvironment{claim}[1]{\par\noindent\underline{\textbf{Claim:}}\space#1}{}
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+
+
+
+
+\lstset{breaklines, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
+
+\titleformat{\chapter}[display]
+{\normalfont\bfseries\centering}{}{0pt}{\LARGE}
+
+\titlespacing{\chapter}{0pt}{-75pt}{\parskip}
+
+\AtBeginDocument{%
+	\setlength{\abovedisplayskip}{3pt}%
+	\setlength{\belowdisplayskip}{3pt}%
+	\setlength{\abovedisplayshortskip}{3pt}%
+	\setlength{\belowdisplayshortskip}{3pt}%
+}
+\usepackage{subfiles}
+\begin{document}
+\subfile{Title/Titlepage}
+\subfile{L1/L1}
+\subfile{L2/L2}
+\end{document}
