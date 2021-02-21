@@ -13,6 +13,7 @@
 \usepackage{graphicx}
 \usepackage{titlesec}
 \usepackage{xpatch}
+\usepackage{array}
 
 \setlist[enumerate]{label=(\roman*)}
 
@@ -29,6 +30,7 @@
 \xpatchcmd{\proof}{\itshape}{\bfseries\itshape}{}{}
 
 \tcolorboxenvironment{proof}{
+	breakable,
 	fonttitle=\bfseries,
 	enhanced,
 	top=0mm,
@@ -104,6 +106,18 @@ boxed title style = {colback=green!35!black}
 	boxed title style = {colback=cyan!35!black}
 }{prop}
 
+\betternewtcbtheorem[number within = chapter]{lem}{Lemma}%
+{
+	enhanced,
+	before title = {\stepcounter{thm}},
+	colback=cyan!10,
+	colframe=cyan!35!black,
+	fonttitle=\bfseries,
+	top=3mm,
+	attach boxed title to top left={xshift = 5mm, yshift=-1.5mm},
+	boxed title style = {colback=cyan!35!black}
+}{lem}
+
 \betternewtcbtheorem[number within= chapter]% init options
 {crl}% name environment
 {Corollary}% Title
@@ -133,7 +147,10 @@ boxed title style = {colback=green!35!black}
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \newcommand*\obar[1]{\overline{#1}}
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Img}{Im}
 
+\newcommand*\quot[2]{{^{\textstyle #1}\big/_{\textstyle #2}}}
 
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
@@ -165,4 +182,6 @@ boxed title style = {colback=green!35!black}
 \subfile{Title/Titlepage}
 \subfile{L1/L1}
 \subfile{L2/L2}
+\subfile{L3/L3}
+\subfile{L4/L4}
 \end{document}

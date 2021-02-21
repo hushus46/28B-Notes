@@ -1,0 +1,22 @@
+\documentclass[../Main.tex]{subfiles}
+\setcounter{chapter}{3}
+
+\begin{document}
+\chapter{Lecture 4}
+\underline{\textbf{\large Quotient Rings}}\\
+Recall that given a ring homomorphism $f: R\to S$, the kernel of $f$, $\Ker f$, is a subring of $R$.
+\begin{dfn}
+	Given a ring homomorphism $f:R\to S$, let $I= \Ker f$ and $r\in R$.\\
+	The \textbf{coset} of $r \in R$ with respect to $f$ (or w.r.t $I$) is the set
+	\[r+I \coloneqq \{r+x|x\in I = \Ker f\}\]
+	The \textbf{quotient ring} of $R$ by $I$ is the set
+	\[R/I\coloneqq \{r+I|r\in R\}\]
+\end{dfn}
+\begin{prop}
+	Given a ring homomorphism $f: R \to S$ with $I = \Ker f$, the quotient ring $R/I$ is a ring with operations
+	\begin{align*}
+		&(r+I)+(s+I)\coloneqq (r+s)+I\\
+		&(r+I)\rdot (s+I)\coloneqq (r\rdot s)+I
+	\end{align*}
+\end{prop}
+\end{document}
