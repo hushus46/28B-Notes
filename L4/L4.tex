@@ -3,9 +3,9 @@
 
 \begin{document}
 \chapter{Lecture 4}
-\underline{\textbf{\large Quotient Rings}}\\
+\underline{\textbf{\Large Quotient Rings}}\\~\\
 Recall that given a ring homomorphism $f: R\to S$, the kernel of $f$, $\Ker f$, is a subring of $R$.
-\begin{dfn}
+\begin{dfn}[title= Coset and Quotient Ring]
 	Given a ring homomorphism $f:R\to S$, let $I= \Ker f$ and $r\in R$.\\
 	The \textbf{coset} of $r \in R$ with respect to $f$ (or w.r.t $I$) is the set
 	\[r+I \coloneqq \{r+x|x\in I = \Ker f\}\]
@@ -19,4 +19,176 @@ Recall that given a ring homomorphism $f: R\to S$, the kernel of $f$, $\Ker f$, 
 		&(r+I)\rdot (s+I)\coloneqq (r\rdot s)+I
 	\end{align*}
 \end{prop}
+\underline{\textbf{Note:}} If $I$ is understood, we will often write $\obar{r}$ for $r+I$, e.g
+\[(r+I)+(s+I)=(r+s)+I\]
+becomes
+\[\obar{r}+\obar{s}=\obar{r+s}\]
+\begin{lem}
+	If $r,s\in R$ and $(r+I)\cap(s+I)\ne \emptyset$, then $r+I=s+I$
+\end{lem}
+\begin{proof}
+	Suppose $x\in (r+I)\cap (s+I)$, then
+	\begin{align*}
+		x\in r+I \implies x = r+a, a\in I\\
+		x\in s+I \implies x = s+b, a\in I
+	\end{align*}
+	These together lead to three equivalent equations
+	\[r+a = s+b \Longleftrightarrow r=s+(b-a) \Longleftrightarrow s=r+(a-b)\]
+	Since $I\subset R$ is a subring then we know $b-a,a-b\in I$. Then the previous equations imply
+	\[r\in s+I,\, s\in r+I\]
+	Now take any element $c\in I$, then
+	\[r+c=(s+(b-a))+c=s+(b-a+c)\in s+I\implies r+I \subset s+I\]
+	where the last implication comes from the fact that $b-a+c$ are elements in $I$ and as such their combination is as well.\\
+	With similar logic we see that
+	\[s+c=(r+(a-b))+c=r+(a-b+c) \in r+I \implies s+I \subset r+I\]
+	Hence, $r+I=s+I$.
+\end{proof}
+\begin{example}
+	Let $f$ be the homomorphism from the integers to the integers mod $2$, i.e
+	\begin{align*}
+		f:&\Z \to \modZ{2} \\
+		&n\mapsto n\,\text{mod }2 
+	\end{align*}
+	Immediately we know that the kernel is the set of even integers, $\Ker f = 2\Z$.\\
+	Consider the coset of $1\in Z$ which is $1+2\Z$, then
+	\[1+2\Z = 3+2\Z = -7+2\Z = 29+2\Z\]
+	where the equivalence follows from Lemma 4.1.
+\end{example}
+\begin{lem}
+	If
+	\begin{align*}
+		r+I = r'+I\\
+		s+I = s'+I
+	\end{align*}
+	then
+	\begin{align*}
+		(r+s)+I = (r'+s')+I\\
+		(r\rdot s)+I = (r'\rdot s')+I
+	\end{align*}
+	i.e, $+,\rdot $ are well-defined in $R/I$
+\end{lem}
+\begin{proof}
+	Let $r,r',s,s' \in R$, then
+	\begin{align*}
+		r+I=r'+I \implies r=r'+x,\, x\in I\\
+		s+I=s'+I \implies s=s'+y,\, y\in I
+	\end{align*}
+	Then their sum
+	\[r+s=(r'+x)+(s'+y)=(r'+s')+(x+y) \implies r+s\in (r'+s')\in I\]
+	On the other hand $r+s=r+s+0 \in (r+s)+I$, hence
+	\[[(r+s)+I]\cap [(r'+s')+I]\ne \emptyset \]
+	By Lemma 4.1, it is immediate that
+	\[(r+s)+I=(r'+s')+I\]
+	Similarly,
+	\[r\rdot s=(r'+x)\rdot (s'+y)=r's'+r'y+xs'+xy \in r'\rdot s'+I\]
+\end{proof}
+\newpage
+\textbf{Observe} that	$R/I$ consists of the equivalence classes in $R$ of the equivalence relation given by
+	\[x\sim y \Longleftrightarrow x-y \in I\]
+\begin{proof}[Proof of Prop 4.1]~\\
+	We check that the quotient is a ring
+	\begin{align*}
+	&\obar{0}+\obar{a}=\obar{0+a}=\obar{a}=\obar{a+0}=\obar{a}+\obar{0} \qquad (\obar{0}\in R/I \text{ is the additive identity})\\
+	&\obar{a}+\obar{(-a)}=\obar{a+(-a)} =\obar{0} = \obar{(-a)+a}=\obar{(-a)}+\obar{a}\\
+	&\obar{a}+(\obar{b}+\obar{c}) = \obar{a}+(\obar{b+c}) = \obar{a+(b+c)} = \obar{(a+b)+c} = \obar{(a+b)}+\obar{c}=(\obar{a}+\obar{b})+\obar{c}\\
+	&\obar{a}\rdot (\obar{b}\rdot \obar{c})=\obar{a}\rdot (\obar{bc})=\obar{a\rdot (b\rdot c)}=\obar{(a\rdot b)\rdot c} = \obar{ab}\rdot \obar{c}=(\obar{a}\rdot \obar{b})\rdot \obar{c}\\
+	&\obar{a}\rdot (\obar{b}+\obar{c})=\obar{a}\rdot (\obar{b+c})=\obar{a\rdot (b+c)}=\obar{a\rdot b+a\rdot c}=\obar{ab}+\obar{ac}=\obar{a}\rdot \obar{b}+\obar{a}\rdot \obar{c}
+	\end{align*}
+\end{proof}
+\begin{dfn}[title=Ideal]
+	Let $R$ be a ring and $I\subset R$.\\
+	We say $I$ is a 
+	\begin{enumerate}[label=(\roman*)]
+		\item \textbf{Left ideal} if $I$ is a subring such that for all $a\in R, x\in I$
+		\[a\rdot x \in I\]
+		\item \textbf{Right ideal} if $I$ is a subring such that for all $a\in R, x\in I$
+		\[x\rdot a \in I\]
+		\item \textbf{Ideal} if $I$ is both a left and right ideal (sometimes called a \textbf{two-sided ideal}).
+	\end{enumerate}
+\end{dfn}
+\textbf{Observe} that if $f:R\to S$ is a ring homomorphism then $\Ker f$ is an ideal in $R$.\\
+\underline{\textbf{Note:}} We may define $R/I$ for \textbf{any} ideal $I\subset R$, whether or not $I=\Ker f$ for some ring homomorphism $f:R\to S$.
+\begin{thm}[title = The First Isomorphism Theorem]
+	If $f:R\to S$ is a ring homomorphism and $I=\Ker f$. Then
+	\[R/I\cong \Img f\]
+	as rings.
+\end{thm}
+\begin{proof}
+	We first prove a smaller claim.
+	\begin{claim}
+		If $r \in R$, then  \[r+I = f^{-1}(f(r)) = {x\in R|f(x)=f(r)}\]
+	\end{claim}
+		If $r \in R$, then \[r+I = f^{-1}(f(r)) = {x\in R|f(x)=f(r)}\]
+	(Here $f^{-1}$ is the preimage, not the inverse).\\
+	\begin{proof}
+		If $a\in I$, then 
+		\[f(r+a)=f(r)+f(a)=f(r) \implies r+a \in f^{-1}(f(r)) \implies r+I \subset f^{-1}(f(r))\]
+		Similarly, if $x\in f^{-1}(f(r))$, then
+		\[f(r)=f(x)\implies f(r)-f(x)=0\implies f(r-x)=0\]
+		This last equality means $r-x (and x-r) \in \Ker f$, hence
+		\[x-r\in \Ker f \implies x = r+(x-r)\in r+I \implies
+		f^{-1}(f(r)) \subset r+I \]
+		Therefore, both inclusions are proved and $r+I =f^{-1}(f(r))$.
+	\end{proof}
+	There is a bijective map
+	\begin{align*}
+		\obar{f}:& R/I \to \Img f \\
+		&\quad \obar{r} \mapsto f(r)
+	\end{align*}
+	The point being that $\obar{r}$ is independent of the representative $r\in R$.
+\end{proof}
+\begin{thm}
+	If $I\subset R$ is an ideal, then the \textbf{quotient map}
+	\begin{align*}
+		f:&R \to R/I\\
+		&r\mapsto \obar{r}
+	\end{align*}
+	is a surjective ring homomorphism with $\Ker f = I$
+\end{thm}
+\begin{proof}
+	Firstly, $f$ is clearly surjective because every element of $r \in R$ will be an element of its own equivalence class.\\
+	It remains to show that this is a homomorphism.
+	\begin{align*}
+		&f(a+b)=\obar{a+b} = \obar{a}+\obar{b}=f(a)+f(b)\\
+		&f(a\rdot b)=\obar{a\rdot b} = \obar{a}\rdot \obar{b}=f(a)\rdot f(b)
+	\end{align*}
+	For the kernel, by definition of the map $f(a)=\obar{a}$, but if we also have that $f(a)=\obar{0}$ then by definition of equivalence classes $\obar{a}=\obar{0}$ because if $a\sim 0$ then $\obar{a}=\obar{0}$. \\
+	Therefore $a\in I = \Ker f$.
+\end{proof}
+\begin{example}
+	For any integer $n\in \Z$, we have that
+	\[n\Z = \{nx|x\in \Z\}\] 
+	is an ideal in $\Z$.\\
+	Furthermore, the quotient ring of $\Z$ by $n\Z$ is exactly the ring $\modZ{n}$.
+\end{example}
+\begin{example}
+	Let $R=\Z[X]$ and define
+	\[I \coloneqq \{p(X)\in R| \text{ all nonzero terms have degree at least 2}\}\]
+	e.g $7x^2+3x^3+10x^9\in I$
+\end{example}
+\underline{\textbf{Note:}} $0\in I$ because it has \textbf{no} terms with non-zero coefficient.\newpage
+\textbf{Exercise:} Prove that $I$ is an ideal.
+Now consider two polynomials $p(x),q(x)\in R$ and $\obar{p(x)}=\obar{q(x)}$, then by definition of equivalence, $p-q\in I$.\\
+So $p-q$ consists of terms of \textit{at least} degree 2, i.e the degree $0$ and degree $1$ parts of $p,q$ agree, e.g
+\[5+x+7x^3=5+x-21x^5+7x^{19}\]
+This implies that the polynomials of degree at most $1$ represent \textit{distinct} cosets in $R/I$, e.g
+\[5+x,\, -7+2x,\,11-4x\]
+Therefore, there is a bijection between
+\[R/I \Longleftrightarrow \{a+bx|a,b,\in \Z\}\]
+\textbf{Observe} that $R/I$ has zero divisors: $\obar{x}\rdot \obar{x}=\obar{x^2}=\obar{0}$.
+\begin{example}
+	Let $R$ be a ring and $X$ a non-empty set.\\
+	Consider the ring
+	\[\mathcal{F}(X,R) \coloneqq \{f:x\to R\}\]
+	For a fixed element $a\in X$, the \textbf{evaluation map} at $a$ is
+	\begin{align*}
+		\ev_a : &\mathcal{F}(X,R)\to R\\
+		&f\mapsto f(a)
+	\end{align*}
+\end{example}
+\textbf{Exercise: } $\ev_a$ is a ring homomorphism.\\
+Moreover, $\ev_a$ is a \textit{surjective} ring homomorphism and 
+\[\Ker(\ev_a)\coloneqq \{f\in \mathcal{F}(X,R)|f(a)=0\}\]
+In particular, by the First Isomorphism Theorem we have
+\[\mathcal{F}(X,R)/\Ker(\ev_a)\cong R\]
 \end{document}
