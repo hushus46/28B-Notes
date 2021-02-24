@@ -108,6 +108,7 @@ becomes
 \end{dfn}
 \textbf{Observe} that if $f:R\to S$ is a ring homomorphism then $\Ker f$ is an ideal in $R$.\\
 \underline{\textbf{Note:}} We may define $R/I$ for \textbf{any} ideal $I\subset R$, whether or not $I=\Ker f$ for some ring homomorphism $f:R\to S$.
+\newpage
 \begin{thm}[title = The First Isomorphism Theorem]
 	If $f:R\to S$ is a ring homomorphism and $I=\Ker f$. Then
 	\[R/I\cong \Img f\]
@@ -116,10 +117,9 @@ becomes
 \begin{proof}
 	We first prove a smaller claim.
 	\begin{claim}
-		If $r \in R$, then  \[r+I = f^{-1}(f(r)) = {x\in R|f(x)=f(r)}\]
+		If $r \in R$, then  \[r+I = f^{-1}(f(r)) =\{x\in R|f(x)=f(r)\}\]
+	(Here $f^{-1}$ is the preimage, not the inverse).
 	\end{claim}
-		If $r \in R$, then \[r+I = f^{-1}(f(r)) = {x\in R|f(x)=f(r)}\]
-	(Here $f^{-1}$ is the preimage, not the inverse).\\
 	\begin{proof}
 		If $a\in I$, then 
 		\[f(r+a)=f(r)+f(a)=f(r) \implies r+a \in f^{-1}(f(r)) \implies r+I \subset f^{-1}(f(r))\]
@@ -146,7 +146,7 @@ becomes
 	is a surjective ring homomorphism with $\Ker f = I$
 \end{thm}
 \begin{proof}
-	Firstly, $f$ is clearly surjective because every element of $r \in R$ will be an element of its own equivalence class.\\
+	Firstly, $f$ is clearly surjective because every element of $r \in R$ will be an element of its own equivalence class. 
 	It remains to show that this is a homomorphism.
 	\begin{align*}
 		&f(a+b)=\obar{a+b} = \obar{a}+\obar{b}=f(a)+f(b)\\
@@ -166,7 +166,7 @@ becomes
 	\[I \coloneqq \{p(X)\in R| \text{ all nonzero terms have degree at least 2}\}\]
 	e.g $7x^2+3x^3+10x^9\in I$
 \end{example}
-\underline{\textbf{Note:}} $0\in I$ because it has \textbf{no} terms with non-zero coefficient.\newpage
+\underline{\textbf{Note:}} $0\in I$ because it has \textbf{no} terms with non-zero coefficient.
 \textbf{Exercise:} Prove that $I$ is an ideal.
 Now consider two polynomials $p(x),q(x)\in R$ and $\obar{p(x)}=\obar{q(x)}$, then by definition of equivalence, $p-q\in I$.\\
 So $p-q$ consists of terms of \textit{at least} degree 2, i.e the degree $0$ and degree $1$ parts of $p,q$ agree, e.g
