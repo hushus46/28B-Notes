@@ -1,0 +1,173 @@
+\documentclass[../Main.tex]{subfiles}
+\setcounter{chapter}{4}
+
+\begin{document}
+\chapter{Lecture 5}
+\underline{\textbf{\Large Isomorphism Theorems}}
+\begin{thm}[title = The First Isomorphism Theorem]
+	If $f:R\to S$ is a ring homomorphism and $I=\Ker f$. Then
+	\[R/I\cong \Img f\]
+	as rings.
+	\center
+	\begin{tikzcd}[column sep=small]
+		R \arrow[rr, "f"] \arrow[rd, "\phi"'] &  & S \\
+		& R/\Ker f \arrow[ru, dashed] & 
+	\end{tikzcd}
+	\flushleft
+\end{thm}
+\begin{thm}[title = The Second Isomorphism Theorem]
+	Let $A\subset R$ be a subring and $B\subset I$ an ideal.\\
+	Then 
+	\[A+B \coloneqq \{a+b\mid a\in A, b\in B\}\]
+	is a subring of $R$ and $A\cap B$ is an ideal of $A$ and
+	\[(A+B)/B \cong A/(A\cap B)\]
+	\center
+	\begin{tikzcd}[arrows=dash,
+		every matrix/.append style = {name=m},
+		remember picture,x=1.75cm,y=1.75cm
+		]
+		&  R \ar[d]              &           \\
+		&  A+B \ar[dl]\ar[dr] 
+		&           \\ 
+		A   \ar[dr] 
+		&  \cong                 & B \ar[dl] \\
+		&  A\cap B               &           
+	\end{tikzcd}
+	%
+	\begin{tikzpicture}[
+	remember picture, overlay,
+	E/.style = {ellipse, draw=blue, dashed,
+		inner xsep=-2mm,inner ysep=-4mm, rotate=-30, fit=#1}
+	]
+	\node[E = (m-2-2) (m-3-3)] {};
+	\node[E = (m-3-1) (m-4-2)] {};
+	\end{tikzpicture}
+	\flushleft
+\end{thm}
+\begin{proof}[Proof of 5.2]~\\
+	Let $A\subset R$ be a subring and $B\subset I$ an ideal.\\
+	It is \textbf{Easy to check} that $A+B$ is a subring and $A\cap B$ is an ideal in $A$.\\
+	Now we want to find an isomorphism
+	\[(A+B)/B \longrightarrow A/(A\cap B)\]
+	Idea: Use the First Isomorphism Theorem, i.e we want to find a surjective homomorphism
+	\[f\colon A+B \to A/(A\cap B)\]
+	such that $\Ker f = B$.\\
+	Define a map
+	\begin{align*}
+	\phi\colon A+B &\to A/(A\cap B)\\
+	a+b &\mapsto a+ A\cap B
+	\end{align*}
+	which can be shown to be homomorphism if it is well defined. Generally, if $x \in A+B$, there are many ways to express $x\in A+B$, i.e there may exist, $a,a'\in A$ and $b,b'\in B$ such that
+	\[x=a+b =a'+b'\]
+	So is $\phi(x) = a+A\cap B$ or $\phi(x) = a' +A\cap B$?\\
+	This is not a problem so long as $a+A\cap B= a' + A\cap B$. In other words, if $a-a'\in A\cap B$ BUT 
+	\[a+b=a'+b'\implies \underbrace{a-a'}_{\in A}=b'-b\in B \implies a-a' \in A\cap B\]
+	We also need to check that $\phi$ is surjective.\\
+	Clearly, if $a+A	\cap B\in A/(A\cap B)$, then say $a\in A$ and is a representative for $a+A\cap B$. Then, $a+0\in A+B$ and $\phi(a)=a+A\cap B$.\\
+	Finally, we must check that \[\Ker \phi = B\]
+	If $a+b\in \Ker \phi$ then $\phi(a+b)=0+A\cap B$ and so
+	\[a\in A\cap B\implies a\in B\implies \Ker\phi \subset B\]
+	On the other hand, if $b\in B\subset A+B$, then we can write it as $b=0+b$ and so
+	\[\phi(b) = 0+A\cap B \implies b\in \Ker \phi \implies B\subset \Ker \phi\]
+	Therefore, $\Ker \phi =B$.
+\end{proof}
+\newpage
+\begin{thm}[title = The Third Isomorphism Theorem]
+	Let $I,J\subset R$ be ideals $I\subset J$.\\
+	Then
+	\[J/I \coloneqq \{a+I \in R/I \mid a\in J\}\]
+	(the cosets of $R/I$ whose representatives are in $J$ or similarly the restriction of the quotient map from $R$ to $R/I$ to the domain $J$) is an ideal in $R/I$ and
+	\[(R/I)/(J/I) \cong R/J\]
+	\center
+	\begin{tikzcd}[arrows=dash,
+		every matrix/.append style = {name=m},
+		remember picture,x=1.75cm,y=1.75cm
+		]
+		R\ar[d] & R/I\ar[d]\\
+		J\ar[d]\arrow[r,dashrightarrow,"\cong"] & J/I\ar[d]\\
+		I & 0        
+	\end{tikzcd}
+	%
+	\begin{tikzpicture}[
+	remember picture, overlay,
+	E/.style = {ellipse, draw=blue, dashed,
+		inner xsep=-1mm,inner ysep=-3mm, rotate=0, fit=#1}
+	]
+	\node[E = (m-1-1) (m-2-1)] {};
+	\node[E = (m-1-2) (m-2-2)] {};
+	\end{tikzpicture}
+	\flushleft
+\end{thm}
+\begin{proof}[Proof of 5.3]~\\
+	Let $I\subset J\subset R$ be ideals.\\
+	Then we want to show, $J/I\subset R/I$ is an ideal and
+	\[(R/I)/(J/I) \cong R/J\]
+	\textit{Check:} $J/I$ is an ideal in $R/I$.\\
+	Then define a map
+	\begin{align*}
+	\phi\colon R/I &\to R/J\\
+	a+I &\mapsto a+J
+	\end{align*}
+	Observe that if $a\in J$, then $\phi(a+I) = a+J = J = \obar{0}$\\
+	$\phi$ is also clearly surjective: Pick any representative $a\in R$ for $a+ J$, then \[\phi(a+I)=a+J\]
+	It remains to be shown that $\Ker \phi = J/I$ as follows:\\
+	If $a+I \in \Ker \phi$ then $\phi(a+I)=a+J=0+J=J$ which implies
+	\[a\in J \implies a+I\in J/I \implies \Ker \phi \subset J/I\]
+	If $a\in J$, then $\phi(a+I)=a+J=J$ which implies
+	\[a+I\in \Ker \phi \implies \Ker \phi \supset J/I\]
+	and therefore $\Ker \phi = J/I$.
+\end{proof}
+\begin{thm}[title = The Fourth Isomorphism Theorem]
+	Let $I\subset R$ be an ideal.\\
+	Then the correspondence
+	\[I\subset A\subset R \longleftrightarrow A/I \subset R/I\]
+	is a bijection between
+	\[\{ \text{subrings of } R \text{ containing } I \} \longleftrightarrow \{ \text{subrings of } R/I \}\]
+	Moreover, $A\subset R$ is an ideal \textit{iff} $A/I$ is an ideal in $R/I$.
+	\center
+	\begin{tikzcd}[column sep=0em,row sep=1em]
+		&R\arrow[dl,dash]\arrow[dr,dash] &&&&& R/I\arrow[dl,dash]\arrow[dr,dash]\\
+		A\arrow[dr,dash] && B\arrow[dl,dash] \arrow[rrr, leftrightarrow] % This is the new bit
+		&\phantom{X}\arrow[r,dash]&\phantom{Y}& A/I\arrow[dr,dash] && B/I\arrow[dl,dash]\\
+		&C\arrow[d,dash] &&&&& C/I\arrow[d,dash]\\
+		&I &&&&& 0
+	\end{tikzcd}   
+\end{thm}
+
+
+\begin{dfn}[title = {Ideal Generation, Principal and Finitely Generated Ideal}]
+	Let $R$ be a ring, with $1\ne 0$ and let $A\subset R$ be any subset.\\
+	The \textbf{ideal generated by $A$} is
+	\[A\subset (A)\subset R\]
+	i.e, the smallest ideal of $R$ containing $A$.\\
+	If an ideal $I$ is generated by a single element set, then we say $I$ is a \textbf{principal ideal}.\\
+	If $I$ is generated by a finite set then we say $I$ is a \textbf{finitely generated ideal}.
+\end{dfn}
+\textit{Note:} Insetead of writing $I=(\{a\})$ for a principal ideal, we often omit the set notation and just write
+\[I=(a)\]
+Similarly, we will write $I=(a_1,\dots, a_n)$ for finitely generated ideals.
+\newpage 
+\begin{prop}
+	For any subset $A \subset R$ and ideals $I\subset R$ such that $A\subset I$, we have
+	\[(A)= \bigcap_{\mathclap{\substack{I \subset R\\A\subset I} } } I\]
+\end{prop}
+\begin{proof}~\\
+	Observe that $R\subset R$ and is always an ideal of itself which implies that there always exists an ideal containing $A$ (at least $R$)
+	\[\{A\subset I\subset R\} \ne \emptyset\]
+	First check that $(A)\subset \bigcap\limits_{\mathclap{\substack{I \subset R \\A\subset I} } } I$\\
+	Suppose, for a contradiction, $A\subset I$ and $(A) \not\subset I$, then
+	\begin{enumerate}
+		\item $(A) \cap I \subsetneq (A)$ (proper subset otherwise $(A)\subset I$)
+		\item $A\subset (A)$ and $A\subset I \implies A\subset (A)\cap I$
+		\item $(A) \cap I$ is an ideal (second isomorphism theorem).
+	\end{enumerate}
+	Therefore there is an ideal containing $A$ (i.e $(A) \cap I$) that is smaller than $(A)$, which is contradictory the definition of $(A)$. Hence\[(A)\subset \bigcap\limits_{\mathclap{\substack{I \subset R \\A\subset I} } } I\] 
+	Now check that $\bigcap\limits_{\mathclap{\substack{I \subset R \\A\subset I} } } I\subset (A) $\\
+	We have that
+	\[\bigcap_{\mathclap{\substack{I \subset R\\A\subset I} } } I\] is an ideal and therefore $A\subset \bigcap I$ which implies
+	\[\bigcap_{\mathclap{\substack{I \subset R \\A\subset I} } } I\subset (A) \]
+	because $(A)$ is an ideal.
+	Therefore,
+		\[(A)= \bigcap_{\mathclap{\substack{I \subset R\\A\subset I} } } I\]
+\end{proof}
+\end{document}

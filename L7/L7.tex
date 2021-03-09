@@ -1,0 +1,143 @@
+\documentclass[../Main.tex]{subfiles}
+\setcounter{chapter}{6}
+
+\begin{document}
+\chapter{Lecture 7}
+\underline{\textbf{\Large Maximal Ideals}}~\\
+Let $R$ be a commutative ring with $1\ne 0$.
+\begin{prop}
+	Let $I\subset R$ an ideal
+	\begin{enumerate}
+		\item $I=R$ if and only if $I$ contains a unit.
+		\item $R$ is a field if and only if the only ideals of $R$ and $0$ and $R$
+	\end{enumerate}
+\end{prop}
+\begin{proof}~\\
+	(i) If $I=R$, then $1\in I$\\
+	Conversely, if $u\in I$ and $u\in R^\times$ say $u\rdot v=1$, then $u\rdot v=1\in I$ implies, if $r \in R$, then 
+	\[r\rdot (u\rdot v)=r\in I \implies R\subset I \implies R=I\]
+	(ii) If $I\subset R$ is an ideal in a field, and $\exists a \in I \setminus \{0\}$ (non-zero element of the field), then $a\in R^\times$ (since it is a field) implies $I=R$ (by part (i)).\\
+	Conversely, suppose $0$ and $R$ are the only ideals in $R$. Let $a\in R\setminus \{0\}$ and consider $(a)\subset R$, then
+	\[(a)\ne 0 \implies (a)=R \underbrace{\implies}_{\text{by part (i)}} \,\,\exists u\in (a), \, u \in R^\times (\text{say } u\rdot v=1)\]
+	Since $u\in (a)$, we may write $u=r\rdot a, r\in R$, then
+	\[(r\rdot a)\rdot v=u\rdot v=1=a\rdot (r\rdot v)\implies a\in R^\times \implies R \text{ is a field}\]
+\end{proof}
+\begin{crl}
+	If $F$ is a field, then any nonzero ring homomorphism
+	\[f: F\to R\]
+	is an injective map
+\end{crl}
+\begin{proof}
+	$\Ker f =0$ or $F$. Because $f$ is nonzero, we conclude that $\Ker f =0$, which means $f$ is injective since the only element that maps to $0$ is $0$.
+\end{proof}
+\begin{dfn}
+	An ideal $M\subset R$ is called a \textbf{maximal ideal} if
+	\begin{enumerate}
+		\item $M\ne R$
+		\item If $I\subset R$ is an ideal such that $M\subset I$, then $I=M$ or $I=R$
+	\end{enumerate}
+\end{dfn}
+Not all rings admit maximal ideals and a given ring may admit multiple maximal ideals, e.g $2\Z,3\Z$ are maximal ideals in $\Z$.
+\newpage
+\underline{\textbf{\Large A digression on Zorn's Lemma}}~\\
+\begin{dfn}
+	A \textbf{partial order} on a non-empty set $A$ is a relation $\le$ such that
+	\begin{enumerate}
+		\item $x\le x$ (Reflexive)
+		\item $x\le y, y\le x \implies x =y$ (Anti-symmetric)
+		\item $x\le y, y\le z\implies x\le z$ (Transitive)
+	\end{enumerate}
+\end{dfn}
+\begin{example}~\\
+	If $X$ is any set then the power set (the set of all subsets) is written
+	\[\wp(X) = \{\text{subsets } U \subset X\}\]
+	Then inclusion is a partial order on $\wp(X)$, e.g \[
+	\begin{tikzcd}
+	& \{a,b,c\} \\
+	\{a,b\}\arrow[ur, phantom, "\subset"{sloped}] & \{a,c\}\arrow[u, phantom, "\subset"{sloped}] & \{b,c\}\arrow[ul, phantom, "\supset"{sloped}] \\
+	\{a\}\arrow[u, phantom, "\subset"{sloped}]\arrow[ur, phantom, "\subset"{sloped}, pos=.4] & \{b\}\arrow[ul, phantom, "\supset"{sloped}, pos=.4]\arrow[ur, phantom, "\subset"{sloped}, pos=.4] & \{c\}\arrow[ul, phantom, "\supset"{sloped}, pos=.4]\arrow[u, phantom, "\subset"{sloped}] \\
+	& \varnothing\arrow[ul, phantom, "\supset"{sloped}]\arrow[u, phantom, "\subset"{sloped}]\arrow[ur, phantom, "\subset"{sloped}]
+	\end{tikzcd}
+	\]
+\end{example}
+\begin{dfn}
+	If $A,\le$ is a \textbf{partially ordered set} (\textbf{poset}), then
+	\begin{enumerate}
+		\item A subset $B\subset A$ is a \textbf{chain} if $\forall x,y \in B \implies x\le y$ or $y\le x$ (everything can be compared).
+		\item An \textbf{upper bound} on a subset $B\subset A$ is an element $u\in A$ such that \[\forall b\in B, b\le u\]
+		\item A \textbf{maximal element} of a subset $B\subset A$ is an element of $m\in B$ such that if $b\in B$ and $b\ge m$, then $b=m$.
+	\end{enumerate}
+\end{dfn}
+\begin{lem}[title = Zorn's Lemma]
+	If $A$ is a non-empty poset such that every chain admits an upper bound, then $A$ has a maximal element.
+\end{lem}~\\
+\hrule
+\begin{prop}
+	If $R$ is a commutative ring with $1\ne 0$, then every proper ideal is contained in a maximal ideal
+\end{prop}
+\begin{proof}~\\
+	Let $I \subsetneq R$ be a proper ideal.\\
+	Consider
+	\[\mathcal{S}\coloneqq \{\text{proper ideals of } R \text{ containing } I\} \]
+	$\mathcal{S}$ is partially ordered by inclusion
+	\begin{tikzcd}[arrows=dash]
+		&R \ar[dl]\ar[dr]\\
+		I_1\ar[dr] && I_2\ar[dl]\ar[dr] \\
+		&I_3\ar[d] && I_4\\
+		&I \ar[urr]
+	\end{tikzcd}\\
+	A chain of ideals in $\mathcal{S}$ is a collection of ideals
+	\[\mathcal{C}=\{\dots\subset I_{-1} \subset I_0\subset I_1\subset I_2 \subset \dots\}\]
+	and to apply Zorn's Lemma, we need to show $\mathcal{C}$ has an upper bound.\\
+	Let \[J=\bigcup\limits_{I_k\in C}I_k\]
+	\begin{claim}
+	$J$ is an ideal containing $I$.
+	\end{claim}
+	\begin{proof}~\\
+		$I\subset J$ is clear, since $I$ is contained in all the ideals $I_k \in S$. It remains to show $J$ itself is an ideal.\\
+		$0\in J$ because $0\in I_k$ for any $k$.\\
+		If $a,b\in J$, then $\exists I_{k_1}, I_{k_2}$ such that $a\in I_{k_1}, b\in I_{k_2}$, so w.l.o.g say $I_{k_1}\subset I_{k_2}$, then
+		\[a,b\in I_{k_2}\implies a-b \in I_{k_2}\subset J \implies a-b\in J\]
+		If $r \in R$, then $r\rdot a\in I_{k_2}\subset J\implies r\rdot a \in J$.\\
+		Hence, $J$ is an ideal containing $I$.
+	\end{proof}
+	Therefore $J$ is an upper bound for $\mathcal{C}$ and we can apply Zorn's lemma. \\Therefore, $\mathcal{S}$ admits a maximal element, i.e a proper ideal $M\subset R$ such that $I\subset M$. \\If $M'\subset R$ is an ideal such that $M\subset M'$, then $I\subset M'$ and so
+	\[\underbrace{M'\in \mathcal{S}}_{M' \text{ is proper}} \implies M' = M
+	\quad \text{ or }
+	\underbrace{M'\notin \mathcal{S}}_{M' \text{ is not proper}} \implies M'=R\]
+\end{proof}
+\begin{thm}
+	If $R$ is a commutative ring with $1\ne 0$, then $M\subset R$ is maximal if and only if $R/M$ is a field.
+\end{thm}
+
+\begin{proof}~\\
+	Using the Lattice (fourth) Isomorphism Theorem  we have
+	\begin{align*}
+	\{\text{Ideals of } R \text{ containing } M \} &\longleftrightarrow \{\text{Ideals of } R/M\}\\
+	\{M,R\} &\longleftrightarrow \{0, R/M\}
+	\end{align*}
+	Since, the only ideals of $R/M$ are $0$ and itself, $R/M$ is a field by Prop 7.1 (ii).
+\end{proof}
+Recall: $P\subset R$ is prime if and only if $R/P$ is an integral domain.
+\begin{crl}
+	Maximal ideals are prime.
+\end{crl}
+\begin{proof}~\\
+	If $M$ is maximal then $R/M$ is a field. Therefore, $R/M$ is an integral domain and hence $M$ is prime.
+\end{proof}
+\begin{example}~\\
+	$n\Z\subset \Z$ is maximal if and only if $\modZ{n}$ is a field, i.e $n$ is prime.\\
+	So in $\Z$ we have
+	\[\{\text{prime ideals}\} =\{\text{maximal ideals}\} \]
+\end{example}
+\begin{example}~\\
+	The ideal generated by $x$, $(x) \subset \Z[x]$ is prime (check).\\
+	However, it is not maximal as $(x) \subset (2,x)$, but $1\notin (2,x)$ and therefore $(2,x) \subsetneq \Z[x]$.
+	So, in this case prime ideals are not necessarily maximal.
+\end{example}
+\begin{example}~\\
+	$(x)\subset \R[x]$ is maximal.
+	\[\R[x]/(x) \cong \R\]
+	and recall $\R$ is a field.
+\end{example}
+\end{document}
