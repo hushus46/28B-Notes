@@ -3,6 +3,180 @@
 
 \begin{document}
 \chapter{Lecture 8}
-\underline{\textbf{\Large More on Maximal Ideals}}~\\
+\underline{\textbf{\Large More on Maximal Ideals}}
 
+\textit{Recall}: $(x) \subset \Z[x]$ is prime, but $(x)\subsetneq (2,x)$, so it not maximal.\\
+$(x)\in \R[x]$ is maximal because $\R[x]/(x) \cong \R$ is a field
+
+\begin{example}
+	Let $a\in \R$. We defined the evaluation map before:
+	\begin{align*}
+	\ev_a\colon \R[x] &\to \R \\
+	p(x) &\mapsto p(a)
+	\end{align*}
+	\textit{Observe} that $\ev_a$ is infact surjective. Then
+	\[\R[x]/\Ker(\ev_a) \cong \R \implies \Ker(\ev_a) \text{ is a maximal ideal}\]
+\end{example}
+	Denote $M_a\coloneqq \Ker(\ev_a)$
+	\begin{claim}
+		$M_a = (x-a)$\quad (e.g $M_0 =(x)$)
+	\end{claim}
+	\begin{proof}
+		If $p(x) \in (x-a)$ then we may write $p(x)=q(x)\rdot (x-a),\, q(x)\in \R[x]$, then
+		\[\ev_a(p(x)) = p(a) = q(a)\rdot (a-a)=0 \implies p(x)\in M_a \implies (x-a) \subset M_a\] 
+		Conversely suppose $p(x) \in M_a = \Ker(\ev_a)$. Let $p(x) = a_0 + a_1x+a_2x^2+\dots+a_nx^n$, then you can check with polynomial division that $x-a$ divides $p(x)$ with no remainder i.e
+		\[\frac{p(x)}{x-a} = q(x)\]
+		therefore,
+		\[p(x)=q(x)\rdot (x-a)\implies p(x) \in (x-a) \implies M_a \subset (x-a) \implies M_a (x-a)\]
+	\end{proof}
+\textbf{\textit{Q:}} Is every maximal ideal of $\R[x]$ of the form $M_a$?\\
+For example, in $\Z$, the $\{\text{maximal ideals}\} =\{\text{prime ideals}\}$ but we saw above that in $\Z[x]$ there exist prime ideals that are not maximal.\\
+Two standard questions:\\
+(1) What are the primes?\\
+(2) What are the maximal ideals?\\
+
+\begin{claim}
+Consider $I=(x^2+1)$, then $I\subset \R[x]$ is a maximal ideal.
+\end{claim}
+\begin{proof}
+	We have that
+	\[\R[x] = \{a_0+a_1x+a_2x^2+a_3x^3+\dots+a_nx^n| a_k\in \R, \, k=0,1,2,\dots n\}\]
+	What does $\obar{x^n}$ look like in $\R[x]/(x^2+1)$?
+	\begin{align*}
+		x^2+1 \in (x^2+1) &\implies \obar{x^2} = \obar{-1} \in \R[x]/I \\
+		x^3 = x\rdot x^2 &\implies \obar{x^3} = \obar{x} \rdot \obar{(-1)} \in \R[x]/I\\
+		x^4= x^2\rdot x^2 &\implies \obar{x^4} = \obar{(-1)} \rdot  \obar{(-1)} \in \R[x]/I
+	\end{align*}
+	Therefore
+	\[\R[x]/I = \{\obar{a_0+a_1x}|a_0,a_1\in R\} \]
+	There is a ring isomorphism
+	\begin{align*}
+	\R[x]/I &\to \C \\
+	\obar{1} &\mapsto 1 \\
+	\obar{x} &\mapsto i
+	\end{align*}
+	therefore since the quotient ring is isomorphic to the field $\C$, $I$ is maximal.
+\end{proof}
+\begin{claim}
+	$(x^2+1)$ is \textbf{not} maximal in $\C[x]$
+\end{claim}
+\begin{proof}
+	We know that $x+i,x-i \in \C[x]$ and
+	\[(x+i)(x-i)=x^2+1\in (x^2+1)\]
+	But $x+i,x-i \notin (x^2+1)$ therefore $(x^2+1)$ is not prime in $\C[x]$ and consequently is not maximal.
+\end{proof}
+\textit{Observe} if $a\in R\subset S$ Then
+\begin{align*}
+(a&)_R = \{r\rdot a | r\in R\}\\
+\cap&\\
+(a&)_s=\{s\rdot a|s\in S\}
+\end{align*}
+can have different properties as ideals, e.g
+\begin{align*}
+\underbrace{(x)\subset \Z[x]}_{\text{prime}} &\longrightarrow \,\,\underbrace{(x) \subset \R[x]}_{\text{maximal}}
+\\
+\underbrace{(x^2+1)\subset \R[x]}_{\text{maximal}} &\longrightarrow \underbrace{(x^2+1) \subset \C[x]}_{\text{not prime, not maximal}}
+\end{align*}\newpage
+\underline{\textbf{\Large The Ring of Fractions}}
+
+\textbf{\textit{Q:}}How do we build $\Q$ out of $\Z$?\\
+We want to add in multiplicative inverses like $\frac{1}{2},\frac{1}{3},\frac{1}{4},\dots$\\
+Consider
+\[\Z \times (\Z\setminus\{0\}) =\{(m,n)|m,n\in\Z,n\ne0\} \]
+(think of the elements of this set as the fractions $\frac{m}{n}$)\\
+There are some repeats if we care about multiplication like 
+\[\frac{1}{2}=\frac{2}{4}=\frac{3}{6}\]
+We should define an equivalence relation
+\[\frac{a}{b}\sim \frac{c}{d} \Longleftrightarrow ad=bc\]
+e.g $\frac{4}{6}\sim \frac{6}{9}$ because $4\rdot 9=36=6\rdot 6$.
+\begin{dfn}
+	The \textbf{field of rational numbers} is 
+	\[\Q\coloneqq \{\frac{m}{n}| \,m,n\in\Q,\,n\ne0\}/\sim \]
+	and this is a field with operations given by
+	\begin{align*}
+	\frac{a}{b}+\frac{c}{d} &= \frac{ad+bc}{bd}\\
+	\frac{a}{b}\rdot \frac{c}{d} &= \frac{ac}{bd}
+	\end{align*}
+\end{dfn}
+There is an injective ring homomorphism
+\begin{align*}
+\Z &\to \Z \\
+n &\mapsto \frac{n}{1}
+\end{align*}
+Moreover,
+\begin{claim}
+	If $F$ is a field and there is an injective ring homomorphism
+	\[f\colon \Z \to F\]
+	Then it factors through $\Q$, i.e there is a ring homomorphism
+	\[\obar{f}\colon \Q \to F \text{ such that } f(n)=\obar{f}\left(\frac{n}{1}\right)\]
+	\begin{center}
+	\begin{tikzcd}[column sep=small]
+		\Z \arrow[rr, "i"] \arrow[rd, "f"] &  & \Q \arrow[dl, dashed,"\obar{f}"]\\
+		& F  & 
+	\end{tikzcd}
+	\end{center}
+\end{claim}\newpage
+Suppose $R$ is any commutative ring with $1\ne 0$.\\
+\textbf{\textit{Q:}} Can we do something similar? i.e
+\[R \times (R\setminus\{0\}) =\{(r,s)|r,s\in R,s\ne0\} \]
+(again we will write $(r,s)$ as $\frac{r}{s}$). 
+We want to define $r^{-1}=\frac{1}{r},\, r\ne 0$\\
+However, if $r$ is a zero divisor, $r\rdot s=0$ then we want to exclude
+\[\frac{1}{r}\rdot \frac{1}{s}=\frac{1}{r\rdot s} = \frac{1}{0}\]
+\begin{dfn}
+	Let $R$ be an integral domain with $1\ne 0$. Consider
+	\[R\times (R\setminus\{0\}) = \{(r,s)|r,s\in R,s\ne 0\}\]
+	Define an equivalence relation (\textbf{exercise to show it is}) by 
+	\[\frac{a}{r}\sim \frac{b}{s} \Longleftrightarrow a\rdot d=b\rdot r\]
+	There is no ambiguity in the equality of products since $R$ is integral there are no zero zero divisors, $s,r\ne 0$.
+\end{dfn}
+\begin{dfn}
+	The \textbf{field of fractions } of $R$ is
+	\[Q(R) \coloneqq R\times (R\setminus\{0\})/\sim \,= \left\{\left.\left[\frac{a}{b}\right]\right|a,b\in R,\,b\ne 0\right\} \]
+\end{dfn}
+\begin{thm}
+	$Q(R)$ is a field with operations
+	\begin{align*}
+	\frac{a}{r}+\frac{b}{s} = \frac{as+br}{rs},\qquad 
+	\frac{a}{r}\rdot \frac{b}{s} = \frac{ab}{rs}
+	\end{align*}
+	The map 
+	\begin{align*}
+	i\colon R&\to Q(R)\\
+	r&\mapsto \frac{r}{1}
+	\end{align*}
+	is an injective ring homomorphism (we say $R$ is a subring of its field of fractions).\\
+	Moreover, if $F$ is any field such that $R\subset F$ is a subring (i.e there exists an injective ring homomorphism $f\colon R\to F$), then there is a ring homomorphism
+	\[\obar{f}\colon Q(R) \to F \text{ such that } f(x)=\obar{f}\rdot i(x)\]
+	\begin{center}
+		\begin{tikzcd}[column sep=small]
+			R \arrow[rr, "i"] \arrow[rd, "f"] &  & Q(R) \arrow[dl, dashed,"\obar{f}"]\\
+			& F  & 
+		\end{tikzcd}
+	\end{center}
+\end{thm}
+\begin{proof}
+	Think about it\dots...
+\end{proof}
+\begin{example}
+	$Q(\Z)=\Q$
+\end{example}
+\begin{example}
+	$R=\R[x]$ is an integral domain. The fractional field of $R$ is the field of rational functions
+	\[Q(R)=\R(x)\coloneqq \left\{\left. \frac{p(x)}{q(x)}\right|p,q\in \R[x],\, q\ne 0 \right\} \]
+\end{example}
+\begin{example}
+	If $R$ is any integral domain with field of fractions $Q(R)=F$.  Consider the integral domain $R[x]$. Then $R\subset R[x], \, R[x]\subset Q(R[x])$ implies
+	\begin{center}
+		\begin{tikzcd}[column sep=small]
+			R \arrow[rr, "\text{inclusion}"] \arrow[rd] &  & Q(R[x]) \\
+			& F \arrow[ur] & 
+		\end{tikzcd}
+	\end{center}
+	e.g $\Z \subset \Z[x]$, so $\Q\subset Q(\Z[x])$.\\
+	In fact
+	\[Q(Z[x])=\R[x]\]
+	Furthermore, this is generally true, i.e
+	\[Q(R[x])=F(x)\]
+\end{example}
 \end{document}

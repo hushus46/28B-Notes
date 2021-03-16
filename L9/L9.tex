@@ -1,0 +1,91 @@
+\documentclass[../Main.tex]{subfiles}
+\setcounter{chapter}{8}
+
+\begin{document}
+\chapter{Lecture 9}
+\underline{\textbf{\Large The Chinese Remainder Theorem}}
+\begin{dfn}
+	Let $R,S$ be rings.\\
+	The \textbf{direct product} of $R$ and $S$ is the ring
+	\[R\times S \coloneqq \{(r,s)|r\in R, s\in S \}\]
+	with ring operations
+	\begin{align*}
+		(r_1,s_1)+(r_2,s_2)&\coloneqq (r_1+r_2,s_1+s_2)\\
+		(r_1,s_1)\rdot (r_2,s_2)&\coloneqq (r_1\rdot r_2,s_1\rdot s_2)
+	\end{align*}
+	More generally, if $\{R_\alpha|\alpha\in A\}$ is any collection of rings, then the \textbf{direct product} of the collection is the ring
+	\[\bigtimes_{\alpha \in A}R_\alpha \coloneqq \{(r_\alpha)_{\alpha\in A}| r_\alpha \in R_\alpha\}\]
+	with ring operations
+	\begin{align*}
+	(r_\alpha)_{\alpha\in A}+(s_\alpha)_{\alpha\in A}&\coloneqq (r_\alpha +s_\alpha)_{\alpha\in A}\\
+	(r_\alpha)_{\alpha\in A}\rdot (s_\alpha)_{\alpha\in A}&\coloneqq (r_\alpha \rdot s_\alpha)_{\alpha\in A}\\
+	\end{align*}
+	Given $a,b\in \Z$, we say they are \textbf{relatively prime} if the greatest common divisor is $1$.\\
+	Equivalently, we say $a,b$ are relatively prime if there exists $m,n\in\Z$ such that \[am+bn=1\].
+\end{dfn}
+\begin{dfn}
+	In a commutative ring $R$ with $1\ne 0$, two ideals $A,B\subset R$ are \textbf{comaximal} if $A+B=R$.
+\end{dfn}
+\begin{thm}
+	Let $A_1,\dots,A_k\subset R$ be ideals in a commutative ring with $1\ne 0$.\\
+	If they are pairwise comaximal then
+	\[A_1\rdot A_2\rdot \dots \rdot A_k = A_1 \cap A_2 \cap \dots \cap A_k\]
+\end{thm}
+\begin{proof}
+	We already know that
+	\[A_1\rdot A_2\rdot \dots \rdot A_k \subset A_1 \cap A_2 \cap \dots \cap A_k\]
+	It suffices to show 
+	\[A_1 \cap A_2 \cap \dots \cap A_k \subset A_1\rdot A_2\rdot \dots \rdot A_k \]
+	First, consider comaximal ideals $A,B$.\\
+	Let $x\in A\cap B$, then we want to show $x\in A\rdot B$\\
+	By comaximality,
+	\[\exists a\in A, b\in B, \, a+b =1 \in A+B\]
+	In particular,
+	\[x=x\rdot 1=x\rdot (a+b)=x\rdot a+x\rdot b\]
+	therefore
+	\[x\in A\cap B \implies \begin{rcases}
+	x\in A \implies x\rdot b\in A\rdot B\\
+	x\in B\implies x\rdot a \in A\rdot B
+	\end{rcases}\implies x\rdot a+x\rdot b\in A\rdot B\]
+	Hence $x\in A\rdot B \implies A\cap B \subset A\rdot B$, and we can conclude
+	\[A\rdot B = A\cap B\]
+	The general case follows if we can show 
+	\[A=A_1,\, B=A_2\rdot A_3\rdot \dots\rdot A_k\]
+	are comaximal; we can do this with induction.\\
+	By assumption of comaximality $A_1,A_i$ are comaximal for all $i\in \{2,\dots,k\}$
+	therefore
+	\begin{align*}
+		\exists x_2\in A_1,\, y_2\in A_2,\quad  &\text{s.t.} \quad 1=x_2+y_2\\\exists x_3\in A_1,\, y_3\in A_3,\quad  &\text{s.t.} \quad 1=x_3+y_3\\
+		\vdots&\\
+		\exists x_k\in A_1,\, y_k\in A_k,\quad  &\text{s.t.} \quad 1=x_k+y_k
+	\end{align*}
+	and this implies
+	\[1=(x_2+y_2)\rdot (x_3+y_3)\rdot \dots\rdot (x_k+y_k)\in A_1+(A_1\rdot \dots \rdot A_k)\]
+	and we conclude $A_1, A,2\rdot \dots A_k$ are comaximal.
+\end{proof}
+\begin{thm}[title=Chinese Remainder Theorem]
+	Let $A_1,\dots A_k\subset R$ ideals in a commutative ring with $1\ne 0$.\\
+	The map
+	\begin{align*}
+	\phi\colon R&\to (R/A_1)\times (R/A_2)\times (R/A_3)\times\dots\times(R/A_k)\\
+	r&\mapsto (r+A_1,r+A_2,r+A_3,\dots,r+A_k)
+	\end{align*}
+	is a ring homomorphism with $\Ker\phi = A_1\cap A_2\cap \dots \cap A_k$.\\
+	If they are pairwise comaximal, then $\phi$ is surjective.
+\end{thm}
+\begin{crl}
+	If $A_1,\dots,A_k\subset R$ are pairwise comaximal ideals in a commutative ring with $1\ne 0$, then there is an isomorphism of rings
+	\[R/(A_1\rdot \dots\rdot A_k)\cong R/(A_1\cap A_2\cap \dots \cap A_k) \cong (R/A_1)\times (R/A_2)\times (R/A_3)\times\dots\times(R/A_k)\]
+\end{crl}
+\begin{crl}
+	Let $n$ be a positive integer with factorization into unique primes \[n=p_1^{\alpha_1} p_2^{\alpha_2}\dots p_k^{\alpha_k}\]
+	then
+	\[\modZ{n} \cong (\modZ{p_1^{\alpha_1}})\times (\modZ{p_2^{\alpha_2}})\times \dots \times (\modZ{p_k^{\alpha_k}})\]
+\end{crl}
+\begin{example} Here are factorizations of two integer modulo rings:
+	\begin{align*}
+	\modZ{30}&\cong (\modZ{2})\times(\modZ{3})\times(\modZ{5})\\
+	\modZ{168}&\cong (\modZ{8})\times(\modZ{3})\times(\modZ{7})
+	\end{align*}
+\end{example}
+\end{document}
