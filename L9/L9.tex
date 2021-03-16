@@ -4,7 +4,7 @@
 \begin{document}
 \chapter{Lecture 9}
 \underline{\textbf{\Large The Chinese Remainder Theorem}}
-\begin{dfn}
+\begin{dfn}[title = Direct Product]
 	Let $R,S$ be rings.\\
 	The \textbf{direct product} of $R$ and $S$ is the ring
 	\[R\times S \coloneqq \{(r,s)|r\in R, s\in S \}\]
@@ -21,9 +21,9 @@
 	(r_\alpha)_{\alpha\in A}\rdot (s_\alpha)_{\alpha\in A}&\coloneqq (r_\alpha \rdot s_\alpha)_{\alpha\in A}\\
 	\end{align*}
 	Given $a,b\in \Z$, we say they are \textbf{relatively prime} if the greatest common divisor is $1$.\\
-	Equivalently, we say $a,b$ are relatively prime if there exists $m,n\in\Z$ such that \[am+bn=1\].
+	Equivalently, we say $a,b$ are relatively prime if there exists $m,n\in\Z$ such that \[am+bn=1\]
 \end{dfn}
-\begin{dfn}
+\begin{dfn}[title = Comaximal Ideals]
 	In a commutative ring $R$ with $1\ne 0$, two ideals $A,B\subset R$ are \textbf{comaximal} if $A+B=R$.
 \end{dfn}
 \begin{thm}
@@ -88,4 +88,63 @@
 	\modZ{168}&\cong (\modZ{8})\times(\modZ{3})\times(\modZ{7})
 	\end{align*}
 \end{example}
+\begin{proof}[Proof of CRT]
+	We want to see
+	\begin{align*}
+	\phi\colon R&\to (R/A_1)\times (R/A_2)\times (R/A_3)\times\dots\times(R/A_k)\\
+	r&\mapsto (r+A_1,r+A_2,r+A_3,\dots,r+A_k)
+	\end{align*}
+	(1) $\Ker \phi = A_2\cap\dots\cap A_k$\\
+	(2) If $A_1,\dots,A_k$ are pairwise comaximal then $\phi$ is surjective.\\
+	We will prove these for $k=2$ and then generalize:\\
+	(1) Let $A,B\subset R$ be ideals and
+	\begin{align*}
+	\phi\colon R&\to (R/A)\times (R/B)\\
+	r&\mapsto (r+A,r+B)
+	\end{align*}
+	Let $r\in \Ker \phi$, then 
+	\[ \begin{rcases}
+	r+A=0+A\implies r\in A\\
+	r+B=0+B\implies r\in B
+	\end{rcases}\implies r\in A\cap B\]
+	If $r\in A\cap B$ then
+	\[ \begin{rcases}
+	r\in A\implies r+A=0+A\\
+	r\in B\implies r+B=0+B
+	\end{rcases}\implies r\in \Ker \phi\]
+	(2) If $A,B$ are comaximal then there exists $x\in A, y\in B$ such that $1=x+y$, then
+	\begin{align*}
+		1-x=y\in B &\implies 1+A =y+A\\
+		1-y=x\in A &\implies 1+B=x+B
+	\end{align*}
+	and hence
+	\begin{align*}
+	\phi(x)&=(x+A,x+B)=(0+A,1+B)\\
+	\phi(y)&=(y+A,y+B)=(1+A,0+B)
+	\end{align*}
+	So if we have any element $(r+A,s+B)\in R/A\times R/B$ then
+	\begin{align*}
+	(r+A,s+B) =& (r+A,0+B)+(0+A,s+B)\\
+	=&(r+A,r+B)\rdot (1+A,0+B)+(s+A,s+B)\rdot (0+A,1+B)\\
+	=&\phi(r)\rdot \phi(y) + \phi(s)\rdot \phi(x)\\
+	=&\phi(ry+sx)\implies \phi \text{ surjective}
+	\end{align*}
+	More generally if $A_1,\dots,A_k\subset R$ are ideals.\\
+	Let $A=A_1,\, B=A_2\rdot A_3\dots A_k$, then we have a homomorphism
+	\[\phi_1 \colon R\to R/A\times R/B, \quad \Ker\phi_1=A_1\cap B \]
+	Now $A_2/B,A_3/B,\dots,A_k/B\subset R/B$ are ideals.\\
+	Take 
+	\[A'=A_2/B,\quad B' = (A_3/B)\rdot (A_4/B)\dots \rdot (A_k/B) = (A_3\rdot A_4\rdot \dots A_k)/B\]
+	Then we get a homomorphism
+	\[\phi_2\colon R/B\to (R/B)/A' \times (R/B)/B', \quad \Ker \phi_2 = A'\cap B'\]
+	By the third isomorphism theorem 
+	\[(R/B)/A'=(R/B)/(A_2/B)\cong R/A_2\]
+	and
+	\[(R/B)/B'=(R/B)/(A_3\rdot A_4\rdot \dots \rdot A_k)/B\cong R/(A_3\rdot A_4\rdot \dots \rdot A_k)\]
+	Therfore, we have 
+	\[\hat{\phi}_2=(\mathrm{Id},\phi_2)\circ \phi_1\colon R\to R/A_2\times R/A_2\times R/(A_3\rdot \dots\rdot A_k) \]
+	Proceeding inductively on $k$, we end up with
+	\[\phi\colon R\to R/A_1\times R/A_2\times \dots \times R/A_k\]
+	and the surjectivity when $A_1,\dots,A_k$ are pairwise comaximal follow essentially because $A_1,A_2,\dots A_k$ are comaximal.
+\end{proof}
 \end{document}
