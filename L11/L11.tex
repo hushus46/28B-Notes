@@ -1,0 +1,146 @@
+\documentclass[../Main.tex]{subfiles}
+\setcounter{chapter}{10}
+
+\begin{document}
+\chapter{Lecture 11}
+\underline{\textbf{\Large Unique Factorization Domains}}
+
+\begin{dfn}[title = {Irreducible/Reducible, Prime, Associate Elements}]
+	Let $R$ be an integral domain
+	\begin{enumerate}
+		\item Suppose $r\in R\setminus\{0\},\, r\notin R^\times$.\\
+		We say $r$ is \textbf{irreducible} if whenever $r=a\rdot b$, either $a\in R^\times$ or $b\in R^\times$.\\
+		We say $r$ is \textbf{reducible} if it is not irreducible.
+		\item Suppose $r\in R\setminus\{0\},\, r\notin R^\times$\\
+		We say $r$ is \textbf{prime} if $(r)$ is a prime ideal.\\
+		In other words, if $r\mid a\rdot b$, then either $r\mid a$ or $r\mid b$.
+		\item We say $a,b \in R$ are \textbf{associates} if there exists $u\in R^\times$ such that $a=u\rdot b$.
+	\end{enumerate}
+\end{dfn}
+
+\begin{prop}
+	Any prime element in an integral domain is irreducible.
+\end{prop}
+\begin{proof}
+	Suppose $p=a\rdot b\in R$ and $(p)$ is a prime ideal.\\
+	Then $p\in (p)$ implies $a\in (p)$ or $b\in (p)$. W.l.o.g let $a\in (p)$.\\
+	So $\exists r\in R$ such that $a=p\rdot r$ and hence
+	\[p=(p\rdot r)\rdot b=p\rdot (r\rdot b)\]
+	Since $R$ is an integral domain then, $1=r\rdot b$, so $b\in R^\times $.
+\end{proof}
+\begin{example}
+	Irreducible but not prime.\\
+	Consider the ring 
+	\[\Z[\sqrt{-5}] \coloneq \{a+b\sqrt{-5}\mid a,b\in \Z\} \]
+	Then
+	\begin{itemize}
+		\item $N(a+b\sqrt{-5}) \coloneqq a^2+5b^2$
+		\item $N(x\rdot y)=N(x)\rdot N(y)$
+		\item $N(x)=\pm 1$ if an only if $x\in \Z[\sqrt{-5}]^\times$
+	\end{itemize}
+\end{example}
+\begin{claim}
+	$2+\sqrt{-5}$ is irreducible
+\end{claim}
+\begin{proof}
+	Suppose 
+	\[2+\sqrt{-5}=(a+b\sqrt{-5})\rdot (c+d\sqrt{-5})\]
+	Then
+	\[N(2+\sqrt{-5}) = 4+5 =9 \implies N(a+b\sqrt{-5})\mid 9 \implies N(a+b\sqrt{-5}) = \pm 1 \text{ or } \pm 3\]
+	\textit{Observe} that if $b\ne 0$, then \[N(a+b\sqrt{-5}) = a^2+5b^2\ge 5\]
+	Therefore
+	\[b=0\implies N(a+b\sqrt{-5})=N(a)=a^2\implies N(a+b\sqrt{-5})=1\implies a+b\sqrt{-5}\in \Z[\sqrt{-5}]^\times\]
+\end{proof}
+\begin{claim}
+	$2+\sqrt{-5}$ is \textbf{not} prime.
+\end{claim}
+\begin{proof}
+	We know
+	\[3^2=9=(2+\sqrt{-5})\rdot (2-\sqrt{-5}) \in (2+\sqrt{-5})\]
+	However, $3\notin (2+\sqrt{-5})$.\\
+	If $3=(a+b\sqrt{-5})\rdot (2+\sqrt{-5})$, then 
+	\[9=N(3)=N(a+b\sqrt{-5})\rdot N(2+\sqrt{-5}) =N(a+b\sqrt{-5})\rdot 9 \implies N(a+b\sqrt{-5}) =1 \]
+	which immediately tells us $b=0$ and $a=\pm 1$.\\
+	But $3\notin \pm (N(a+b\sqrt{-5})\rdot N(2+\sqrt{-5}))$
+\end{proof}
+\begin{prop}
+	In a PID an element is prime \textit{iff} it is irreducible.
+\end{prop}
+\begin{proof}
+	It suffices to show that irreducible $\implies$ prime.\\
+	Suppose $r\in R$ is irreducible and recall that maximal ideals are prime. Hence we will show that $(r)$ is maximal.\\
+	Suppose $(r)\subset (m)\subsetneq R$, then
+	\[r\in (m) \implies \exists s\in R,\, r=s\rdot m\implies r \text{ irreducible} \implies s=R^\times \text{ or } m\in R^\times\]
+	By assumption $(m)\subsetneq R$ and this implies
+	\[m\notin R^\times \implies s\in R^\times \implies (r) = (m)\]
+\end{proof}
+\begin{example}
+	In $\Z$, the irredcibles are the primes (and their negatives)
+\end{example}
+\textit{Observe} that the factorization of any integer into primes is \underline{unique}!
+\begin{dfn}[title = Unique Factorization Domain]
+	A \textbf{unique factorization domain} (UFD) is an integral domain $R$ such that for all $r\in r\setminus \{0\},\, r\notin R^\times$
+	\begin{enumerate}
+		\item $r=p_1\rdot p_2\rdot \dots\rdot p_k$ for $p_i$ irreducible.
+		\item This decomposition is unique up to associates and reordering, i.e if 
+		\[r=q_1\rdot \dots \rdot q_m,\quad q_j \text{ irreducible}\]
+		Then after reordering, $q_i=u_ip_i, u_i\in R^\times$ and $n=m$.
+	\end{enumerate}
+\end{dfn}
+\begin{example}
+	Fields are vacuously UFDs
+\end{example}
+\begin{example}
+	$\Z$ are a UFD
+\end{example}
+\begin{example}
+	$\Z[\sqrt{-5}]$ is \textbf{not} a UFD as
+	\[3^2=(2+\sqrt{-5})\rdot (2-\sqrt{-5})\]
+	and $3,2\pm \sqrt{-5}$ are irreducibles.
+\end{example}
+\begin{prop}
+	In a UFD, an element is prime \textit{iff} it is irreducible.
+\end{prop}
+\begin{proof}
+	It suffices to show once more that irreducible $\implies$ prime.\\
+	Suppose $r\in R$ is irreducible and $a\rdot b\in (r)$ i.e there exists $c\in R$ such that $a\rdot b=r\rdot c$\\
+	By unique factorization
+	\begin{align*}
+	a=&p_1\rdot p_2\rdot \dots p_n,\quad p_i \text{ irreducible, unique}\\
+	b=&q_1\rdot q_2\rdot \dots q_n,\quad q_j \text{ irreducible, unique}\\
+	c=&r_1\rdot r_2\rdot \dots r_l,\quad r_k \text{ irreducible, unique}
+	\end{align*}
+	Hence
+	\[p_1\rdot p_2\rdot \dots \rdot p_n \rdot q_n \rdot \dots \rdot q_m = r \rdot r_1 \rdot r_2\rdot  \dots \rdot r_l\]
+	so by unique factorization, w.l.og
+	\[r=u\rdot p_1,\, u\in R^\times \implies r|a\]
+\end{proof}
+\begin{prop}
+	Let $a,b\in R\setminus \{0\}$ in a UFD. Then there is a greatest common divisor of $a,b$ in $R$.
+\end{prop}
+\begin{proof}
+	We write for $u,v\in R^\times$ and $p_i$'s irreducible
+	\begin{align*}
+	a=u\rdot p_1^{e_1}\rdot p_2^{e_2}\rdot \dots \rdot p_n^{e_n}
+	b=v\rdot p_1^{f_1}\rdot p_2^{f_2}\rdot \dots \rdot p_n^{f_n}
+	\end{align*}
+	We allow some exponents to be $0$ ($p_i^0=1$) and we require $p_i\ne p_j$ if $i\ne j$ for example
+	\[\begin{pmatrix}
+	12=2^2\rdot 3 \to 12= 2^2\rdot 3^1\rdot 5^0 \\
+	20=2^2\rdot 5 \to 20 =2^2\rdot 3^0\rdot 5^1 
+	\end{pmatrix}\]
+	\begin{claim}
+		\[d=p_1^{\min\{e_1,d_1\}}\rdot p_2^{\min\{e_2,d_2\}}\rdot \dots \rdot p_n^{\min\{e_n,d_n\}}\]
+		is the $gcd(a,b)$.
+	\end{claim}
+	\begin{proof}
+		Clearly $d\mid a,\, d\mid b$.\\
+		If $c\mid a, \, c\mid b$, then we want to see that $c\mid d$.\\
+		Unique factorization says for $q_i$ irreducible, $q_i\ne q_j$ and $g_i>0$, we have
+		\[c=q_1^{g_1}\rdot \dots \rdot q_m^{g_m}\]
+		Since $c\mid a,\, c\mid b$, then after changing associates
+		\[\{q_1,\dots,q_n\}\subset \{p_1,\dots,p_n\}, \, g_i\le \min\{e_i,f_i\}\implies c\mid d\]
+	\end{proof}
+	And so there exists a greatest common divisor of $a,b$ in $R$.
+\end{proof}
+\end{document}
