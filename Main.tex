@@ -155,7 +155,7 @@ boxed title style = {colback=green!35!black}
 \DeclareMathOperator{\Img}{Im}
 \DeclareMathOperator{\ev}{Ev}
 \newcommand*\quot[2]{{^{\textstyle #1}\big/_{\textstyle #2}}}
-
+\newcommand{\verteq}{\rotatebox{90}{$\;\;=\;\;$}}
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
 \newcommand\rdot[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
@@ -164,6 +164,7 @@ boxed title style = {colback=green!35!black}
 
 \theoremstyle{definition}
 \newtheorem{example}{Example}[chapter]
+
 
 
 
@@ -180,6 +181,8 @@ boxed title style = {colback=green!35!black}
 	\setlength{\abovedisplayshortskip}{3pt}%
 	\setlength{\belowdisplayshortskip}{3pt}%
 }
+
+
 \usepackage{subfiles}
 \begin{document}
 \subfile{Title/Titlepage} 
@@ -194,4 +197,5 @@ boxed title style = {colback=green!35!black}
 \subfile{L9/L9}
 \subfile{L10/L10}
 \subfile{L11/L11}
+\subfile{L12/L12}
 \end{document}

@@ -1,0 +1,207 @@
+\documentclass[../Main.tex]{subfiles}
+\setcounter{chapter}{11}
+
+\begin{document}
+\chapter{Lecture 12}
+\underline{\textbf{\Large PIDs are UFDs}}
+
+\begin{dfn}[title = {Ascending Chains, Noetherian Ring}]
+	Let $R$ be a commutative ring with $1\ne 0$.\\
+	An \textbf{ascending chain} of ideals in $R$ is a sequence
+	\[I_1\subset I_2\subset I_3\subset\dots.\subset R\]
+	We say an ascending chain \textbf{stabilizes} if there exists $N\in \N$ such that for all $n,m \ge N$, $I_n=I_m$.\\
+	We say $R$ satisfies the \textbf{ascending chain condition} (a.c.c.) if every ascending chain stabilizes.\\
+	If $R$ satisfies the a.c.c., we say it is a \textbf{Noetherian ring}.
+\end{dfn}
+\begin{thm}
+	If $R$ is a PID, then $R$ is Noetherian.
+\end{thm}
+\begin{proof}
+	Let
+	\[I_1\subset I_2\subset I_3\subset\dots.\subset R\]
+	be an ascending chain in a PID.\\
+	Consider
+	\[I\coloneqq \bigcup\limits_{n\in \N} I_n\]
+	which is an ideal. Then since $R$ is a PID, $I=(a)$ for some $a\in R$.\\
+	Therefore
+	\[a\in I =\bigcup\limits_{n\in \N} I_n\implies a\in I_N \]
+	for some $N\in \N$.\\
+	Hence $(a)\subset I_n$ implying $I\subset I_N$ and so we deduce
+	\[I=I_N=I_{N+1}=I_{N+2}=\dots\]
+\end{proof}
+\begin{thm}
+	Every PID is a UFD.
+\end{thm}
+Let $R$ be a PID.\\
+We want to show if $R\in R\setminus \{0\},\, r\notin R^\times$.\\
+Then $r$ admits a \textbf{unique} expression as a product of irreducibles.
+\begin{lem}[title= Existence]
+	R has \textbf{some} expression as a product of irreducibles
+\end{lem}
+\begin{proof}
+	If $r$ is irreducible, then $r=r$.\\
+	If not, then $r=r_1\rdot r_2,\, r_1,r_2\notin R^\times$. Then $r\in (r_1)$ but $(r)\ne (r_1)$, therefore $(r)\subsetneq (r_1)$.\\
+	If $r_1,r_2$ are irreducibles, then we are done.\\
+	If not, 
+	\begin{align*}
+	r_1=r_{11}\rdot r_{12}\\
+	r_2=r_{21}\rdot r_{22}
+	\end{align*}
+	where $r_{ij}\in R^\times,\, i,j\in \{1,2\}$. Again, $r_1\in (r_{11})$ but $(r_1)\ne (r_{11})$, therefore $(r)\subsetneq (r_1)\subsetneq (r_{11})$.\\
+	Since $R$ is a PID, it is also Noetherian, and so this chain stabilizes eventually. Hence
+	\[r=(r_{111\dots1}\rdot r_{111\dots 2})\rdot \dots \rdot (r_{222\dots1}\rdot r_{222\dots 2})\]
+	where each term on the right is irreducible.
+\end{proof}
+\begin{lem}[title= Uniqueness]
+	The factorization into irreducibles is \textbf{unique} (up to reordering and associates).
+\end{lem}
+\begin{proof}
+	Say $r=p_1\rdot p_2\rdot \dots\rdot p_n$. Let's induct on $n$.\\
+	If $n=1$, then $r=\underbrace{p_1}_{\text{irred.}}$ implies $r$ is irreducible.\\
+	Suppose
+	\[r=q_1\rdot q_2\rdot \dots\rdot q_n,\, n\ge 2,\, q_i \text{ irreducible } \forall i\in \{1,\dots,n\}\]
+	But then $q_1,(q_2\rdot \dots\rdot  q_n) \notin R^\times$ implying $r$ is not irreducible, which is a contradiction.\\
+	Therefore $r=r$ is the unique way to write $r$ as the product of irreducibles.\\
+	Now suppose if $r$ admits a factorizaation into at most $n-1$ irreducibles, then the factorization is unique.
+	If
+	\begin{align*}
+	r&=p_1\rdot p_2\rdot \dots \rdot p_n, \quad p_i\text{'s irreducible}\\
+	&=q_1\rdot q_2\rdot \dots\rdot q_m,\quad q_j\text{'s irreducible for } m\ge n
+	\end{align*}
+	Then $p_1| q_1 \rdot (q_2\rdot \dots\rdot  q_m)$ and recall irreducibles are prime in a PID. Since $p_1$ is irreducible either $p_1| q_1$ or $p_1 | (q_2\rdot \dots\rdot  q_n)$, so w.l.og assume $p_1| q_1$ i.e $q_1=u\rdot p_1,\, u\in R$.\\
+	Since $q_1$ is irreducible, then $u\in R^\times $ or $p_1 \in R^\times$. But $p_1$ is irreducible, so it can be not an element of $R^\times$, therefore $u\in R^\times$ and so $p_1$ and $q_1$ associate.\\
+	So we write
+	\begin{align*}r=p_1\rdot p_2\rdot \dots \rdot p_n&= q_1\rdot q_2 \rdot  \dots \rdot q_m\\
+	&=(u\rdot p_1)\rdot q_2\rdot \dots \rdot q_m \end{align*}
+	Since $R$ is an integral domain, we can cancel $p_1$ from both sides to get
+	\[\underbrace{p_2\rdot \dots \rdot p_n}_{\text{product of (n-1) irred.}} =(u\rdot q_2)\rdot q_3\rdot \dots \rdot q_m \]
+	Now by our induction hypothesis, $r$ admits a factorization into at most $(n-1)$ irreducibles, which implies
+	\[\{(u\rdot q_2),q_3,q_4,\dots,q_m\}=\{p_2,p_3,\dots,p_n\}\]
+	and so $m=n$ and the $p_i$'s are unique.
+\end{proof}
+We can now see a hierarchy for the specific structures we have discussed thus far
+
+\begin{tikzcd}[column sep=0em,arrows=dash]
+	&\text{Rings}\arrow[dl]\arrow[dr]&& \\
+	\text{Non-Comm. Rings}&&\text{Comm. Rings w/}1\ne 0 \arrow[dl]\arrow[dr]&\\
+	&\text{Noetherian Rings}\arrow[d]&&\text{Integral Domains}\arrow[dl]\\
+	&\text{PIDs}\arrow[d]&\text{UFDs}\arrow[l]\\
+	&\text{Euclidean Domain}\arrow[d]&&\\
+	&\text{Fields}&&
+\end{tikzcd}
+\newpage
+\underline{\textbf{\Large Polynomial Rings (Again)}}
+
+Let $R$ be an commutative integral domain with $1\ne 0$. Recall some facts we've already proven
+(1) $R[x]$ is an integral domain.\\
+(2) $R[x]^\times=R^\times$ e.g $\Z[x]$, the only units are $\{\pm 1\}$.\\
+(3) $\deg[p(x)\rdot q(x)]=\deg p(x)+ \deg q(x)$\\
+(4) The field of fractions of $R[x]$ is the field of rational functions
+	\[R(x)\coloneqq \left\{ \left. \frac{p(x)}{q(x)} \right| \, p,q\in R[x],\, q\ne 0\right\}\]
+(5) If $F$ is a field, then $F[x]$ is a Euclidean Domain.
+	\begin{crl}
+		If $F$ is a field, $F[x]$ is a PID, UFD, and Noetherian
+	\end{crl}
+(6) Let $I\subset R$ be an ideal, and define
+	\[(I)\coloneqq I[x] \coloneqq \{p(x)\in R[x]\mid \text{coeffs. are in } I\}\]
+	Then 
+	\[R[x]/(I)\cong (R/I)[x]\]
+\begin{proof}~\\
+	Consider the map
+	\begin{align*}
+	\phi\colon R[x] &\to (R/I)[x] \\
+	a_0+a_1x+\dots+a_nx^n &\mapsto \obar{a}+\obar{a_1}x+\obar{a_2}x^2+\dots+\obar{a_n}x^n
+	\end{align*}
+	for example
+	\begin{align*}
+	\phi\colon \Z[x] &\to (\Z/3\Z)[x] \\
+	1+2x+4x^3 &\mapsto \obar{1}+\obar{2}x+\obar{4}x^3=\obar{1}+\obar{2}x+x^3
+	\end{align*}
+	"Clearly" $\phi$ is a surjective ring homomorphism, so
+	\[(R/I)[x]\cong R[x]/\Ker \phi\]
+	But $\Ker\phi\coloneqq\{a_0+a_1x+\dots+a_nx^n\mid a_i\in I\}=(I)$.
+\end{proof}
+\begin{crl}
+		If $I\subset R$ is prime, then $(I)\subset R[x]$ is prime.
+\end{crl}
+\begin{example}
+	Consider $3\Z \coloneqq \{0,3,-3,6,-6,\dots\}$ and
+	\[(3\Z)\coloneqq \{a_0+a_1x+a_2x+\dots+a_nx^n\mid a_i\in 3\Z\} \implies \Z[x]/(3\Z)\cong (\Z/3\Z)[x]\]
+	e.g 
+	\[1+2x+4x^3=1+2x+x^3+\underbrace{3x^3}_{\in 3\Z}\]
+	we can think about the coefficients
+	\[\underbrace{1,2,4}_{\in \Z}\to \underbrace{\obar{1},\obar{2},\obar{1}}_{\in \Z/3\Z}\]
+\end{example}
+
+\begin{thm}
+	If $a(x),b(x)\in F[x]$ where $F$ is a field. Then there exist unique $q(x),r(x)\in F[x]$ such that $\deg (r(x)) < \deg (b(x))$ (or $r(x)=0$) for which $a(x)=q(x)\rdot b(x)+r(x)$.
+\end{thm}
+\textit{Note:} Recall $\Z$ are a Euclidean Domain with $N(n)=|n|$, e.g
+\begin{align*}
+7=3\rdot 2+1&\quad N(1)=1<N(2)\\
+7=4\rdot 2-1&\quad N(-1)=1<N(2)
+\end{align*}
+\begin{proof}
+	Suppose $a(x)=q(x)\rdot b(x)+r(x)=q'(x)b(x)+r'(x)$, then
+	\begin{align*}
+	r(x)&=a(x)-q(x)\rdot b(x)\\
+	r'(x)&=a(x)-q'(x)\rdot b(x)
+	\end{align*}
+	and $\deg(r),\deg(r')<\deg(b)$.\\
+	Consider
+	\[r(x)-r'(x)=q'(x)\rdot b(x)-q(x)\rdot b(x) = [q'(x)-q(x)]\rdot b(x)\]
+	If $q'-q,b\ne 0$, then 
+	\begin{align*}
+	&\deg[(q'-q)\rdot b]=\deg(q'-q)+\deg(b)\\
+	=&\deg[r-r']<\deg b
+	\end{align*}
+	Then $\deg{q-q'}$ must be $0$ and so $q'-q=0\implies q'=q\implies r=r'$.
+\end{proof}
+\begin{crl}
+	Suppose $F,K$ are fields with $F\subset K$ and $a(x),b(x)\in F[x]$. \\
+	Then the quotient and remainder polynomials of $a$ by $b$ are independent of of field.
+\end{crl}
+\begin{proof}
+	There exist $q(x),r(x)\in F[x]$ and $Q(X), R(X)\in K[x]$ with $\deg r< \deg b$ and $\deg R< \deg b$, such that
+	\[a(x)=q(x)\rdot b(x)+r(x)\quad a(x)=Q(x)\rdot b(x)+R(x)\]
+	But there is uniqueness since $q,r\in K[x]$ it must mean that
+	\[q(x)=Q(x)\quad r(x)=R(x)\]
+\end{proof}
+\begin{crl}
+	$b(x)|a(x)$ in $K[x]$ \textit{iff} $b(x)|a(x)$ in $F[x]$
+\end{crl}
+\begin{example}
+	\[(x-1)|x^2-1 \text{ in } \R[x],\C[x]\]
+	However,
+	\[(x-i)| x^2+1 \text{ in } \C[x] \text{ but not } \R[x]\]
+	Since $x^2+1$ has no nontrivial factors in $\R[x]$.
+\end{example}
+\newpage
+\underline{\textbf{\Large PIDs are UFDs}}
+
+\begin{dfn}
+	Let $R$ be a commutative ring with $1\ne 0$. \\
+	The \textbf{polynomial ring in the variables }$X_1,\dots,X_n$ \textbf{with coefficients in R} is defined inductively as
+	\[R[X_1,X_2,\dots,X_n]\coloneqq R[X_1,X_2,\dots,X_{n-1}][X_n]\]
+	Concretely, think of $R[X_1,\dots,X_n]$ as finite sums of \textbf{monomials}, i.e 
+	\[aX_1^{d_1}X_2^{d_1}\dots X_n^{d_n},\quad d_i\in \Z, \, d_i\ge 0\]
+	e.g
+	\[1+2xy+y^2,2x-7x^3y+2xy^4+1\in \Z[x,y]\]
+\end{dfn}
+\begin{dfn}
+	The \textbf{degree} of a monomial
+	\[aX_1^{d_1}X_2^{d_1}\dots X_n^{d_n}\]
+	is $d=d_1+d_2+\dots+d_n$.\\
+	The \textbf{multi-degree} is $(d_1,d_2,d_3,\dots,d_n)$.\\
+	The \textbf{degree} of a polynomial is the highest degree of any monomial in it.
+\end{dfn}
+\begin{prop}
+	Let $R$ be an integral domain and
+	\[p(X_1,\dots,X_n),q(X_1,\dots,X_n)\in R[X_1,X_2,\dots,X_n]\setminus\{0\}\] then
+	\begin{enumerate}[label=(\arabic*)]
+		\item $R[X_1,X_2,\dots,X_n]$ is an integral domain.
+		\item $R[X_1,X_2,\dots,X_n]^\times = R^\times$
+		\item $\deg[p\rdot q]=\deg p+\deg q$
+	\end{enumerate}
+\end{prop}
+\end{document}
