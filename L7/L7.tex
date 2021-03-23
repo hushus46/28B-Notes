@@ -2,10 +2,9 @@
 \setcounter{chapter}{6}
 
 \begin{document}
-\chapter{Lecture 7}
-\underline{\textbf{\Large Maximal Ideals}}~\\
+\chapter{Maximal Ideals}
 Let $R$ be a commutative ring with $1\ne 0$.
-\begin{prop}
+\begin{prop}[title = Ideals containing units]
 	Let $I\subset R$ an ideal
 	\begin{enumerate}
 		\item $I=R$ if and only if $I$ contains a unit.
@@ -39,7 +38,7 @@ Let $R$ be a commutative ring with $1\ne 0$.
 \end{dfn}
 Not all rings admit maximal ideals and a given ring may admit multiple maximal ideals, e.g $2\Z,3\Z$ are maximal ideals in $\Z$.
 \newpage
-\underline{\textbf{\Large A digression on Zorn's Lemma}}~\\
+\section*{A Digression on Zorn's Lemma}
 \begin{dfn}[title = Partial Order]
 	A \textbf{partial order} on a non-empty set $A$ is a relation $\le$ such that
 	\begin{enumerate}
@@ -72,7 +71,7 @@ Not all rings admit maximal ideals and a given ring may admit multiple maximal i
 	If $A$ is a non-empty poset such that every chain admits an upper bound, then $A$ has a maximal element.
 \end{lem}~\\
 \hrule
-\begin{prop}
+\begin{prop}[title = All proper ideals contained in maximal ideal]
 	If $R$ is a commutative ring with $1\ne 0$, then every proper ideal is contained in a maximal ideal
 \end{prop}
 \begin{proof}~\\
@@ -106,7 +105,7 @@ Not all rings admit maximal ideals and a given ring may admit multiple maximal i
 	\quad \text{ or }
 	\underbrace{M'\notin \mathcal{S}}_{M' \text{ is not proper}} \implies M'=R\]
 \end{proof}
-\begin{thm}[title = $M$ maximal in comm. $R \Longleftrightarrow R/M$ is field]
+\begin{thm}[title = \texorpdfstring{$M$}{TEXT} maximal in comm. \texorpdfstring{$R \Longleftrightarrow R/M$}{TEXT} is field]
 	If $R$ is a commutative ring with $1\ne 0$, then $M\subset R$ is maximal if and only if $R/M$ is a field.
 \end{thm}
 

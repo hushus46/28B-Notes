@@ -2,8 +2,7 @@
 \setcounter{chapter}{8}
 
 \begin{document}
-\chapter{Lecture 9}
-\underline{\textbf{\Large The Chinese Remainder Theorem}}
+\chapter{The Chinese Remainder Theorem}
 \begin{dfn}[title = Direct Product]
 	Let $R,S$ be rings.\\
 	The \textbf{direct product} of $R$ and $S$ is the ring
@@ -26,7 +25,7 @@
 \begin{dfn}[title = Comaximal Ideals]
 	In a commutative ring $R$ with $1\ne 0$, we say two ideals $A,B\subset R$ are \textbf{comaximal} (i.e relatively prime) if $A+B=R$. This implies there exists a sum $a+b$ such that $a+b=1$.
 \end{dfn}
-\begin{thm}
+\begin{thm}[title = Product of pairwise comaximals is intersection]
 	Let $A_1,\dots,A_k\subset R$ be ideals in a commutative ring with $1\ne 0$.\\
 	If they are pairwise comaximal then
 	\[A_1\rdot A_2\rdot \dots \rdot A_k = A_1 \cap A_2 \cap \dots \cap A_k\]
@@ -73,12 +72,12 @@
 	is a ring homomorphism with $\Ker\phi = A_1\cap A_2\cap \dots \cap A_k$.\\
 	Moreover, if they are pairwise comaximal, then $\phi$ is surjective.
 \end{thm}
-\begin{crl}
+\begin{crl}[title= Isomorphisms of quotient rings by product of ideals]
 	If $A_1,\dots,A_k\subset R$ are pairwise comaximal ideals in a commutative ring with $1\ne 0$, then there is an isomorphism of rings (by the First Isomorphism Theorem)
 	\[R/(A_1\rdot \dots\rdot A_k)\cong R/(A_1\cap A_2\cap \dots \cap A_k) \cong (R/A_1)\times (R/A_2)\times (R/A_3)\times\dots\times(R/A_k)\]
 	So you can think of your quotient ring over the one ideal or over the separate components of the ideal.
 \end{crl}
-\begin{crl}
+\begin{crl}[title = \texorpdfstring{$\modZ{n}$}{TEXT} isomorphic to quotients by prime factors]
 	Let $n$ be a positive integer with factorization into unique primes \[n=p_1^{\alpha_1} p_2^{\alpha_2}\dots p_k^{\alpha_k}\]
 	then
 	\[\modZ{n} \cong (\modZ{p_1^{\alpha_1}})\times (\modZ{p_2^{\alpha_2}})\times \dots \times (\modZ{p_k^{\alpha_k}})\]

@@ -2,8 +2,7 @@
 \setcounter{chapter}{3}
 
 \begin{document}
-\chapter{Lecture 4}
-\underline{\textbf{\Large Quotient Rings}}\\~\\
+\chapter{Quotient Rings}
 Recall that given a ring homomorphism $f: R\to S$, the kernel of $f$, $\Ker f$, is a subring of $R$.
 \begin{dfn}[title= Coset and Quotient Ring]
 	Given a ring homomorphism $f:R\to S$, let $I= \Ker f$ and $r\in R$.\\
@@ -12,7 +11,7 @@ Recall that given a ring homomorphism $f: R\to S$, the kernel of $f$, $\Ker f$, 
 	The \textbf{quotient ring} of $R$ by $I$ is the set
 	\[R/I\coloneqq \{r+I|r\in R\}\]
 \end{dfn}
-\begin{prop}
+\begin{prop}[title= Coset space is a ring]
 	Given a ring homomorphism $f: R \to S$ with $I = \Ker f$, the quotient ring $R/I$ is a ring with operations
 	\begin{align*}
 		&(r+I)+(s+I)\coloneqq (r+s)+I\\
@@ -74,7 +73,7 @@ becomes
 		s+I=s'+I \implies s=s'+y,\, y\in I
 	\end{align*}
 	Then their sum
-	\[r+s=(r'+x)+(s'+y)=(r'+s')+(x+y) \implies r+s\in (r'+s')\in I\]
+	\[r+s=(r'+x)+(s'+y)=(r'+s')+(x+y) \implies r+s\in (r'+s')+ I\]
 	On the other hand $r+s=r+s+0 \in (r+s)+I$, hence
 	\[[(r+s)+I]\cap [(r'+s')+I]\ne \emptyset \]
 	By Lemma 4.1, it is immediate that
@@ -164,18 +163,18 @@ becomes
 \begin{example}
 	Let $R=\Z[X]$ and define
 	\[I \coloneqq \{p(X)\in R| \text{ all nonzero terms have degree at least 2}\}\]
-	e.g $7x^2+3x^3+10x^9\in I$
+	e.g $7X^2+3X^3+10X^9\in I$
 \end{example}
 \underline{\textbf{Note:}} $0\in I$ because it has \textbf{no} terms with non-zero coefficient.
 \textbf{Exercise:} Prove that $I$ is an ideal.
-Now consider two polynomials $p(x),q(x)\in R$ and $\obar{p(x)}=\obar{q(x)}$, then by definition of equivalence, $p-q\in I$.\\
+Now consider two polynomials $p(X),q(X)\in R$ and $\obar{p(X)}=\obar{q(X)}$, then by definition of equivalence, $p-q\in I$.\\
 So $p-q$ consists of terms of \textit{at least} degree 2, i.e the degree $0$ and degree $1$ parts of $p,q$ agree, e.g
-\[5+x+7x^3=5+x-21x^5+7x^{19}\]
+\[5+X+7X^3=5+X-21X^5+7X^{19}\]
 This implies that the polynomials of degree at most $1$ represent \textit{distinct} cosets in $R/I$, e.g
-\[5+x,\, -7+2x,\,11-4x\]
+\[5+X,\, -7+2X,\,11-4X\]
 Therefore, there is a bijection between
-\[R/I \Longleftrightarrow \{a+bx|a,b,\in \Z\}\]
-\textbf{Observe} that $R/I$ has zero divisors: $\obar{x}\rdot \obar{x}=\obar{x^2}=\obar{0}$.
+\[R/I \Longleftrightarrow \{a+bX|a,b,\in \Z\}\]
+\textbf{Observe} that $R/I$ has zero divisors: $\obar{x}\rdot \obar{X}=\obar{X^2}=\obar{0}$.
 \begin{example}
 	Let $R$ be a ring and $X$ a non-empty set.\\
 	Consider the ring

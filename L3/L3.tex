@@ -2,11 +2,11 @@
 \setcounter{chapter}{2}
 
 \begin{document}
-	\chapter{Lecture 3}
-	\underline{\textbf{\Large{Polynomial Rings}}}\\
+	\chapter{Ring Homomorphisms}
+	\section*{Polynomial Rings}
 	Fix a commutative ring $R$ with $1$ (e.g. $R=\Z, R=\Q$, etc)
 	Let $X$ be an indeterminate (this means $X$ is just a symbol without an exact representation, compared to to when you think $x$ is a variable representing a number).
-	\begin{dfn}[title = Polynomial Ring]
+	\begin{dfn}[title = Polynomial in a ring]
 		A \textbf{polynomial} in $X$ with coefficients in $R$ is a formal, finite sum
 		\[a_nX^n+a_{n-1}X^{n-1}+\dots+a_1X+a_0, \quad a_i\in R, i\in \{0, \dots, n\}\]
 		\textbf{\underline{Note:}} If $a_n\ne 0$ and $a_m=0, \quad \forall m>n$. Then we say the \textbf{degree} of the polynomial is $n$.
@@ -15,7 +15,7 @@
 		has a $1$ "missing" infront of $X^2$.\\
 		If $a_n=1$, we say the polynomial is \textbf{monic} 
 	\end{dfn}
-	\begin{dfn}[title=Set of Polynomials and Constant Polynomial]
+	\begin{dfn}[title=Ring of Polynomials and Constant Polynomial]
 		The \textbf{set of polynomials} in $X$ w/ coefficients in $R$ is denoted
 		\[R[X] \coloneqq \{a_nX^n+\dots+a_0|a_i \in R\} \]
 		If the degree of $p\in R[X]$ is zero, we say $p$ is a \textbf{constant} polynomial.
@@ -58,7 +58,7 @@
 	it also factors in $\modZ{2}[X]$
 	\[X^2+1=(X+1)(X+1) \Mod{2}\]
 	Because $X^2+2X+1\equiv X^2+1 \Mod{2}$
-	\begin{prop}
+	\begin{prop}[title = \texorpdfstring{$R[X]$}{TEXT} is an integral domain]
 		Let $R$ be an integral domain and
 		$p(X),q(X)\in R[X]$
 		\begin{enumerate}
@@ -85,7 +85,7 @@
 	\[\deg \left((2X^2+1)\rdot (2X^5+3X)\right)<\deg(2X^2+1)+\deg(2X^5+3x) \]
 	When $R$ isn't an integral domain, the degree of the product of polynomials can be less than the degree of their sum (in general, the degree is at most the sum).
 	\end{example}
-\underline{\textbf{\Large{Ring Homomorphisms}}}
+\section*{Ring Homomorphisms}
 \begin{dfn}[title = Ring Homomorphism and Isomorphism]
 	Let $R,S$ be rings. A \textbf{ring homomorphism} is a map $f: R \to S$ such that
 	\begin{enumerate}
@@ -96,11 +96,11 @@
 	We say, in this case $R$ is \textbf{isomorphic} to $S$ as rings and write
 	\[R \cong S\]
 \end{dfn}
-\begin{dfn}[label = Kernel]
+\begin{dfn}[title = Kernel]
 	The \textbf{kernel} of a ring homomorphism $f: R\to S$ is the subset
 	\[\Ker f \coloneqq f^{-1}(0_S)\subset R\]
 \end{dfn}
-\begin{prop}
+\begin{prop}[title = \texorpdfstring{$\Ker f$}{TEXT} is an ideal]
 	Let $R,S$ be rings and $f: R \to S$ a homomorphism, then
 	\begin{enumerate}
 		\item $\Img f \subset S$ is a subring
@@ -200,12 +200,12 @@ Both proofs rely on using the Subring Criterion Test mentioned in Lecture 2.
 		&\phi(p\rdot q)=(p\rdot q)(0)=p(0)\rdot q(0)=\phi(p)\rdot \phi(q)
 	\end{align*}
 	Its kernel (which are polynomials who have $0$ as a root) can be written
-	\[\Ker \{p\in \R[X]\,|\,p(0)=0\} = \{p\in R[X]\,|\,p(x) = x\rdot p'(x) \text{ for some } p'\in \R[X]\}\]
+	\[\Ker \{p\in \R[X]\,|\,p(0)=0\} = \{p\in R[X]\,|\,p(X) = X\rdot p'(X) \text{ for some } p'\in \R[X]\}\]
 	($p'$ is not the derivative, just another polynomial).
 \end{example}
 \textbf{Question}: What about
 \begin{align*}
 	\phi_1 \,: &\R[X] \to \R\\
-	&p(x) \mapsto p(1)
+	&p(X) \mapsto p(1)
 \end{align*}
 \end{document}

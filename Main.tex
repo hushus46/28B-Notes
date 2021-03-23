@@ -20,6 +20,14 @@
 \usetikzlibrary{shapes,fit}
 \setlist[enumerate]{label=(\roman*)}
 \usepackage{breqn}
+\usepackage{hyperref}
+\usepackage[all]{hypcap}
+\hypersetup{
+	colorlinks,
+	linkcolor={blue!80!black},
+	citecolor={blue!50!black},
+	urlcolor={blue!80!black}
+}
 
 \makeatletter
 \xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
@@ -53,6 +61,8 @@
 	\NewDocumentEnvironment{#2}{O{}}
 	{
 		\keys_set:nn { hushus/tcb } { ##1 }
+		\phantomsection
+		\addcontentsline{toc}{section}{#3: \hspace{0.4em} \l__hushus_tcb_title_tl}
 		\hushus_tcb_begin:nVV {#2inner} \l__hushus_tcb_title_tl \l__hushus_tcb_label_tl
 	}
 	{
@@ -140,7 +150,7 @@ boxed title style = {colback=green!35!black}
 
 \newcommand{\D}{\mathrm{d}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
+\renewcommand{\C}{\mathbb{C}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -181,11 +191,13 @@ boxed title style = {colback=green!35!black}
 	\setlength{\abovedisplayshortskip}{3pt}%
 	\setlength{\belowdisplayshortskip}{3pt}%
 }
-
-
+\makeatletter
+\renewcommand{\@dotsep}{10000} 
+\makeatother
 \usepackage{subfiles}
 \begin{document}
 \subfile{Title/Titlepage} 
+\tableofcontents
 \subfile{L1/L1}
 \subfile{L2/L2}
 \subfile{L3/L3}
