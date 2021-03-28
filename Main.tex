@@ -62,7 +62,7 @@
 	{
 		\keys_set:nn { hushus/tcb } { ##1 }
 		\phantomsection
-		\addcontentsline{toc}{section}{#3: \hspace{0.4em} \l__hushus_tcb_title_tl}
+		\addcontentsline{toc}{section}{#3 : \hspace{0.4em} \l__hushus_tcb_title_tl}
 		\hushus_tcb_begin:nVV {#2inner} \l__hushus_tcb_title_tl \l__hushus_tcb_label_tl
 	}
 	{
@@ -83,11 +83,10 @@
 }
 
 \ExplSyntaxOff
-
-\betternewtcbtheorem[number within = chapter]{dfn}{Definition}%
+\newcounter{thm}[chapter]
+\betternewtcbtheorem[number within = chapter,use counter=thm]{dfn}{Definition}%
 {
 	enhanced,
-	before title = {\stepcounter{dfn}},
 	colback=blue!10,
 	colframe=blue!35!black,
 	fonttitle=\bfseries,
@@ -96,10 +95,9 @@
 	boxed title style = {colback=blue!35!black}
 }{dfn}
 
-\betternewtcbtheorem[number within = chapter]{thm}{Theorem}%
+\betternewtcbtheorem[number within = chapter,use counter=thm]{thm}{Theorem}%
 {
 enhanced,
-before title = {\stepcounter{thm}},
 colback=green!10,
 colframe=green!35!black,
 fonttitle=\bfseries,
@@ -108,10 +106,9 @@ attach boxed title to top left={xshift = 5mm, yshift=-1.5mm},
 boxed title style = {colback=green!35!black}
 }{thm}
 
-\betternewtcbtheorem[number within = chapter]{prop}{Proposition}%
+\betternewtcbtheorem[number within = chapter,use counter=thm]{prop}{Proposition}%
 {
 	enhanced,
-	before title = {\stepcounter{thm}},
 	colback=cyan!10,
 	colframe=cyan!35!black,
 	fonttitle=\bfseries,
@@ -120,10 +117,9 @@ boxed title style = {colback=green!35!black}
 	boxed title style = {colback=cyan!35!black}
 }{prop}
 
-\betternewtcbtheorem[number within = chapter]{lem}{Lemma}%
+\betternewtcbtheorem[number within = chapter,use counter=thm]{lem}{Lemma}%
 {
 	enhanced,
-	before title = {\stepcounter{thm}},
 	colback=Dandelion!10,
 	colframe=Dandelion!35!black,
 	fonttitle=\bfseries,
@@ -132,11 +128,11 @@ boxed title style = {colback=green!35!black}
 	boxed title style = {colback=Dandelion!35!black}
 }{lem}
 
-\betternewtcbtheorem[number within= chapter]% init options
+\betternewtcbtheorem[number within= chapter,use counter=thm]% init options
 {crl}% name environment
 {Corollary}% Title
-{enhanced,
-	before title = {\stepcounter{co}},
+{
+	enhanced,
 	colback=red!10,
 	colframe=red!35!black,
 	fonttitle=\bfseries,
@@ -145,7 +141,6 @@ boxed title style = {colback=green!35!black}
 	boxed title style = {colback=red!35!black}
 }% options
 {co}% label prefix
-
 \frenchspacing
 
 \newcommand{\D}{\mathrm{d}}
@@ -166,6 +161,7 @@ boxed title style = {colback=green!35!black}
 \DeclareMathOperator{\ev}{Ev}
 \newcommand*\quot[2]{{^{\textstyle #1}\big/_{\textstyle #2}}}
 \newcommand{\verteq}{\rotatebox{90}{$\;\;=\;\;$}}
+\newcommand{\dotproduct}{\raisebox{.3ex}{\tiny$\bullet$}}
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
 \newcommand\rdot[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
@@ -210,4 +206,5 @@ boxed title style = {colback=green!35!black}
 \subfile{L10/L10}
 \subfile{L11/L11}
 \subfile{L12/L12}
+\subfile{L13/L13}
 \end{document}
