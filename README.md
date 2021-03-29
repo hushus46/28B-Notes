@@ -1,2 +1,2 @@
-# 28-B Notes
+# 28B-Notes
  Rings and Fields Notes
