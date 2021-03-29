@@ -21,6 +21,7 @@
 \setlist[enumerate]{label=(\roman*)}
 \usepackage{breqn}
 \usepackage{sectsty}
+\usepackage{titletoc}
 \usepackage{hyperref}
 \usepackage[all]{hypcap}
 \hypersetup{
@@ -30,6 +31,18 @@
 	urlcolor={blue!80!black}
 }
 
+\def\HyperRaiseLinkDefault{1.5cm}%
+
+
+\titlecontents{chapter}[0em]{\smallskip\bfseries}%\vspace{1cm}%
+{}%
+{\itshape\bfseries}%numberless%
+{\hfill\contentspage}%
+
+\titlecontents{section}[4.25em]{\smallskip}%
+{\contentslabel[\thecontentslabel]{2em}}%numbered
+{\hspace*{-1em}}%numberless
+{\hfill\contentspage}%
 
 \makeatletter
 \xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
@@ -181,7 +194,7 @@ boxed title style = {colback=green!35!black}
 \lstset{breaklines, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
 
 \titleformat{\chapter}[display]
-{\normalfont\bfseries\centering}{}{0pt}{\LARGE}
+{\normalfont\bfseries\centering\color{BrickRed}}{}{0pt}{\LARGE}[\titlerule]
 
 \titlespacing{\chapter}{0pt}{-75pt}{\parskip}
 
@@ -194,10 +207,27 @@ boxed title style = {colback=green!35!black}
 \makeatletter
 \renewcommand{\@dotsep}{10000} 
 \makeatother
+\renewcommand{\contentsname}{Table of Contents}
+
+\makeatletter
+
+\newcommand\frontmatter{%
+	\cleardoublepage
+	%\@mainmatterfalse
+	\pagenumbering{roman}}
+
+\newcommand\mainmatter{%
+	\cleardoublepage
+	% \@mainmattertrue
+	\pagenumbering{arabic}}
+\makeatother
+
 \usepackage{subfiles}
 \begin{document}
 \subfile{Title/Titlepage} 
+\frontmatter
 \tableofcontents
+\mainmatter
 \subfile{L1/L1}
 \subfile{L2/L2}
 \subfile{L3/L3}
