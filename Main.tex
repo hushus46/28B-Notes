@@ -20,6 +20,7 @@
 \usetikzlibrary{shapes,fit}
 \setlist[enumerate]{label=(\roman*)}
 \usepackage{breqn}
+\usepackage{sectsty}
 \usepackage{hyperref}
 \usepackage[all]{hypcap}
 \hypersetup{
@@ -29,10 +30,11 @@
 	urlcolor={blue!80!black}
 }
 
+
 \makeatletter
 \xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
 \makeatother
-\usepackage{sectsty}
+
 \chapterfont{\centering}
 
 \tcbuselibrary{theorems}
@@ -62,7 +64,11 @@
 	{
 		\keys_set:nn { hushus/tcb } { ##1 }
 		\phantomsection
-		\addcontentsline{toc}{section}{#3 : \hspace{0.4em} \l__hushus_tcb_title_tl}
+		\addcontentsline{toc}{section}{#3\hspace{0.2em} \thechapter.{ \the\numexpr\value{thmcounter}+1\relax}  {
+		\if\l__hushus_tcb_title_tl\empty
+		\else	
+			 :\hspace{0.4em} \l__hushus_tcb_title_tl
+		 \fi} }
 		\hushus_tcb_begin:nVV {#2inner} \l__hushus_tcb_title_tl \l__hushus_tcb_label_tl
 	}
 	{
@@ -83,8 +89,9 @@
 }
 
 \ExplSyntaxOff
-\newcounter{thm}[chapter]
-\betternewtcbtheorem[number within = chapter,use counter=thm]{dfn}{Definition}%
+
+\newcounter{thmcounter}[chapter]
+\betternewtcbtheorem[number within = chapter,use counter=thmcounter]{dfn}{Definition}%
 {
 	enhanced,
 	colback=blue!10,
@@ -95,7 +102,7 @@
 	boxed title style = {colback=blue!35!black}
 }{dfn}
 
-\betternewtcbtheorem[number within = chapter,use counter=thm]{thm}{Theorem}%
+\betternewtcbtheorem[number within = chapter,use counter=thmcounter]{thm}{Theorem}%
 {
 enhanced,
 colback=green!10,
@@ -106,7 +113,7 @@ attach boxed title to top left={xshift = 5mm, yshift=-1.5mm},
 boxed title style = {colback=green!35!black}
 }{thm}
 
-\betternewtcbtheorem[number within = chapter,use counter=thm]{prop}{Proposition}%
+\betternewtcbtheorem[number within = chapter,use counter=thmcounter]{prop}{Proposition}%
 {
 	enhanced,
 	colback=cyan!10,
@@ -117,7 +124,7 @@ boxed title style = {colback=green!35!black}
 	boxed title style = {colback=cyan!35!black}
 }{prop}
 
-\betternewtcbtheorem[number within = chapter,use counter=thm]{lem}{Lemma}%
+\betternewtcbtheorem[number within = chapter,use counter=thmcounter]{lem}{Lemma}%
 {
 	enhanced,
 	colback=Dandelion!10,
@@ -128,7 +135,7 @@ boxed title style = {colback=green!35!black}
 	boxed title style = {colback=Dandelion!35!black}
 }{lem}
 
-\betternewtcbtheorem[number within= chapter,use counter=thm]% init options
+\betternewtcbtheorem[number within= chapter,use counter=thmcounter]% init options
 {crl}% name environment
 {Corollary}% Title
 {
@@ -170,9 +177,6 @@ boxed title style = {colback=green!35!black}
 
 \theoremstyle{definition}
 \newtheorem{example}{Example}[chapter]
-
-
-
 
 \lstset{breaklines, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
 
