@@ -1,4 +1,5 @@
-# Welcome to the notes directory for this class!
+# Welcome to the notes directory for this class! 
+## Please notify me of typo errors or design suggestions: <husseinhijazi@brandeis.edu>
 
 ## If you are looking for the full set of notes in one PDF document, [click here!](https://hushus46.github.io/28B-Notes/Main.pdf)
 
