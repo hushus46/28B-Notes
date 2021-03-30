@@ -6,7 +6,7 @@
 ## Otherwise, see below for individual lectures:
 
 | Lecture      | Typed PDF | Prof's Notes     |
-| :----:        |    :----:   |          :----: |
+| :---        |    :----:   |          :----: |
 | Lecture 1: Definitions and Examples of Rings    | [L1 PDF](https://hushus46.github.io/28B-Notes/L1/L1.pdf)       | [L1 Written](https://hushus46.github.io/28B-Notes/L1/Lecture%201%20Written.pdf)   |
 | Lecture 2: More Examples   | [L2 PDF](https://hushus46.github.io/28B-Notes/L2/L2.pdf)        | [L2 Written](https://hushus46.github.io/28B-Notes/L2/Lecture%202%20Written.pdf)      |
 | Lecture 3: Ring Homomorphisms   | [L3 PDF](https://hushus46.github.io/28B-Notes/L3/L3.pdf)        | [L3 Written](https://hushus46.github.io/28B-Notes/L3/Lecture%203%20Written.pdf)      |
