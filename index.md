@@ -8,7 +8,7 @@
 * [Lecture 1: Definitions and Examples of Rings](https://hushus46.github.io/28B-Notes/L1/L1.pdf)
 * [Lecture 2: More Examples](https://hushus46.github.io/28B-Notes/L2/L2.pdf)
 * [Lecture 3: Ring Homomorphisms](https://hushus46.github.io/28B-Notes/L3/L3.pdf)
-* [Lecture 4: Quoteint Rings](https://hushus46.github.io/28B-Notes/L4/L4.pdf)
+* [Lecture 4: Quotient Rings](https://hushus46.github.io/28B-Notes/L4/L4.pdf)
 * [Lecture 5: The Isomorphism Theorems](https://hushus46.github.io/28B-Notes/L5/L5.pdf)
 * [Lecture 6: More on Ideals](https://hushus46.github.io/28B-Notes/L6/L6.pdf)
 * [Lecture 7: Maximal Ideals](https://hushus46.github.io/28B-Notes/L7/L7.pdf)
