@@ -19,7 +19,7 @@ Let $R$ be a commutative ring with $1\ne 0$.
 	Conversely, suppose $0$ and $R$ are the only ideals in $R$. Let $a\in R\setminus \{0\}$ and consider $(a)\subset R$, then
 	\[(a)\ne 0 \implies (a)=R \underbrace{\implies}_{\text{by part (i)}} \,\,\exists u\in (a), \, u \in R^\times (\text{say } u\rdot v=1)\]
 	Since $u\in (a)$, we may write $u=r\rdot a, r\in R$, then
-	\[(r\rdot a)\rdot v=u\rdot v=1=a\rdot (r\rdot v)\implies a\in R^\times \implies R \text{ is a field}\]
+	\[(r\rdot a)\rdot v=u\rdot v=1=a\rdot (r\rdot v)\implies a\in R^\times \implies R \text{ is a field}\qedhere\]
 \end{proof}
 \begin{crl}[title = Homomorphism from field to ring is injective]
 	If $F$ is a field, then any nonzero ring homomorphism
@@ -103,7 +103,7 @@ Not all rings admit maximal ideals and a given ring may admit multiple maximal i
 	Therefore $J$ is an upper bound for $\mathcal{C}$ and we can apply Zorn's lemma. \\Therefore, $\mathcal{S}$ admits a maximal element, i.e a proper ideal $M\subset R$ such that $I\subset M$. \\If $M'\subset R$ is an ideal such that $M\subset M'$, then $I\subset M'$ and so
 	\[\underbrace{M'\in \mathcal{S}}_{M' \text{ is proper}} \implies M' = M
 	\quad \text{ or }
-	\underbrace{M'\notin \mathcal{S}}_{M' \text{ is not proper}} \implies M'=R\]
+	\underbrace{M'\notin \mathcal{S}}_{M' \text{ is not proper}} \implies M'=R\qedhere\]
 \end{proof}
 \begin{thm}[title = \texorpdfstring{$M$}{M} maximal in comm. \texorpdfstring{$R \Longleftrightarrow R/M$}{R iff R/M} is field]
 	If $R$ is a commutative ring with $1\ne 0$, then $M\subset R$ is maximal if and only if $R/M$ is a field.

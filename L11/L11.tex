@@ -70,7 +70,7 @@
 	Suppose $(r)\subset (m)\subsetneq R$, then
 	\[r\in (m) \implies \exists s\in R,\, r=s\rdot m\implies r \text{ irreducible} \implies s=R^\times \text{ or } m\in R^\times\]
 	By assumption $(m)\subsetneq R$ and this implies
-	\[m\notin R^\times \implies s\in R^\times \implies (r) = (m)\]
+	\[m\notin R^\times \implies s\in R^\times \implies (r) = (m)\qedhere\]
 \end{proof}
 \begin{example}
 	In $\Z$, the irredcibles are the primes (and their negatives)
@@ -111,7 +111,7 @@
 	Hence
 	\[p_1\rdot p_2\rdot \dots \rdot p_n \rdot q_n \rdot \dots \rdot q_m = r \rdot r_1 \rdot r_2\rdot  \dots \rdot r_l\]
 	so by unique factorization, w.l.og
-	\[r=u\rdot p_1,\, u\in R^\times \implies r|a\]
+	\[r=u\rdot p_1,\, u\in R^\times \implies r|a\qedhere\]
 \end{proof}
 \begin{prop}[title=Nonzero elements in UFD have GCD]
 	Let $a,b\in R\setminus \{0\}$ in a UFD. Then there is a greatest common divisor of $a,b$ in $R$.
@@ -137,7 +137,7 @@
 		Unique factorization says for $q_i$ irreducible, $q_i\ne q_j$ and $g_i>0$, we have
 		\[c=q_1^{g_1}\rdot \dots \rdot q_m^{g_m}\]
 		Since $c\mid a,\, c\mid b$, then after changing associates
-		\[\{q_1,\dots,q_n\}\subset \{p_1,\dots,p_n\}, \, g_i\le \min\{e_i,f_i\}\implies c\mid d\]
+		\[\{q_1,\dots,q_n\}\subset \{p_1,\dots,p_n\}, \, g_i\le \min\{e_i,f_i\}\implies c\mid d\qedhere\]
 	\end{proof}
 	And so there exists a greatest common divisor of $a,b$ in $R$.
 \end{proof}

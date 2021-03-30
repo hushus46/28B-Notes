@@ -12,7 +12,7 @@ Let's see some basic properties of a ring $R$:
 			0=0+0\Rightarrow & 0\rdot a = (0+0)\rdot a  \\
 			\Rightarrow& 0 \rdot a= 0\rdot a + 0\rdot a   \\
 			\Rightarrow& 0\rdot a +(-0\rdot a) = 0\rdot a + 0\rdot a + (-0\rdot a)  \\
-			\Rightarrow& 0 = 0 \rdot a
+			\Rightarrow& 0 = 0 \rdot a\qedhere
 		\end{align*}
 	\end{proof}
 	\item $(-a)\rdot b = a\rdot (-b) = -(a\rdot b) \quad \forall a,b \in R$
@@ -22,7 +22,7 @@ Let's see some basic properties of a ring $R$:
 		then
 		\begin{align*}
 			&a\rdot b +(-a)\rdot b = (a+(-a))\rdot b = 0\rdot b=0\\
-			\Rightarrow& -(a\rdot b) = (-a)\rdot b
+			\Rightarrow& -(a\rdot b) = (-a)\rdot b\qedhere
 		\end{align*}
 	\end{proof}
 	\item $(-a)\rdot (-b)=a\rdot b \quad a,b \in R$
@@ -32,7 +32,7 @@ Let's see some basic properties of a ring $R$:
 		But by definition we of additive inverse:
 			\[-(-(a\rdot b))+(-(a\rdot b))=0\]
 		So
-		\[(-a)\rdot (-b)=-(-(a\rdot b))=a\rdot b\]	
+		\[(-a)\rdot (-b)=-(-(a\rdot b))=a\rdot b\qedhere\]	
 	\end{proof}
 	\item If $R$ has $1$, then $1$ is unique and $(-a) = (-1)\rdot a$
 	\begin{proof}
@@ -117,7 +117,7 @@ Let's see some basic properties of a ring $R$:
 		\[a\rdot b=b\rdot a=1\]
 		but this is the same as
 		\[b\rdot a=a\rdot b=1\]
-		hence $b$, the inverse of $a$, is also a unit and therefore $b\in R^\times$.
+		hence $b$, the inverse of $a$, is also a unit and therefore $b\in R^\times\qedhere$.
 	\end{enumerate}
 \end{proof}
 A field $F$ is a commutative ring with $1\ne 0$ such that $F^\times = F \setminus\{0\}$
@@ -150,7 +150,7 @@ A field $F$ is a commutative ring with $1\ne 0$ such that $F^\times = F \setminu
 \end{prop}
 \begin{proof}
 	If $a\ne0$, then $a\rdot (b-c)=0$. Since we supposed $a$ is not a zero divisor then it must be
-	\[b-c=0 \implies b=c\]
+	\[b-c=0 \implies b=c\qedhere\]
 \end{proof}
 \begin{example}
 	To show why $a$ must \textbf{not} be a zero divisor, consider $\modZ{4}$. We have $\obar{2}\rdot \obar{2}=\obar{0}$ and $\obar{2}\rdot \obar{0}=\obar{0}$. So
