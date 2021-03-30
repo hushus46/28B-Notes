@@ -33,6 +33,7 @@
 Let $R$ be a PID.\\
 We want to show if $R\in R\setminus \{0\},\, r\notin R^\times$.\\
 Then $r$ admits a \textbf{unique} expression as a product of irreducibles.
+\newpage
 \begin{lem}
 	R has \textbf{some} expression as a product of irreducibles
 \end{lem}
@@ -87,10 +88,9 @@ We can now see a hierarchy for the specific structures we have discussed thus fa
 	&\text{Euclidean Domain}\arrow[d]&&\\
 	&\text{Fields}&&
 \end{tikzcd}
-\newpage
 \section*{Polynomial Rings (Again)}
 
-Let $R$ be an commutative integral domain with $1\ne 0$. Recall some facts we've already proven
+Let $R$ be an commutative integral domain with $1\ne 0$. \textbf{Recall} some facts we've already proven
 (1) $R[X]$ is an integral domain.\\
 (2) $R[X]^\times=R^\times$ e.g $\Z[X]$, the only units are $\{\pm 1\}$.\\
 (3) $\deg[p(X)\rdot q(X)]=\deg p(X)+ \deg q(X)$\\
@@ -134,7 +134,7 @@ Let $R$ be an commutative integral domain with $1\ne 0$. Recall some facts we've
 \begin{thm}[title = \texorpdfstring{$F[X]$}{F[X]} satisfies euclidean condition]
 	If $a(X),b(X)\in F[X]$ where $F$ is a field. Then there exist unique $q(X),r(X)\in F[X]$ such that $\deg (r(X)) < \deg (b(X))$ (or $r(X)=0$) for which \[a(X)=q(X)\rdot b(X)+r(X)\]
 \end{thm}
-\textit{Note:} Recall $\Z$ are a Euclidean Domain with $N(n)=|n|$, e.g
+\Note Recall $\Z$ are a Euclidean Domain with $N(n)=|n|$, e.g
 \begin{align*}
 7=3\rdot 2+1&\quad N(1)=1<N(2)\\
 7=4\rdot 2-1&\quad N(-1)=1<N(2)

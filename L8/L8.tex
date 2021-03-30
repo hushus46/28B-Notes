@@ -4,7 +4,7 @@
 \begin{document}
 \chapter{L8: Maximal Ideals and Ring of Fractions}
 
-\textit{Recall}: $(X) \subset \Z[X]$ is prime, but $(X)\subsetneq (2,X)$, so it not maximal.\\
+\textbf{Recall}: $(X) \subset \Z[X]$ is prime, but $(X)\subsetneq (2,X)$, so it not maximal.\\
 $(X)\in \R[X]$ is maximal because $\R[X]/(X) \cong \R$ is a field
 
 \begin{example}
@@ -13,10 +13,10 @@ $(X)\in \R[X]$ is maximal because $\R[X]/(X) \cong \R$ is a field
 	\ev_a\colon \R[X] &\to \R \\
 	p(X) &\mapsto p(a)
 	\end{align*}
-	\textit{Observe} that $\ev_a$ is in fact surjective. Then
+	\Obs that $\ev_a$ is in fact surjective. Then
 	\[\R[X]/\Ker(\ev_a) \cong \R \implies \Ker(\ev_a) \text{ is a maximal ideal}\]
 \end{example}
-	Denote $M_a\coloneqq \Ker(\ev_a)$
+	Denote the set of polynomials with real coefficients which have $a$ as a root as $M_a\coloneqq \Ker(\ev_a)$
 	\begin{claim}
 		$M_a = (X-a)$\quad (e.g $M_0 =(X)$)
 	\end{claim}
@@ -68,7 +68,7 @@ Consider $I=(X^2+1)$, then $I\subset \R[X]$ is a maximal ideal.
 	\[(X+i)(X-i)=X^2+1\in (X^2+1)\]
 	But $X+i,X-i \notin (X^2+1)$ therefore $(X^2+1)$ is not prime in $\C[X]$ and consequently is not maximal.
 \end{proof}
-\textit{Observe} if $a\in R\subset S$ Then
+\Obs if $a\in R\subset S$ Then
 \begin{align*}
 (a&)_R = \{r\rdot a | r\in R\}\\
 \cap&\\
@@ -170,8 +170,8 @@ However, if $r$ is a zero divisor, $r\rdot s=0$ then in this case we want to exc
 	If $R$ is any integral domain with field of fractions $Q(R)=F$.  Consider the integral domain $R[X]$. Then in particular $R\subset R[X]$, and  $R[X]\subset Q(R[X])$ which tells us that
 	\begin{center}
 		\begin{tikzcd}[column sep=small]
-			R \arrow[rr, "\text{inclusion}"] \arrow[rd] &  & Q(R[X]) \\
-			& F \arrow[ur] & 
+			R \arrow[rr, "\text{inclusion}"] \arrow[rd] &  & F=Q(R) \arrow[dl] \\
+			& Q(R[X]) & 
 		\end{tikzcd}
 	\end{center}
 	e.g $\Z \subset \Z[X]$, so in particular $\Q\subset Q(\Z[X])$.\\

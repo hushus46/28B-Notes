@@ -18,7 +18,7 @@ Recall that given a ring homomorphism $f: R\to S$, the kernel of $f$, $\Ker f$, 
 		&(r+I)\rdot (s+I)\coloneqq (r\rdot s)+I
 	\end{align*}
 \end{prop}
-\underline{\textbf{Note:}} If $I$ is understood, we will often write $\obar{r}$ for $r+I$, e.g
+\Note If $I$ is understood, we will often write $\obar{r}$ for $r+I$, e.g
 \[(r+I)+(s+I)=(r+s)+I\]
 becomes
 \[\obar{r}+\obar{s}=\obar{r+s}\]
@@ -82,7 +82,7 @@ becomes
 	\[r\rdot s=(r'+x)\rdot (s'+y)=r's'+r'y+xs'+xy \in r'\rdot s'+I\]
 \end{proof}
 \newpage
-\textbf{Observe} that	$R/I$ consists of the equivalence classes in $R$ of the equivalence relation given by
+\Obs that	$R/I$ consists of the equivalence classes in $R$ of the equivalence relation given by
 	\[x\sim y \Longleftrightarrow x-y \in I\]
 \begin{proof}[Proof of Prop 4.1]~\\
 	We check that the quotient is a ring
@@ -105,8 +105,8 @@ becomes
 		\item \textbf{Ideal} if $I$ is both a left and right ideal (sometimes called a \textbf{two-sided ideal}).
 	\end{enumerate}
 \end{dfn}
-\textbf{Observe} that if $f:R\to S$ is a ring homomorphism then $\Ker f$ is an ideal in $R$.\\
-\underline{\textbf{Note:}} We may define $R/I$ for \textbf{any} ideal $I\subset R$, whether or not $I=\Ker f$ for some ring homomorphism $f:R\to S$.
+\Obs that if $f:R\to S$ is a ring homomorphism then $\Ker f$ is an ideal in $R$.\\
+\Note We may define $R/I$ for \textbf{any} ideal $I\subset R$, whether or not $I=\Ker f$ for some ring homomorphism $f:R\to S$.
 \newpage
 \begin{thm}[title = The First Isomorphism Theorem]
 	If $f:R\to S$ is a ring homomorphism and $I=\Ker f$. Then
@@ -165,7 +165,7 @@ becomes
 	\[I \coloneqq \{p(X)\in R| \text{ all nonzero terms have degree at least 2}\}\]
 	e.g $7X^2+3X^3+10X^9\in I$
 \end{example}
-\underline{\textbf{Note:}} $0\in I$ because it has \textbf{no} terms with non-zero coefficient.
+\Note $0\in I$ because it has \textbf{no} terms with non-zero coefficient.
 \textbf{Exercise:} Prove that $I$ is an ideal.
 Now consider two polynomials $p(X),q(X)\in R$ and $\obar{p(X)}=\obar{q(X)}$, then by definition of equivalence, $p-q\in I$.\\
 So $p-q$ consists of terms of \textit{at least} degree 2, i.e the degree $0$ and degree $1$ parts of $p,q$ agree, e.g
@@ -174,7 +174,7 @@ This implies that the polynomials of degree at most $1$ represent \textit{distin
 \[5+X,\, -7+2X,\,11-4X\]
 Therefore, there is a bijection between
 \[R/I \Longleftrightarrow \{a+bX|a,b,\in \Z\}\]
-\textbf{Observe} that $R/I$ has zero divisors: $\obar{x}\rdot \obar{X}=\obar{X^2}=\obar{0}$.
+\Obs that $R/I$ has zero divisors: $\obar{x}\rdot \obar{X}=\obar{X^2}=\obar{0}$.
 \begin{example}
 	Let $R$ be a ring and $X$ a non-empty set.\\
 	Consider the ring

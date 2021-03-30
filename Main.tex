@@ -1,6 +1,8 @@
 \documentclass[12pt]{report}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[parfill]{parskip}
+\usepackage{titling}
+\usepackage{titlepic}
 \usepackage[margin=1in]{geometry}
 \usepackage{empheq}
 \usepackage[most]{tcolorbox}
@@ -11,6 +13,7 @@
 \usepackage{mathrsfs}
 \usepackage{fullpage}  
 \usepackage{graphicx}
+\usepackage{titling}
 \usepackage{titlesec}
 \usepackage{xpatch}
 \usepackage{array}
@@ -29,7 +32,6 @@
 	citecolor={blue!50!black},
 	urlcolor={blue!80!black}
 }
-
 
 
 \titlecontents{chapter}[0em]{\smallskip\bfseries}%\vspace{1cm}%
@@ -160,6 +162,8 @@ boxed title style = {colback=green!35!black}
 {co}% label prefix
 \frenchspacing
 
+\newcommand{\Note}{\textcolor{Mulberry}{\underline{\textbf{\textit{Note:}}} }}
+\newcommand{\Obs}{\textbf{\textcolor{Emerald}{Observe }}}
 \newcommand{\D}{\mathrm{d}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
