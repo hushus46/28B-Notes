@@ -4,7 +4,7 @@
 \begin{document}
 \chapter{L13: Polynomial Rings over UFDs}
 
-\begin{lem}[title = Gauss' Lemma]
+\begin{lem}[title = Gauss' Lemma,label=gauss]
 	Let $R$ be a UFD and $F$ its field of fractions. Let $p(X)\in R[X]$, then if $p(X)$ is reducible in $F[X]$ then $p(X)$ is reducible in $R[X]$.\\
 	Explicitly, if $p(X)=A(X)\rdot B(X)$ and $A\rdot B\in F[X]$, then there exist $r,s\in F$ such that 
 	\[r\rdot A(X) = a(X)\in R[X],\quad s\rdot B(X) = b(X) \in R[X]\]
@@ -53,7 +53,7 @@
 	R[X]/q_iR[X] \cong (R/(q_i))[X] \text{ is an integral domain}
 	\end{align*}
 	Furthermore,
-	\[q_i|d\implies \obar{dp(X)}=\obar{0} \in (R/(q_i))[X] \implies \obar{a'(X)}\rdot \obar{ b'(X)} =\obar{0}\]
+	\[\divs{q_i}{d}\implies \obar{dp(X)}=\obar{0} \in (R/(q_i))[X] \implies \obar{a'(X)}\rdot \obar{ b'(X)} =\obar{0}\]
 	Since $a'(X)$ and $b'(X)$ are equal to the $0$ coset, we cay $a'(X)$ or $b'(X)$ are in $q_iR[X]$ (the ideal being modded out). Therefore
 	\[\frac{1}{q_i}\rdot a'(X) \text{ or } \frac{1}{q_i}b'(X) \in R[X] \implies \frac{d}{q_i}\rdot p(X)=\underbrace{\left[\frac{1}{q_i}\rdot a'(X)\right]}_{\in R[X]}\rdot \underbrace{\left[\frac{1}{q_i}b'(X)\right]}_{\in R[X]} \]
 	Doing this process for all $q_i$'s, we get
@@ -87,7 +87,7 @@ Recall that if $F,K$ are fields with $F\subset K$ then \[p(X) \text{ irreducible
 	Then
 	\[\gcd(a_0,a_1,\dots,a_n)=1 \implies a(X), b(X) \text{ non-constant polynomials}\implies \deg a, \deg b\ge 1\]
 	However, we know $F[X]^\times$ is exactly $F^\times$, the non-zero constant polynomials. Hence $a,b\in F[X]$ are not units in $F[X]$ and so $p(X)$ is reducible in $F[X]$.
-	The other direction is Gauss' Lemma.
+	The other direction is \hyperref[lem:gauss]{Gauss' Lemma}.
 \end{proof}
 \begin{thm}[title = \texorpdfstring{$R$ UFD $\Longleftrightarrow R[X]$ UFD}{R UFD iff R[X] UFD}]
 	$R$ is a UFD if and only if $R[X]$ is a UFD.
@@ -101,7 +101,7 @@ Recall that if $F,K$ are fields with $F\subset K$ then \[p(X) \text{ irreducible
 	The goal is to uniquely factor $p(X)$ in $R[X]$. Let
 	\[d=\gcd(a_0,a_1,\dots,a_n)\in R\]
 	If $d\notin R\times$, then it has unique factorization into irreducibles in $R$ and necessarily $p(X) = d\rdot p'(X)$ where the $\gcd$ of the coefficients in $p'(X)$ is 1. \\
-	Now assume $\gcd(a_0,a_1,\dots,a_n)=$; in particular, if $p(X)\notin R[X]^\times$ then $\deg p\ge 1$.\\
+	Now assume $\gcd(a_0,a_1,\dots,a_n)=1$; in particular, if $p(X)\notin R[X]^\times$ then $\deg p\ge 1$.\\
 	Consider $p(X)\in F[X]$ and note the $F[X]$ is a UFD (actually a Euclidean domain). This implies 
 	\[p(X)=A_1(X)\rdot A_2(X)\rdot \dots \rdot A_k(X)\]
 	where $A_i(X)\in F[X]$ are irreducible. By Gauss' Lemma we then know

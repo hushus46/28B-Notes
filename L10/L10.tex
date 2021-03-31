@@ -106,16 +106,16 @@ Think about it like this: in the integers, if you consider the ideal generated b
 	\begin{enumerate}[label=(\arabic*)]
 		\item We say $a\in R$ is a \textbf{multiple} of $b$ if there exists an $r\in R$ such that
 		\[a=r\rdot b\]
-		We call $b$ a \textbf{divisor} of $a$, in this case, (i.e $b\mid a$).
+		We call $b$ a \textbf{divisor} of $a$, in this case, (i.e $\divs{b}{a}$).
 		\item A \textbf{greatest common divisor} of $a,b\in R$ is $d\ne 0$ such that
 		\begin{enumerate}[label=(\roman*)]
-			\item $d\mid a, \, d\mid b$
-			\item If $d'\mid a,\,  d'\mid b,$ then $d'\mid d$.
+			\item $\divs{d}{a}, \, \divs{d}{b}$
+			\item If $\divs{d'}{a},\, \divs{d'}{b},$ then $\divs{d'}{d}$.
 		\end{enumerate}
 		We write $d=\gcd(a,b)$ or sometimes just $d=(a,b)$.
 	\end{enumerate}
 \end{dfn}
-\textbf{Recall} that $b\mid a$ if and only if $(a)\subset (b)$.
+\textbf{Recall} that $\divs{b}{a}$ if and only if $(a)\subset (b)$.
 \begin{dfn}[title = Ideal GCD]
 	Let $I = (a,b)\subset R$, then $d\in R$ is a \textbf{greatest common divisor} $d=\gcd(a,b)$ if
 	\begin{enumerate}
@@ -162,7 +162,7 @@ Think about it like this: in the integers, if you consider the ideal generated b
 	Suppose it is principal, i.e $(2,X)=(p(X))$, then 
 	\[2=q(X)p(X) \implies \deg p(X)=0\]
 	i.e $p(X)\equiv a\in \Z$.\\
-	Moreover $a\mid 2$ implies $a=\pm1,\pm2$. Also, $(2,X)\ne \Z[X]$ as for example
+	Moreover $\divs{a}{2}$ implies $a=\pm1,\pm2$. Also, $(2,X)\ne \Z[X]$ as for example
 	\[3\ne \underbrace{2p(X)}_{3 \text{ is not even}}+\underbrace{X\rdot q(X)}_{\text{would need to be } 0}\]
 	Then, $p(X)\ne \pm 1$ otherwise $(2,X)=(1)=\Z[X]$. Therefore $p(X)$ must be $\pm 2$.\\
 	But $(2,X) \ne (2)$ because $X \ne 2\rdot q(X)$.Essentially, the issue is that $2$ has no multiplicative inverse in $\Z$ but the coefficient of $X$ is 1. So, nothing makes sense when $p(X)=\pm1,\pm2$ which means the initial assumption was false and $(2,X)$ is not principal.
@@ -174,7 +174,7 @@ Think about it like this: in the integers, if you consider the ideal generated b
 	Let $(p)\subset R$ be a nonzero prime in a PID.\\
 	There exists a maximal ideal $M\subset R $ such that $(p)\subset M$.\\
 	Since $R$ is a PID, then every ideal is principal, hence
-	\[M=(m) \implies m\mid p \implies \exists r\in R, \, p=r\rdot m\]
+	\[M=(m) \implies \divs{m}{p} \implies \exists r\in R, \, p=r\rdot m\]
 	Because $(p)$ is prime either $r\in (p)$ or $m \in (p)$.\\
 	If $m\in (p)$ then $(m)=(p)$. \\
 	Suppose $r\in (p)$, say $r=s\rdot p,\, s\in R$. Then 

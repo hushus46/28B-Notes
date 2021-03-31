@@ -10,7 +10,7 @@
 		We say $r$ is \textbf{reducible} if it is not irreducible.
 		\item Suppose $r\in R\setminus\{0\},\, r\notin R^\times$\\
 		We say $r$ is \textbf{prime} if $(r)$ is a prime ideal.\\
-		In other words, if $r\mid a\rdot b$, then either $r\mid a$ or $r\mid b$.
+		In other words, if $\divs{r}{a\rdot b}$, then either $\divs{r}{a}$ or $\divs{r}{b}$.
 		\item We say $a,b \in R$ are \textbf{associates} if there exists $u\in R^\times$ such that $a=u\rdot b$.\\ (If $a$ and $b$ generate the same principal ideal, then they are associates. Check HW3 P1)
 	\end{enumerate}
 \end{dfn}
@@ -43,7 +43,7 @@
 	Suppose 
 	\[2+\sqrt{-5}=(a+b\sqrt{-5})\rdot (c+d\sqrt{-5})\]
 	Then
-	\[N(2+\sqrt{-5}) = 4+5 =9 \implies N(a+b\sqrt{-5})\mid 9 \implies N(a+b\sqrt{-5}) = \pm 1 \text{ or } \pm 3\]
+	\[N(2+\sqrt{-5}) = 4+5 =9 \implies \divs{N(a+b\sqrt{-5})}{9} \implies N(a+b\sqrt{-5}) = \pm 1 \text{ or } \pm 3\]
 	\Obs that if $b\ne 0$, then \[N(a+b\sqrt{-5}) = a^2+5b^2\ge 5\]
 	Therefore we have to assume $b=0$ if we want the norm to be $\pm 1, \pm 3$ and so
 	\[b=0\implies N(a+b\sqrt{-5})=N(a)=a^2\]
@@ -115,7 +115,7 @@ We see that irreducibility, in the natural sense, is about not being able to be 
 	Since $a\rdot b=r\rdot c$ we have
 	\[p_1\rdot p_2\rdot \dots \rdot p_n \rdot q_1 \rdot \dots \rdot q_m = r \rdot r_1 \rdot r_2\rdot  \dots \rdot r_l\]
 	since $r$ is irreducible, both sides are factorizations into irreducibles. By unique factorization and w.l.o.g. 
-	\[r=u\rdot p_1,\, u\in R^\times \implies r|a\qedhere\]
+	\[r=u\rdot p_1,\, u\in R^\times \implies \divs{r}{a}\qedhere\]
 	and so $a\in (r)$ which means $(r)$ is a prime ideal (with $q$ you get $b\in (r)$).
 \end{proof}
 \newpage
@@ -139,13 +139,13 @@ We see that irreducibility, in the natural sense, is about not being able to be 
 		is the $\gcd$ of $a$ and $b$.
 	\end{claim}
 	\begin{proof}
-		Clearly $d\mid a,\, d\mid b$, by construction, since it's factors come from the same set of factors of $a,b$, namely $p_i$. Since $d$ is a common divisor, it remains to show it is a greatest common divisor.\\
-		If $c\,|\, a, \, c\,|\,b$, then we want to see that $c\,|\, d$. 
+		Clearly $\divs{d}{a},\, \divs{d}{b}$, by construction, since it's factors come from the same set of factors of $a,b$, namely $p_i$. Since $d$ is a common divisor, it remains to show it is a greatest common divisor.\\
+		If $\divs{c}{a}, \, \divs{c}{b}$, then we want to see that $c\,|\, d$. 
 		Unique factorization tells us
 		\[c=q_1^{g_1}\rdot \dots \rdot q_m^{g_m}, \quad q_i \text{ irreducible},\quad  q_i\ne q_j, \text{ and } g_i>0\]
-		Since $c\mid a,\, c\mid b$, then after (possibly) changing associates we see that the set of factors of $c$ have to be factors of $a$ and $b$, i.e
+		Since $\divs{c}{a},\, \divs{c}{b}$, then after (possibly) changing associates we see that the set of factors of $c$ have to be factors of $a$ and $b$, i.e
 		\[\{q_1,\dots,q_n\}\subset \{p_1,\dots,p_n\}\]
-		and since $c$ divides both $a$ and $b$ then $g_i\le \min\{e_i,f_i\}$ and thus $c\,|\,d$.
+		and since $c$ divides both $a$ and $b$ then $g_i\le \min\{e_i,f_i\}$ and thus $\divs{c}{d}$.
 	\end{proof}
 	Therefore there exists a greatest common divisor of $a,b$ in $R$, namely, the $d$ we have shown.
 \end{proof}

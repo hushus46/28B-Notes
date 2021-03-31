@@ -61,13 +61,13 @@ Then $r$ admits a \textbf{unique} expression as a product of irreducibles.
 	\[r=q_1\rdot q_2\rdot \dots\rdot q_n,\, n\ge 2,\, q_i \text{ irreducible } \forall i\in \{1,\dots,n\}\]
 	But then $q_1,(q_2\rdot \dots\rdot  q_n) \notin R^\times$ implying $r$ is not irreducible, which is a contradiction.\\
 	Therefore $r=r$ is the unique way to write $r$ as the product of irreducibles.\\
-	Now suppose if $r$ admits a factorizaation into at most $n-1$ irreducibles, then the factorization is unique.
+	Now suppose if $r$ admits a factorization into at most $n-1$ irreducibles, then the factorization is unique.
 	If
 	\begin{align*}
 	r&=p_1\rdot p_2\rdot \dots \rdot p_n, \quad p_i\text{'s irreducible}\\
 	&=q_1\rdot q_2\rdot \dots\rdot q_m,\quad q_j\text{'s irreducible for } m\ge n
 	\end{align*}
-	Then $p_1| q_1 \rdot (q_2\rdot \dots\rdot  q_m)$ and recall irreducibles are prime in a PID. Since $p_1$ is irreducible either $p_1| q_1$ or $p_1 | (q_2\rdot \dots\rdot  q_n)$, so w.l.og assume $p_1| q_1$ i.e $q_1=u\rdot p_1,\, u\in R$.\\
+	Then $\divs{p_1}{q_1 \rdot (q_2\rdot \dots\rdot  q_m)}$ and recall irreducibles are prime in a PID. Since $p_1$ is irreducible either $\divs{p_1}{q_1}$ or $\divs{p_1}{(q_2\rdot \dots\rdot  q_n)}$, so w.l.og assume $\divs{p_1}{q_1}$ i.e $q_1=u\rdot p_1,\, u\in R$.\\
 	Since $q_1$ is irreducible, then $u\in R^\times $ or $p_1 \in R^\times$. But $p_1$ is irreducible, so it can be not an element of $R^\times$, therefore $u\in R^\times$ and so $p_1$ and $q_1$ associate.\\
 	So we write
 	\begin{align*}r=p_1\rdot p_2\rdot \dots \rdot p_n&= q_1\rdot q_2 \rdot  \dots \rdot q_m\\
@@ -124,7 +124,7 @@ Let $R$ be an commutative integral domain with $1\ne 0$. \textbf{Recall} some fa
 \end{crl}
 \begin{example}
 	Consider $3\Z \coloneqq \{0,3,-3,6,-6,\dots\}$ and
-	\[(3\Z)\coloneqq \{a_0+a_1X+a_2X^2+\dots+a_nX^n\mid a_i\in 3\Z\} \implies \Z[X]/(3\Z)\cong (\Z/3\Z)[x]\]
+	\[(3\Z)\coloneqq \{a_0+a_1X+a_2X^2+\dots+a_nX^n\mid a_i\in 3\Z\} \implies \Z[X]/(3\Z)\cong (\Z/3\Z)[X]\]
 	e.g 
 	\[1+2X+4X^3=1+2X+X^3+\underbrace{3X^3}_{\in 3\Z}\]
 	we can think about the coefficients
