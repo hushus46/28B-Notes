@@ -21,60 +21,63 @@
 	Consider
 	\[I\coloneqq \bigcup\limits_{n\in \N} I_n\]
 	which is an ideal. Then since $R$ is a PID, $I=(a)$ for some $a\in R$.\\
-	Therefore
+	In particular,
 	\[a\in I =\bigcup\limits_{n\in \N} I_n\implies a\in I_N \]
 	for some $N\in \N$.\\
-	Hence $(a)\subset I_n$ implying $I\subset I_N$ and so we deduce
-	\[I=I_N=I_{N+1}=I_{N+2}=\dots\qedhere\]
+	But if $a\in I_N$ then we also know $(a)\subset I_N$ implying $I\subset I_N$. \\
+	But by the definition of $I$, we also have the containment in the other direction, i.e $I_N \subset I$, and hence we have $I=I_N$.\\
+	Furthermore the chain stops "growing" at a finite ideal $I_N$ and so the ascending chain stabilizes
+	\[I=I_N=I_{N+1}=I_{N+2}=\dots\]
+	Therefore, $R$ is a Noetherian ring.
 \end{proof}
-\begin{thm}[title = PID IS UFD]
+\begin{thm}[title = PID is UFD]
 	Every PID is a UFD.
 \end{thm}
 Let $R$ be a PID.\\
-We want to show if $R\in R\setminus \{0\},\, r\notin R^\times$.\\
-Then $r$ admits a \textbf{unique} expression as a product of irreducibles.
+We want to show if $r\in R\setminus \{0\},\, r\notin R^\times$,
+then $r$ admits a \textbf{unique} expression as a product of irreducibles.
 \newpage
-\begin{lem}
-	R has \textbf{some} expression as a product of irreducibles
+\begin{lem}[title = Existence of product of irreducibles in PID]
+	A element $r$ in a PID has \textbf{some} expression as a product of irreducibles
 \end{lem}
-\begin{proof}
-	If $r$ is irreducible, then $r=r$.\\
-	If not, then $r=r_1\rdot r_2,\, r_1,r_2\notin R^\times$. Then $r\in (r_1)$ but $(r)\ne (r_1)$, therefore $(r)\subsetneq (r_1)$.\\
+\begin{proof}~\\
+	If $r$ is irreducible, then $r=r$ and we are done.\\
+	If not, then we can write $r=r_1\rdot r_2,$ where $r_1,r_2\notin R^\times$. Then $r\in (r_1)$ but $(r)\ne (r_1)$ because in order for that to be the case, $r_2$ would have to a be a unit. Therefore, it is a proper subset i.e, $(r)\subsetneq (r_1)$.\\
 	If $r_1,r_2$ are irreducibles, then we are done.\\
 	If not, 
 	\begin{align*}
 	r_1=r_{11}\rdot r_{12}\\
 	r_2=r_{21}\rdot r_{22}
 	\end{align*}
-	where $r_{ij}\in R^\times,\, i,j\in \{1,2\}$. Again, $r_1\in (r_{11})$ but $(r_1)\ne (r_{11})$, therefore $(r)\subsetneq (r_1)\subsetneq (r_{11})$.\\
-	Since $R$ is a PID, it is also Noetherian, and so this chain stabilizes eventually. Hence
+	where $r_{ij}\notin R^\times,\, i,j\in \{1,2\}$. Again, $r_1\in (r_{11})$ but (since $r_{12}$ is not a unit)  $(r_1)\ne (r_{11})$, and hence $(r)\subsetneq (r_1)\subsetneq (r_{11})$.\\
+	Since $R$ is a PID, it is also Noetherian, and so this chain stabilizes eventually. This means we will reach a point where and $(r_{1111}) =(r_{11111})$ implying $r_{1111}=r_{11111}\rdot u$ for some unit $u$, and thus $r_{1111}$ is irreducible. Hence in general $r$ will be factored into something like
 	\[r=(r_{111\dots1}\rdot r_{111\dots 2})\rdot \dots \rdot (r_{222\dots1}\rdot r_{222\dots 2})\]
-	where each term on the right is irreducible.
+	where each term on the right side of the inequality is irreducible.
 \end{proof}
-\begin{lem}
+\begin{lem}[title = Uniqueness of product of irreducibles in PID ]
 	The factorization into irreducibles is \textbf{unique} (up to reordering and associates).
 \end{lem}
-\begin{proof}
-	Say $r=p_1\rdot p_2\rdot \dots\rdot p_n$. Let's induct on $n$.\\
-	If $n=1$, then $r=\underbrace{p_1}_{\text{irred.}}$ implies $r$ is irreducible.\\
-	Suppose
+\begin{proof}~\\
+	Say the factorization into irreducibles is $r=p_1\rdot p_2\rdot \dots\rdot p_n$. We proceed by induction on $n$.\\
+	\textbf{\underline{Base Case:}} If $n=1$, then $r=\underbrace{p_1}_{\text{irred.}}$ implies $r$ is irreducible.\\
+	Suppose now $r$ factors into a different product of irreducibles,
 	\[r=q_1\rdot q_2\rdot \dots\rdot q_n,\, n\ge 2,\, q_i \text{ irreducible } \forall i\in \{1,\dots,n\}\]
-	But then $q_1,(q_2\rdot \dots\rdot  q_n) \notin R^\times$ implying $r$ is not irreducible, which is a contradiction.\\
-	Therefore $r=r$ is the unique way to write $r$ as the product of irreducibles.\\
-	Now suppose if $r$ admits a factorization into at most $n-1$ irreducibles, then the factorization is unique.
-	If
+	But then $q_1,(q_2\rdot \dots\rdot  q_n) \notin R^\times$ (since by definition irreducibles are non-units) implying $r$ is not irreducible, which is a contradiction.\\
+	Therefore, $r=p_1$ is the unique way to write $r$ as the product of irreducibles when $n=1$.\\
+	\textbf{\underline{Induction Hypothesis:}} Now suppose if $r$ admits a factorization into at most $n-1$ irreducibles, then the factorization is unique.\\
+	\textbf{\underline{Inductive Step:}} If we can write into two different factorizations
 	\begin{align*}
 	r&=p_1\rdot p_2\rdot \dots \rdot p_n, \quad p_i\text{'s irreducible}\\
-	&=q_1\rdot q_2\rdot \dots\rdot q_m,\quad q_j\text{'s irreducible for } m\ge n
+	&=q_1\rdot q_2\rdot \dots\rdot q_m,\quad q_j\text{'s irreducible and } m\ge n
 	\end{align*}
-	Then $\divs{p_1}{q_1 \rdot (q_2\rdot \dots\rdot  q_m)}$ and recall irreducibles are prime in a PID. Since $p_1$ is irreducible either $\divs{p_1}{q_1}$ or $\divs{p_1}{(q_2\rdot \dots\rdot  q_n)}$, so w.l.og assume $\divs{p_1}{q_1}$ i.e $q_1=u\rdot p_1,\, u\in R$.\\
+	Then $\divs{p_1}{q_1 \rdot (q_2\rdot \dots\rdot  q_m)}$ and recall \hyperref[prop:11.3]{irreducibles are prime in a PID}. Since $p_1$ is irreducible, it is prime and so either $\divs{p_1}{q_1}$ or $\divs{p_1}{(q_2\rdot \dots\rdot  q_n)}$. W.l.o.g. assume $\divs{p_1}{q_1}$ i.e $q_1=u\rdot p_1,\, u\in R$.\\
 	Since $q_1$ is irreducible, then $u\in R^\times $ or $p_1 \in R^\times$. But $p_1$ is irreducible, so it can be not an element of $R^\times$, therefore $u\in R^\times$ and so $p_1$ and $q_1$ associate.\\
 	So we write
 	\begin{align*}r=p_1\rdot p_2\rdot \dots \rdot p_n&= q_1\rdot q_2 \rdot  \dots \rdot q_m\\
 	&=(u\rdot p_1)\rdot q_2\rdot \dots \rdot q_m \end{align*}
-	Since $R$ is an integral domain, we can cancel $p_1$ from both sides to get
+	Since $R$ is an integral domain, we \hyperref[prop:cancel]{can cancel} $p_1$ from both sides to get
 	\[\underbrace{p_2\rdot \dots \rdot p_n}_{\text{product of (n-1) irred.}} =(u\rdot q_2)\rdot q_3\rdot \dots \rdot q_m \]
-	Now by our induction hypothesis, $r$ admits a factorization into at most $(n-1)$ irreducibles, which implies
+	Now by our induction hypothesis, $r$ admits a unique factorization into at most $(n-1)$ irreducibles, which implies the list of irreducibles on the left and right side of the equality are the same (up to associates) i.e.
 	\[\{(u\rdot q_2),q_3,q_4,\dots,q_m\}=\{p_2,p_3,\dots,p_n\}\]
 	and so $m=n$ and the $p_i$'s are unique.
 \end{proof}
@@ -89,10 +92,10 @@ We can now see a hierarchy for the specific structures we have discussed thus fa
 	&\text{Fields}&&
 \end{tikzcd}
 \section*{Polynomial Rings (Again)}
-
-Let $R$ be an commutative integral domain with $1\ne 0$. \textbf{Recall} some facts we've already proven
+Let $R$ be an commutative ring with $1\ne 0$.\\
+Now assume $R$ is an integral domain and recall some facts we've already proven about :\\
 (1) $R[X]$ is an integral domain.\\
-(2) $R[X]^\times=R^\times$ e.g $\Z[X]$, the only units are $\{\pm 1\}$.\\
+(2) $R[X]^\times=R^\times$ e.g. $\Z[X]$, the only units are $\{\pm 1\}$.\\
 (3) $\deg[p(X)\rdot q(X)]=\deg p(X)+ \deg q(X)$\\
 (4) The field of fractions of $R[X]$ is the field of rational functions
 	\[R(X)\coloneqq \left\{ \left. \frac{p(X)}{q(X)} \right| \, p,q\in R[X],\, q\ne 0\right\}\]
@@ -100,82 +103,80 @@ Let $R$ be an commutative integral domain with $1\ne 0$. \textbf{Recall} some fa
 	\begin{crl}[title = {\texorpdfstring{$F[X]$}{F[X]} is PID, UFD, and Noetherian}]
 		If $F$ is a field, $F[X]$ is a PID, UFD, and Noetherian.
 	\end{crl}
-(6) Let $I\subset R$ be an ideal, and define
+(6) Let $I\subset R$ be an ideal and $R$ a commutative ring (not necessarily integral) and consider the ideal generated by $I$ in $R[X]$, i.e.
 	\[(I)\coloneqq I[X] \coloneqq \{p(X)\in R[X]\mid \text{coeffs. are in } I\}\]
 	Then 
 	\[R[X]/(I)\cong (R/I)[X]\]
 \begin{proof}~\\
 	Consider the map
 	\begin{align*}
-	\phi\colon R[X] &\to (R/I)[X] \\
-	a_0+a_1X+\dots+a_nX^n &\mapsto \obar{a}+\obar{a_1}X+\obar{a_2}X^2+\dots+\obar{a_n}X^n
+	\phi\,\colon R[X] &\to (R/I)[X] \\
+	a_0+a_1X+\dots+a_nX^n &\mapsto \obar{a_0}+\obar{a_1}X+\obar{a_2}X^2+\dots+\obar{a_n}X^n
 	\end{align*}
 	for example
 	\begin{align*}
-	\phi\colon \Z[X] &\to (\Z/3\Z)[X] \\
+	\phi\,\colon \Z[X] &\to (\Z/3\Z)[X] \\
 	1+2X+4X^3 &\mapsto \obar{1}+\obar{2}X+\obar{4}X^3=\obar{1}+\obar{2}X+X^3
 	\end{align*}
 	"Clearly" $\phi$ is a surjective ring homomorphism, so
 	\[(R/I)[X]\cong R[X]/\Ker \phi\]
-	But $\Ker\phi\coloneqq\{a_0+a_1X+\dots+a_nX^n\mid a_i\in I\}=(I)$.
+	But the kernel is exactly the set of polynomials with coefficients that are zero (i.e. in the ideal), hence $\Ker\phi\coloneqq\{a_0+a_1X+\dots+a_nX^n\mid a_i\in I\}=(I)$.
 \end{proof}
-\begin{crl}
-		If $I\subset R$ is prime, then $(I)\subset R[X]$ is prime.
-\end{crl}
 \begin{example}
 	Consider $3\Z \coloneqq \{0,3,-3,6,-6,\dots\}$ and
 	\[(3\Z)\coloneqq \{a_0+a_1X+a_2X^2+\dots+a_nX^n\mid a_i\in 3\Z\} \implies \Z[X]/(3\Z)\cong (\Z/3\Z)[X]\]
-	e.g 
-	\[1+2X+4X^3=1+2X+X^3+\underbrace{3X^3}_{\in 3\Z}\]
-	we can think about the coefficients
+	e.g $1+2X+4X^3=1+2X+X^3+\underbrace{3X^3}_{\in (3\Z)}$; so we can think about the coefficients in either ring
 	\[\underbrace{1,2,4}_{\in \Z}\to \underbrace{\obar{1},\obar{2},\obar{1}}_{\in \Z/3\Z}\]
 \end{example}
+\begin{crl}
+		If $I\subset R$ is prime, then $(I)\subset R[X]$ is prime.
+\end{crl}
 
-\begin{thm}[title = \texorpdfstring{$F[X]$}{F[X]} satisfies euclidean condition]
-	If $a(X),b(X)\in F[X]$ where $F$ is a field. Then there exist unique $q(X),r(X)\in F[X]$ such that $\deg (r(X)) < \deg (b(X))$ (or $r(X)=0$) for which \[a(X)=q(X)\rdot b(X)+r(X)\]
+\begin{thm}[title = \texorpdfstring{$F[X]$}{F[X]} satisfies unique euclidean condition,label=12.8]
+	If $a(X),b(X)\in F[X]$ where $F$ is a field. Then there exist \textbf{unique} $q(X),r(X)\in F[X]$ such that $\deg (r(X)) < \deg (b(X))$ (or $r(X)=0$) for which \[a(X)=q(X)\rdot b(X)+r(X)\]
 \end{thm}
-\Note Recall $\Z$ are a Euclidean Domain with $N(n)=|n|$, e.g
+\Note The point of the above theorem being that elements in $F[X]$ have unique quotients and remainders, which doesn't always happen in a general Euclidean domain as $\Z$ is a Euclidean Domain with $N(n)=|n|$, e.g
 \begin{align*}
 7=3\rdot 2+1&\quad N(1)=1<N(2)\\
 7=4\rdot 2-1&\quad N(-1)=1<N(2)
 \end{align*}
-\begin{proof}
-	Suppose $a(X)=q(X)\rdot b(X)+r(X)=q'(X)b(X)+r'(X)$, then
+\begin{proof}~\\
+	Suppose $a(X)=q(X)\rdot b(X)+r(X)=q'(X)\rdot b(X)+r'(X)$, then
 	\begin{align*}
 	r(X)&=a(X)-q(X)\rdot b(X)\\
 	r'(X)&=a(X)-q'(X)\rdot b(X)
 	\end{align*}
-	and $\deg(r),\deg(r')<\deg(b)$.\\
+	and $\deg(r),\deg(r')<\deg(b)$ (or they're both $0$ but then obviously they are unique).\\
 	Consider
 	\[r(X)-r'(X)=q'(x)\rdot b(X)-q(X)\rdot b(X) = [q'(X)-q(X)]\rdot b(X)\]
-	If $q'-q,b\ne 0$, then 
+	Assume $q'-q\ne 0$ and $b\ne 0$, then since Euclidean domains are integral 	we have
 	\begin{align*}
-	&\deg[(q'-q)\rdot b]=\deg(q'-q)+\deg(b)\\
-	=&\deg[r-r']<\deg b
+	\deg[(q'-q)\rdot b]=\deg(q'-q)+\deg(b)
 	\end{align*}
-	Then $\deg{q-q'}$ must be $0$ and so $q'-q=0\implies q'=q\implies r=r'$.
+	but also $(q'-q)\rdot b = r-r'$ for which we know
+	\[\deg[r-r']<\deg b\]
+	and hence a contradiction arises and it must be that $q'-q=0$ and so \[q'-q=0\implies q'=q\implies r=r'\qedhere\]
 \end{proof}
-\begin{crl}[title = ]
+The idea here behind this theorem and proof being that in regular Euclidean domains adding or subtracting alters the value of a norm while in polynomial rings, which has norm as the degree of the polynomial, it doesn't. This can be seen by considering that in the integers, if you start with $8$ and subtract off $1$, the norm is now $7$, but in the polynomial ring if you start with a polynomial of degree $8$ and subtract off a polynomial of strictly less degree (possibly even the same degree) then the norm (degree) does not change.
+\begin{crl}
 	Suppose $F,K$ are fields with $F\subset K$ and $a(X),b(X)\in F[X]$. \\
 	Then the quotient and remainder polynomials of $a$ by $b$ are independent of of field.
 \end{crl}
 \begin{proof}
 	There exist $q(X),r(X)\in F[X]$ and $Q(X), R(X)\in K[X]$ with $\deg r< \deg b$ and $\deg R< \deg b$, such that
 	\[a(X)=q(X)\rdot b(X)+r(X)\quad a(X)=Q(X)\rdot b(X)+R(X)\]
-	But there is uniqueness since $q,r\in K[X]$ it must mean that
+	But by \hyperref[thm:12.8]{the previous theorem}, there is uniqueness since $q,r\in K[X]$ it must mean that
 	\[q(X)=Q(X)\quad r(X)=R(X)\qedhere\]
 \end{proof}
 \begin{crl}
-	$b(X)|a(X)$ in $K[X]$ \textit{iff} $b(X)|a(X)$ in $F[X]$
+	For fields $F,K$ with $F\subset K$, $\divs{b(X)}{a(X)}$ in $K[X]$ \textit{iff} $\divs{b(X)}{a(X)}$ in $F[X]$
 \end{crl}
 \begin{example}
-	\[(X-1)|X^2-1 \text{ in } \R[X],\C[X]\]
-	However,
-	\[(X-i)| X^2+1 \text{ in } \C[X] \text{ but not } \R[X]\]
-	Since $X^2+1$ has no nontrivial factors in $\R[X]$.
+	\[\divs{(X-1)}{X^2-1} \text{ in } \R[X] \text{ and so also in }\C[X]\]
+	However note the case where $\divs{b(X)}{a(X)}$ in $K[X]$ but not in $F[X]$ e.g.
+	\[\divs{(X-i)}{X^2+1} \text{ in } \C[X] \text{ but not } \R[X]\]
+	Since $X^2+1$ has no non-trivial factors in $\R[X]$.
 \end{example}
-\section*{Polynomial Rings with Multiple Variables}
-
 \begin{dfn}[title = Multivariable Polynoimal Ring]
 	Let $R$ be a commutative ring with $1\ne 0$. \\
 	The \textbf{polynomial ring in the variables }$X_1,\dots,X_n$ \textbf{with coefficients in R} is defined inductively as

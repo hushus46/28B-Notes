@@ -4,38 +4,41 @@
 \begin{document}
 \chapter{L13: Polynomial Rings over UFDs}
 
-\begin{lem}[title = Gauss' Lemma,label=gauss]
+\begin{lem}[title = Gauss's Lemma,label=gauss]
 	Let $R$ be a UFD and $F$ its field of fractions. Let $p(X)\in R[X]$, then if $p(X)$ is reducible in $F[X]$ then $p(X)$ is reducible in $R[X]$.\\
 	Explicitly, if $p(X)=A(X)\rdot B(X)$ and $A\rdot B\in F[X]$, then there exist $r,s\in F$ such that 
 	\[r\rdot A(X) = a(X)\in R[X],\quad s\rdot B(X) = b(X) \in R[X]\]
 	and $p(X) = a(X)\rdot b(X)$.
 \end{lem}
-\Obs that $F[X]^\times = F$, i.e the constant polynomials. 
-\[A(X),B(X) \in F[X]^\times \implies \deg A, \deg B \ge 1\]
+\Obs that $F[X]^\times = F$, i.e the constant polynomials. Then since $p(X)$ is reducible, $A(X)$ and $B(X)$ are non-units, and hence
+\[A(X),B(X) \notin F[X]^\times \implies \deg A, \deg B \ge 1\]
 \begin{example}
 	Consider the polynomial
-	\[15X^2+13X+2 = \underbrace{\left(\frac{5}{2}X + \frac{5}{3}\right)}_{=A(X)}\rdot  \underbrace{\left(6X + \frac{6}{5}\right)}_{=B(X)}\]
-	The see that
+	\[15X^2+13X+2 = \underbrace{\left(\frac{5}{2}X + \frac{5}{3}\right)}_{A(X)}\rdot  \underbrace{\left(6X + \frac{6}{5}\right)}_{B(X)}\]
+	Then see that by looking to clear the denominators of $A(X)$ and $B(X)$ we get,
 	\begin{align*}
 	2\rdot 3\rdot 5(15X^2+13X+2) &= \left[2\rdot 3 \rdot \left(\frac{5}{2}X + \frac{5}{3}\right) \right] \rdot  \left[5\rdot \left(6X + \frac{6}{5}\right)\right] \\
-	&= [15X+10] \rdot{}  [30X+6]\\
-	15X^2+13X+2&=\left[\frac{2\rdot 3}{5}\left(\frac{5}{2}X+\frac{5}{3}\right)\right]\rdot \left[\frac{5}{2\rdot 3}\left(6X+\frac{6}{5}\right)\right]\\
-	&= [\underbrace{3X+2}_{a(X)}]\rdot{}  [\underbrace{5X+1}_{b(X)}]
+	&= (15X+10) \rdot{}  (30X+6)
+	\end{align*}
+	Now we have factored the a multiple of our polynomial, so we get back to the original polynomial by dividing $2\rdot 3\rdot 5$ in such a way that we redistribute where they end up
+	\begin{align*}
+	15X^2+13X+2&=\left[\underbrace{\frac{2\rdot 3}{5}}_{r}\underbrace{\left(\frac{5}{2}X + \frac{5}{3}\right)}_{A(X)}\right]\rdot \left[\underbrace{\frac{5}{2\rdot 3}}_{s} \underbrace{\left(6X + \frac{6}{5}\right)}_{B(X)}\right]\\
+	&= (\underbrace{3X+2}_{a(X)})\rdot{}  (\underbrace{5X+1}_{b(X)})
 	\end{align*}
 \end{example}	
-\begin{proof}
-	Write
+\begin{proof}~\\
+	Write out the polynomials $A(X),B(X)$ where $\deg A(X) =n$ is not necessarily equal to $\deg B(X)=m$,
 	\begin{align*}
 	A(X)=\frac{a_0}{\alpha_0}+\frac{a_1}{\alpha_1}X_1+\dots +\frac{a_n}{\alpha_n}X^n\\
-	B(X)= \frac{b_0}{\beta_0}+\frac{b_1}{\beta_1}X_1+\dots +\frac{b_n}{\beta_n}X^n
+	B(X)= \frac{b_0}{\beta_0}+\frac{b_1}{\beta_1}X_1+\dots +\frac{b_m}{\beta_m}X^m
 	\end{align*}
-	Let 
+	We want to clear out the denominators, so let
 	\[\begin{rcases*}
 	\alpha = \alpha_0\alpha_1\dots\alpha_n\\
-	\beta = \beta_0\beta_1\dots\beta_n
+	\beta = \beta_0\beta_1\dots\beta_m
 	\end{rcases*}d=\alpha\rdot \beta\]
-	(1) $R$ is an integral domain, so $\alpha,\beta,d\ne 0$\\
-	(2) 
+	(1) Since $R$ is an integral domain and none of the $\alpha_i$'s and $\beta_i$'s can be $0$ (as they are in denominators of fractions), so $\alpha,\beta,d\ne 0$\\
+	(2) Now after clearing out the denominators, denote the new polynomials 
 	\[\begin{array}{l}
 		\alpha\rdot A(X)=a'(X)\\[2pt]
 		\beta\rdot B(X)=b'(X)
@@ -45,70 +48,79 @@
 	\underbrace{(2\rdot 3)}_{\alpha}\rdot \underbrace{\left(\frac{5}{2}X+\frac{5}{3}\right)}_{A(X)}&=\underbrace{15X+10}_{a'(X)}\\ 
 	\underbrace{5}_{\beta}\rdot \underbrace{\left(6X+\frac{6}{5}\right)}_{B(X)} &= \underbrace{30X+6}_{b'(X)}
 	\end{align*}
-	So $d\rdot p(X)=a'(X)\rdot b'(X)$\\
+	Therefore $d\rdot p(X)=a'(X)\rdot b'(X)$.\\
 	Write
-	\[d=q_1q_2\rdot \dots\rdot q_k,\quad q_i \text{ is irreducible }\forall i\in \{1,\dots,k\} \]
+	$d=q_1\rdot q_2\rdot \dots\rdot q_k,$ where $q_i$ is irreducible $\forall i\in \{1,\dots,k\} $.
 	Then $(q_i)\subset R$ is prime, hence
 	\begin{align*}
 	R[X]/q_iR[X] \cong (R/(q_i))[X] \text{ is an integral domain}
 	\end{align*}
 	Furthermore,
-	\[\divs{q_i}{d}\implies \obar{dp(X)}=\obar{0} \in (R/(q_i))[X] \implies \obar{a'(X)}\rdot \obar{ b'(X)} =\obar{0}\]
-	Since $a'(X)$ and $b'(X)$ are equal to the $0$ coset, we cay $a'(X)$ or $b'(X)$ are in $q_iR[X]$ (the ideal being modded out). Therefore
-	\[\frac{1}{q_i}\rdot a'(X) \text{ or } \frac{1}{q_i}b'(X) \in R[X] \implies \frac{d}{q_i}\rdot p(X)=\underbrace{\left[\frac{1}{q_i}\rdot a'(X)\right]}_{\in R[X]}\rdot \underbrace{\left[\frac{1}{q_i}b'(X)\right]}_{\in R[X]} \]
-	Doing this process for all $q_i$'s, we get
-	\[p(X)=\underbrace{a(X)}_{\in R[X]}\rdot \underbrace{b(X)}_{\in R[X]}\]
-	For example
-	\begin{align*}
-	30\rdot p(X)&=(15X+10)\rdot (30X+6)\\
-	15\rdot p(X)&=(15X+10)\rdot (15X+3)\\
-	p(X) &= (3X+2)\rdot (5X+1)\qedhere
-	\end{align*}
+	\[\divs{q_i}{d}\implies \obar{d\rdot p(X)}=\obar{0} \in (R/(q_i))[X] \implies \obar{a'(X)}\rdot \obar{ b'(X)} =\obar{0}\]
+	Since $a'(X)$ or $b'(X)$ are equal to the $0$ coset, then it is equivalent to say $a'(X)$ or $b'(X)$ are in $q_iR[X]$ (the ideal being modded out). In other words, whichever of the two is equal to $\bar{0}$ will have $q_i$ as a factor of the numerators of their coefficients. Therefore
+	\[\frac{1}{q_i}\rdot a'(X) \text{ or } \frac{1}{q_i}\rdot b'(X) \in R[X]\] 
+	Now assuming w.l.o.g. it is $a'(X)$ which has $q_i$ then
+	 \[\frac{d}{q_i}\rdot p(X)=\underbrace{\left[\frac{1}{q_i}\rdot a'(X)\right]}_{\in R[X]}\rdot \underbrace{b'(X)}_{\in R[X]} \]
+	If we continue doing this process for all the irreducibles that appear in the factorization of $d$, then eventually we will clear all of $d$ on the left, and at each stage we are ending up with polynomials in $R[X]$. So, in the end we get
+	\[p(X)=\underbrace{a(X)}_{\in R[X]}\rdot \underbrace{b(X)}_{\in R[X]}\qedhere\]
 \end{proof}
-To rephrase Gauss' Lemma:\\ \textit{If $p(X)$ is irreducible in $R[X]$, then it is \textbf{still} irreducible in $F[X]$}\\
+Going back to the previous example, what we were doing is
+\begin{align*}
+30\rdot p(X)&=(15X+10)\rdot (30X+6)\\
+15\rdot p(X)&=(15X+10)\rdot (15X+3)\\
+3\rdot p(X)&=(3X+2)\rdot (15X+3)\\
+p(X) &= (3X+2)\rdot (5X+1)\qedhere
+\end{align*}
+To rephrase Gauss's Lemma in the form of its contrapositive: \\ \hyperref[lem:gauss]{If $p(X)$ is irreducible in $R[X]$, then it is \textbf{still} irreducible in $F[X]$}.  The point being that if $R$ is a UFD and $F$ is its field of fractions, knowing that $p(X)$ is irreducible in $R[X]$ and adding structure to reach $F[X]$ isn't enough structure to make $p(X)$ reducible.
+
 \textbf{Q:} Are there any irreducibles in $F[X]$ that \textbf{are not} irreducible in $R[X]$?\\
-Recall that if $F,K$ are fields with $F\subset K$ then \[p(X) \text{ irreducible }\in F[X] \Longleftrightarrow p(X) \text{ irreducible }\in K[X]\]
+\textbf{Recall} that if $F,K$ are fields with $F\subset K$ then \[p(X) \text{ irreducible } \in F[X] \Longleftrightarrow p(X) \text{ irreducible }\in K[X]\]
+So in a more general setting with fields, it is not the case. So let us to continue consider our case where $R$ is a UFD, to which the answer is yes.
 \begin{example}
-	$7X$ is reducible in $\Z[X]$ as they are non-units. But $7\in \Q^\times$, so $7,X$ do constitute a reduction of $7X$ in $\Q[X]$.\\
-	Moreover, $7X$ is associate to $X$ and notably $\Q[X]/(X)\cong \Q$ and since $\Q$ is a field, then
-	\[ (X) \text{ is maximal}\implies (X) \text{ is prime}\implies X\text{ is irredubile}\implies 7X\text{ is irreducible}\]
+	$7X$ is reducible in $\Z[X]$ as $7$ and $X$ are non-units. But $7\in \Q^\times$, so $7,X$ do not constitute a reduction of $7X$ in $\Q[X]$. Now it could be the case that $7X$ is reducible in another way not involving $7$ and $X$, but we can prove in fact that there \textbf{isn't} a way of writing $7X$ as the product of two irreducibles in $\Q[X]$.
+	\begin{proof}~\\ $7X$ is associate to $X$ (only differ by a unit) and notably $\Q[X]/(X)\cong \Q$ and since $\Q$ is a field, then
+	\[ (X) \text{ is maximal}\implies (X) \text{ is prime}\implies X\text{ is irreducible}\implies 7X\text{ is irreducible}\]
+	where the last implication is since $7$ is associate to $X$ then since $7$ is a unit and $X$ is irreducible (hence not a unit), $7X$ is irreducible.
+	\end{proof}
 \end{example}
+In fact, we see that by shifting to the field of fractions, one of the elements in $7X$ became a unit, namely $7$. As a corollary to \hyperref[lem:gauss]{Gauss's Lemma}, we will see how situations like this are the only things that turn from irreducibles to units as one goes to the field of fractions. 
 \begin{crl}[label=13.2]
-	Let $R$ be a UFD and $F$ its field of fractions. Let
+	Let $R$ be a UFD and $F$ its field of fractions. If
 	\[p(X)=a_0+a_1X+\dots+a_nX^n \in R[X]\]
 	and $\gcd(a_0,a_1,\dots,a_n)=1$. Then
 	\[p(X) \text{ irreducible }\in R[X] \Longleftrightarrow p(X) \text{ irreducible }\in F[X]\]
-	\Note $\gcd(a_0,a_1,\dots,a_n)=1$ means we cannot write
+	\Note $\gcd(a_0,a_1,\dots,a_n)=1$ means we cannot factor out a non-unit from the coefficients, i.e. we cannot write
 	\[p(X)=d\rdot p'(X),\quad d\in R\setminus R^\times, \quad \deg p =\deg p'\] 
 \end{crl}
-\begin{proof}
-	Suppose $p(X)\in R[X]$ is reducible in $R[X]$ and $\gcd(a_0,a_1,\dots,a_n)=1$. Further suppose 
+\begin{proof}~\\
+	This will be proved by contrapositive. In the first direction, it is to show that if $p(X)$ is reducible in $F[X]$ then it is reducible in $R[X]$
+	Suppose $p(X)\in R[X]$ is reducible in $R[X]$ and $\gcd(a_0,a_1,\dots,a_n)=1$. That is, suppose
 	\[p(X)=a(X)\rdot b(X),\quad a(X), b(X) \notin R[X]^\times \]
-	Then
-	\[\gcd(a_0,a_1,\dots,a_n)=1 \implies a(X), b(X) \text{ non-constant polynomials}\implies \deg a, \deg b\ge 1\]
-	However, we know $F[X]^\times$ is exactly $F^\times$, the non-zero constant polynomials. Hence $a,b\in F[X]$ are not units in $F[X]$ and so $p(X)$ is reducible in $F[X]$.
-	The other direction is \hyperref[lem:gauss]{Gauss' Lemma}.
+	Then since
+	$\gcd(a_0,a_1,\dots,a_n)=1$ the note in the statement of the corollary essentially says $a(X),b(X)$ are non-constant polynomials because you can not factor out of $p(X)$ a constant non-unit. So in fact that means $\deg a, \deg b\ge 1$.\\
+	However, we know $F[X]^\times$ is exactly $F^\times$, the non-zero constant polynomials. Hence $a(X),b(X)\in F[X]$ are not units in $F[X]$ and so $p(X)$ is reducible in $F[X]$.\\
+	The other direction is \hyperref[lem:gauss]{Gauss's Lemma}.
 \end{proof}
 \begin{thm}[title = \texorpdfstring{$R$ UFD $\Longleftrightarrow R[X]$ UFD}{R UFD iff R[X] UFD}]
 	$R$ is a UFD if and only if $R[X]$ is a UFD.
 \end{thm}
 \begin{proof}~\\
 	$\Leftarrow$\\
-	If $R[X]$ is a UFD, then $R\subset R[X]$ implying that $R$ is also a UFD.\\
+	If $R[X]$ is a UFD, then since $R\subset R[X]$ is a subring then $R$ is also a UFD.\\
 	$\Rightarrow$\\
-	Suppose, conversely, that $R$ is a UFD and $F$ is its field of fractions. We can write
+	Suppose that $R$ is a UFD and $F$ is its field of fractions. We can write
 	\[p(X) =a_0+a_1X+\dots+a_nX^n\in R[X]\]
 	The goal is to uniquely factor $p(X)$ in $R[X]$. Let
 	\[d=\gcd(a_0,a_1,\dots,a_n)\in R\]
-	If $d\notin R\times$, then it has unique factorization into irreducibles in $R$ and necessarily $p(X) = d\rdot p'(X)$ where the $\gcd$ of the coefficients in $p'(X)$ is 1. \\
+	If $d\notin R^\times$, then it has unique factorization into irreducibles in $R$ (since $R$ is a UFD) and necessarily $p(X) = d\rdot p'(X)$ where the $\gcd$ of the coefficients in $p'(X)$ is 1. \\
 	Now assume $\gcd(a_0,a_1,\dots,a_n)=1$; in particular, if $p(X)\notin R[X]^\times$ then $\deg p\ge 1$.\\
-	Consider $p(X)\in F[X]$ and note the $F[X]$ is a UFD (actually a Euclidean domain). This implies 
+	Consider $p(X)\in F[X]$ and note the $F[X]$ is a UFD (actually a Euclidean domain). This implies we can write
 	\[p(X)=A_1(X)\rdot A_2(X)\rdot \dots \rdot A_k(X)\]
-	where $A_i(X)\in F[X]$ are irreducible. By Gauss' Lemma we then know
+	where $A_i(X)\in F[X]$ are irreducible. By \hyperref[lem:gauss]{Gauss's Lemma} we can clear out the denominators and write
 	\[p(X)=a_1(X)\rdot a_2(X)\rdot \dots \rdot a_k(X)\]
 	where $a_i(X)\in R[X]$. Then
 	\[\gcd(a_0,\dots,a_n)=1 \implies \gcd(\text{coeffs of }a_i(X))=1\quad \forall i\]
-	By \hyperref[co:13.2]{Corollary 13.2}, $a_i(X)\in R[X]$ is associate to $A_i(X)$ in $F[X]$, hence $a_i(X)$ is irreducible in $R[X]$.\\
+	By \hyperref[co:13.2]{Corollary 13.2}, since $a_i(X)\in R[X]$ is associate to $A_i(X)$ in $F[X]$, hence $a_i(X)$ is irreducible in $R[X]$. So we've shown there exists a factorization of $p(X)$ as a product of irreducibles in $R[X]$.\\
 	The uniqueness follows directly from uniqueness in $F[X]$.
 \end{proof}
 \end{document}
