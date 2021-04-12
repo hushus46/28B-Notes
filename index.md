@@ -22,5 +22,5 @@
 | Lecture 12: PIDs are UFDs and Polynomial Rings   | [L12 PDF](https://hushus46.github.io/28B-Notes/L12/L12.pdf)         | [L12 Written](https://hushus46.github.io/28B-Notes/L12/Lecture%2012%20Written.pdf)     |
 | Lecture 13: Polynomial Rings over UFDs   | [L13 PDF](https://hushus46.github.io/28B-Notes/L13/L13.pdf)        | [L13 Written](https://hushus46.github.io/28B-Notes/L13/Lecture%2013%20Written.pdf)     |
 | Lecture 14: Factorization Techniques   | [L14 PDF](https://hushus46.github.io/28B-Notes/L14/L14.pdf)        | [L14 Written](https://hushus46.github.io/28B-Notes/L14/Lecture%2014%20Written.pdf)     |
-| Lecture 15: Modules   | [L15 PDF](https://hushus46.github.io/28B-Notes/L15/L15.pdf)        | [L14 Written](https://hushus46.github.io/28B-Notes/L15/Lecture%2015%20Written.pdf)     |
+| Lecture 15: Modules   | [L15 PDF](https://hushus46.github.io/28B-Notes/L15/L15.pdf)        | [L15 Written](https://hushus46.github.io/28B-Notes/L15/Lecture%2015%20Written.pdf)     |
 | Lecture 16: R-Module Homomorphisms   | [L16 PDF](https://hushus46.github.io/28B-Notes/L16/L16.pdf)        | [L16 Written](https://hushus46.github.io/28B-Notes/L16/Lecture%2016%20Written.pdf)     |
