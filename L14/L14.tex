@@ -6,40 +6,40 @@
 \chapter{L14: Factorization Techniques}
 The goal of this lecture is to factor (or check for factors) of polynomials
 
-\begin{prop}
+\begin{prop}[title = Linear factors are roots]
 	Let $F$ be a field and $p(X)\in F[X]$ a polynomial.\\
 	$p(X)$ has a factor of degree one in $F[X]$ \textit{iff} $p(X)$ has a root in $F$, i.e $\exists \alpha \in F,\, p(\alpha)=0$.
 \end{prop}
 \begin{proof}~\\
 	$\Longrightarrow$\\
-	If $p(X)$ has a factor of degree one in $F[X]$ i.e $p(X)=(\alpha X-\beta) \rdot q(X),\, \alpha,\beta \in F$ with $\alpha\ne 0$ Then
+	If $p(X)$ has a factor of degree one in $F[X]$ i.e $p(X)=(\alpha X-\beta) \rdot q(X),\, \alpha,\beta \in F$ with $\alpha\ne 0$. Then, since we are in a field, we have an inverse for $\alpha$ and so
 	\[p\left(\frac{\beta}{\alpha}\right)=\left(\alpha \rdot \left(\frac{\beta}{\alpha}\right) - \beta \right)\rdot q\left(\frac{\beta}{\alpha}\right) = 0 \rdot  q\left(\frac{\beta}{\alpha}\right)=0\]
 	$\Longleftarrow$\\
-	Conversely, if $p(X)$ has a root $\alpha \in F$, then we can write 
-	\[p(X)=q(X)\rdot (X-a)+r(X)\]
+	Conversely, if $p(X)$ has a root $\alpha \in F$, then we can write (the division algorithm)
+	\[p(X)=q(X)\rdot (X-\alpha)+r(X)\]
 	where $r(X)=0$ or $\deg r(X)< \deg (X-\alpha) =1$ (i.e $r(X)\equiv r$ is a constant). Then, by substituting $\alpha$ we see
 	\[p(\alpha)=q(\alpha)\rdot (\alpha-\alpha)+r \implies 0 = 0 +r \implies r=0\]
 	and therefore $p(X) = q(X)\rdot (X-\alpha)$ where $(X-\alpha)$ is degree one factor we are looking for.
 \end{proof}
-\begin{crl}
+\begin{crl}[title = Multiple roots form product of linear factors as factor]
 	If $p(X)\in F[X]$ has (not necessarily distinct) roots $\alpha_1,\alpha_2,\dots,\alpha_k$, then $p(X)$ has
 	\[(X-\alpha_1)\rdot (X-\alpha_2)\rdot \dots\rdot (X-\alpha_2)\]
-	as a factor
+	as a factor.
 \end{crl}
 \begin{dfn}[title=Multiplicity]
 	If $p(X)\in F[X]$ is divisible by $(X-\alpha)^k$, then we say that the root $\alpha$ has \textbf{multiplicity} $k$.
 \end{dfn}
-\begin{crl}
+\begin{crl}[title = \texorpdfstring{$p(X)$}{p(X)} has at most \texorpdfstring{$n$}{n} roots]
 	If $\deg(p(X))=n$, then it has at most $n$ roots in $F$ (even counting with multiplicity).
 \end{crl}
-\begin{crl}
-	If $p(X)\in F[X]$ and $\deg p = 2$ or $3$, then $p(X)$ is reducible \textit{iff} $p$ has a root in $F$.
+\begin{crl}[title = Quadratics and cubics reducible \textit{iff} they have roots in \texorpdfstring{$F$}{F},label=14.5]
+	If $p(X)\in F[X]$ and $\deg p = 2$ or $3$, then $p(X)$ is reducible \textit{iff} $p(X)$ has a root in $F$.
 \end{crl}
-\begin{prop}
+\begin{prop}[title= Rational Root Theorem,label=rational]
 	Let 
 	\[p(X)=a_0+a_1X+a_2X^2+\dots+a_nX^n\in \Z[X]\]
-	If $\frac{r}{s}\in \Q$ is in lowest terms (i.e $\gcd(r,s)=1$) and $p\left(\frac{r}{s}\right)=0$, then $r|a_0$ and $s|a_1$.\\
-	In particular, if $a_n=1$ (i.e $p$ is monic) and $p(d)\ne 0$ for all $d \in \Z$ such that $d|a_0$, then $p(X)$ has no roots in $\Q$.
+	If $\frac{r}{s}\in \Q$ is in lowest terms (i.e $\gcd(r,s)=1$) and $p\left(\frac{r}{s}\right)=0$, then $\divs{r}{a_0}$ and $\divs{s}{a_1}$.\\
+	In particular, if $a_n=1$ (i.e $p$ is monic) and $p(d)\ne 0$ for all $d \in \Z$ such that $\divs{d}{a_0}$, then $p(X)$ has no roots in $\Q$.
 \end{prop}
 \begin{example}
 	Let $p(X) = X^7-7X^2-2X+1$. Then check if $X=\pm 1$ are roots of $p(X)$:
@@ -55,37 +55,38 @@ The goal of this lecture is to factor (or check for factors) of polynomials
 		&p\left(\frac{r}{s}\right)=a_0+a_1\rdot \left(\frac{r}{s}\right)+a_2\rdot \left(\frac{r}{s}\right)^2+\dots + a_n \left(\frac{r}{s}\right)^n\\
 		\implies& 0 = a_0\rdot s^n +a_1\rdot r\rdot s^{n-1}+a_2\rdot r^2\rdot s^{n-2}+\dots+a_n\rdot r^n
 	\end{align*}
-	First isolating $r$, we get
+	First isolating $r^n$, we get that the terms on the right hand side all have a factor of $s$
 	\begin{align*}
 	a_n\rdot r^n =& -a_0 \rdot s^n-a_1\rdot r\rdot s^{n-1}-\dots-a_{n-1}\rdot r^{n-1}\rdot s \\
-	=& -s \rdot \left(a_0\rdot s^{n-1}-a_1\rdot r\rdot s^{n-2}-\dots-a_{n-1}\rdot r^{n-1}\right)
+	=& -s \rdot \left(a_0\rdot s^{n-1}+a_1\rdot r\rdot s^{n-2}+\dots+a_{n-1}\rdot r^{n-1}\right)
 	\end{align*}
-	Since $\gcd(r,s)=1$ then it can only be that $s|a_n$.\\
-	Similarly, isolating $s$, we get
+	Since $\gcd(r,s)=1$ then it can only be that $\divs{s}{a_n}$.\\
+	Similarly, isolating $s^n$, we get
 	\begin{align*}
 	a_0\rdot s^n =& -a_1\rdot r\rdot s^{n-1}-a_2\rdot r^2\rdot s^{n-2}-\dots-a_n\rdot r^n\\
-	=& -r\rdot \left(a_1\rdot s^{n-1}-a_2\rdot r\rdot s^{n-2}-\dots-a_n\rdot r^{n-1}\right)
+	=& -r\rdot \left(a_1\rdot s^{n-1}+a_2\rdot r\rdot s^{n-2}+\dots+a_n\rdot r^{n-1}\right)
 	\end{align*}
-	Since $\gcd(r,s)=1$ then it can only be that $r|a_0$.
+	Since $\gcd(r,s)=1$ then it can only be that $\divs{r}{a_0}$.
 \end{proof}
 \begin{example}
 	Consider $p(X) = X^3+9X^2-2X+1$ with possible roots $X=\pm 1$. We check
 	\begin{align*}
-	&p(1)=1^3+9\rdot 1^2-2\rdot 1+1=9\ne 0\\
-	&p(-1)=(-1)^3+9\rdot (-1)^2-2\rdot (-1)+1 = 11 \ne 0 
+	p(1)&=1^3+9\rdot 1^2-2\rdot 1+1=9\ne 0\\
+	p(-1)&=(-1)^3+9\rdot (-1)^2-2\rdot (-1)+1 = 11 \ne 0 
 	\end{align*}
-	Hence, $p(X)$ has no roots in $\Q$ and is thus \textbf{irreducible} over $\Q$.
+	Hence, $p(X)$ has no roots in $\Q$ and by \hyperref[co:14.5]{Corollary 14.5}, is thus \textbf{irreducible} over $\Q$.
 \end{example}
 \begin{claim}
 	The polynomials $X^2-p,X^3-p \in \Z[X]$ where $p\in \Z$ is prime are irreducible over $\Q[X]$.
 \end{claim}
 \begin{proof}
-	The only candidates for soluutions are $X=\pm 1, \pm p$. We check for $q(X)=X^2-P$:
+	The only candidates for solutions are $X=\pm 1, \pm p$. \\
+	We check for $q(X)=X^2-p$ (The proof for $X^3-p$ is similar ):
 	\begin{align*}
 	&q(\pm 1) = (\pm 1)^2-p = 1-p \ne 0\\
-	&q(\pm p) = (\pm p)^2-p = p\rdot (p-1)\ne 0
+	&q(\pm p) = (\pm p)^2-p = p\rdot (p-1)\ne 0 \qedhere
 	\end{align*}
-	The proof for $X^3-p$ is similar (you should check it yourself).
+	A difference of squares/cubes involving a prime will factor into irrational roots.
 \end{proof}
 \begin{example}
 	Consider $p(X)=X^2+1$. This is irreducible over $\R[X]$ as one can check
@@ -95,88 +96,95 @@ The goal of this lecture is to factor (or check for factors) of polynomials
 	\end{align*}
 	On the other hand, it \textbf{is} reducible over $\modZ{2}[X]$ 
 	\[1^2+1 \equiv 0 \Mod{2}\]
-	Finally $X^2+X+1$ is irreducible over $\modZ{2}[X]$ as
+	Furthermore, $X^2+X+1$ is irreducible over $\modZ{2}[X]$ as
 	\begin{align*}
 	0^2+0+1=1\ne 0\\
 	1^2+1+1=1\ne 0
 	\end{align*}
+	It is important to see that reducibility largely depends on the coefficient ring.
 \end{example}
-\begin{prop}
+\begin{prop}[title = If irreducible in $(R/I)[X]$ then irreducible in $R[X]$,label=14.7]
 	Let $R$ be an integral domain and $I\subsetneq R$ a proper ideal. Let $p(X) \in R[X]$ be a non-constant, monic polynomial.\\
 	If $\obar{p(X)} \in (R/I)[X]$ is irreducible into polynomials of strictly lesser degree, then $p(X)$ is irreducible in $R[X]$.
 \end{prop}
 \begin{proof}
 	Suppose $p(X)$, a non-constant monic polynomial, is reducible in $R[X]$, say
 	\[p(X)=a(X)\rdot b(X),\quad \deg a, \deg b< \deg p\]
-	Since $p$ is monic then can also choose $a,b$ to be non-constant, monic polynomials, hence
+	In particular, because $p$ is monic then can also choose $a,b$ to be non-constant, monic polynomials, hence
 	\[\obar{p(X)} = \obar{a(X)}\rdot \obar{b(X)} \in (R/I)[X]\qedhere\]
+	The reduction of $p$ in $R[X]$ leads to a reduction of $\obar{p}$ in $(R/I)[X]$. Hence, the contrapositive, if $\obar{p}$ is irreducible in $(R/I)[X]$ then $p$ is irreducible in $R[X]$, is also true.
 \end{proof}
 \begin{example}~
 	\begin{itemize}
-		\item $p(X)=X^2+X+1$ is irreducible in $\modZ{2}[X]$ then it is irreducible in $\Z[X]$
-		\item $p(X)=X^2+1$ is irreducible in $\Z[X]$ but \textbf{is} reducible in $(\modZ{2})[X]$
+		\item $p(X)=X^2+X+1$ is irreducible in $(\modZ{2})[X]$ then it is irreducible in $\Z[X]$
+		\item $p(X)=X^2+1$ is irreducible in $\Z[X]$ but \textbf{is} reducible in $(\modZ{2})[X]$.
 	\end{itemize}
-	The second example shows the proposition cannot be an "if and only if" statement.
+	The second example shows the proposition cannot be an "if and only if" statement (i.e its converse is not always true).
 \end{example}
-\textbf{\textcolor{BrickRed}{\underline{Warning}}}: There exist polynomials, e.g $X^4+1$ that are irreducible in $\Z[X]$ but are reducible in every $(\modZ{p})[X]$ for $p\in \Z $ prime.
+\textbf{\textcolor{BrickRed}{\underline{Warning}}}: There exist polynomials which satisfy the converse of the proposition, e.g $X^4+1$, that are irreducible in $\Z[X]$ but are reducible in every $(\modZ{p})[X]$ for $p\in \Z $ prime.
 \begin{example}
-	Let $p(X,Y)\in \Z[X,Y] = (\Z[X])[Y]$, then
+	Let $p(X,Y) = X^2+XY+1\in \Z[X,Y] = (\Z[X])[Y]$, then if you mod out by all the terms including a factor of $Y$, you get polynomials of terms only in $X$, i.e
 	\[\Z[X,Y]/(y\rdot \Z[X,Y]) \cong \Z[X]\]
-	Specifically, $\obar{X^2+XY+1} \in \Z[X,Y]/(y\rdot \Z[X,Y])$. Since $X^2+1$ is an element of the coset $\obar{X^2+XY+1}$ and it is irreducible, then $X^2+XY+1$ is irreducible in $\Z[X,Y]$.
+	Specifically, $\obar{X^2+XY+1} \in \Z[X,Y]/(y\rdot \Z[X,Y])$. This is precisely $X^2+1$ and it is irreducible, hence by the proposition $X^2+XY+1$ is irreducible in $\Z[X,Y]$.
 \end{example}
 \newpage
 \begin{thm}[title= Eisenstein's Criterion,label=eisen]
-	Let $R$ be an integral domain and $P\subset R$ a prime ideal. Furthermore,
+	Let $R$ be an integral domain and $P\subset R$ a prime ideal. Let
 	\[q(X)=X^n+c_{n-1}X^{n-1}+\dots+c_1X+c_0\in R[X]\]
 	Suppose $c_0,c_1,\dots,c_{n-1}\in P$ and $c_0\notin P^2$, then $q(X)$ is irreducible in $R[X]$.
 \end{thm}
+This is stronger than the \hyperref[prop:rational]{Rational Root Theorem} which says how to find the rational roots, and hence you can find linear factors. But if it doesn't have rational roots, it might still be factorable into factors of degree greater than 1. Eisenstein's Criterion tells you in what situations this is possible (and more generally over arbitrary rings, not just $\Z$ and $\Q$).
 \begin{claim}
-	$p(X) =X^4+3x^3-27X^2+9X+6$ is irreduicble
+	$p(X) =X^4+3X^3-27X^2+9X+6$ is irreduicble. 
 \end{claim}
 \begin{proof}
+	With \hyperref[prop:rational]{Rational Root Theorem}, you can check that $X=\pm1, \pm 2,\pm 3, \pm 6$ are not roots and hence it has no linear factors. But with Eisenstein's Criterion, we can in fact show it is completely irreducible as
 	$3,-27,9,6\in 3\Z$ however $6\notin 9\Z$.
 \end{proof}
-\begin{proof}[Proof of Eisenstein's Criterion]
-	Suppose $q(X)=a(X)\rdot b(X)$ where $a,b\in R[X]^\times$. Since $q$ is monic, we may take $a,b$ to be monic
+\begin{proof}[Proof of Eisenstein's Criterion]~\\
+	Suppose $q(X)=a(X)\rdot b(X)$ where $a,b\notin R[X]^\times$. Since $q$ is monic, we may take $a,b$ to be monic
 	\begin{align*}
 	a(X)=&X^k+a_{k-1}X^{k-1}+\dots+a_1X+a_0\\
 	b(X)=&X^l+b_{l-1}X^{l-1}+\dots+b_1X+b_0
 	\end{align*}
-	where $l,k>0$.\\
+	where $l,k>0$ (since $a,b$ are non-units).\\
+	We will follow in the same fashion as \hyperref[prop:14.7]{Prop 14.7} by looking at the quotient by the ideal $P$.\\
 	If $c_0,c_1,\dots,c_{n-1}\in P$, then
 	\begin{align*}
 	\obar{q(X)}=&\obar{X^n+c_{n-1}X^{n-1}+\dots+c_0}=\obar{X^n} \in (R/P)[X] \\
 	 =&\obar{a(X)}\rdot \obar{b(X)}
 	\end{align*}
-	i.e $\obar{a(X)}\rdot \obar{b(X)} = \obar{X^n}$. Then necessarily
+	i.e $\obar{a(X)}\rdot \obar{b(X)} = \obar{X^n}$. Then, in particular, since there is no constant term in this product, we can say
 	\[\obar{a_0}\rdot \obar{b_0}=\obar{0} \implies a_0 \in P \text{ or } b_0\in P\]
 	W.l.o.g let $a_0\in P$, then $a(X)\rdot b(X)$ can be written
 	\begin{align*}
 	&(X^k+a_{k-1}X^{k-1}+\dots+a_1X+a_0)\rdot (X^l+b_{l-1}X^{l-1}+\dots+b_1X+b_0) \\
 	=&X^{k+l}+(a_{k-1}+b_{l-1})X^{k+l-1}+\dots+(a_1\rdot b_0+a_0\rdot b_1)X+a_0\rdot b_0
 	\end{align*}
-	Therefore $a_0\rdot b_1,a_1\rdot b_0\in P$ implying $a_1\in P$ or $b_0\in P$.\\
+	Since $P$ is a prime ideal, then $a_0\rdot b_1\in P$ and hence $a_1\rdot b_0$ is in $P$ because their sum needs to be the coefficient $c_1 \in P$ of the term $X$ in $q(X)$. This implies $a_1\in P$ or $b_0\in P$.\\
 	If $a_1\in P$ then
-	\[(a_2\rdot b_0+\underbrace{a_1\rdot b_1}_{\in P} + \underbrace{a_0\rdot b_2}_{\in P}) \implies a_2\rdot b_0\in P \implies a_2\in P \text{ or } b_0\in P \implies a_0\rdot b_0=c_0\in P^2\]
+	\[(a_2\rdot b_0+\underbrace{a_1\rdot b_1}_{\in P} + \underbrace{a_0\rdot b_2}_{\in P}) \implies a_2\rdot b_0\in P \implies a_2\in P \text{ or } b_0\in P \]
+	If you choose $b_0 \in P$ then you are done. If you choose $a_2 \in P$ and continue up the terms you will eventually be forced to choose $b_0\in P$ anyways (check this yourself). Hence, $b_0 \in P$ and therefore $a_0\rdot b_0 =c_0 \in P^2$ because both are in $P$.\\
+	Thus, we have shown the contrapositive, i.e $q$ being irreducible implies $c_0\in P^2$, which means the original statement (Eisenstein's Criterion), is also true.
 \end{proof}
 \begin{example}
 	$X^n-p$ is irreducible if $p$ is prime because $-p\in p\Z$ but $-p \notin p^2\Z$.
 \end{example}
-\begin{crl}
-	$\sqrt[n]{p}\notin \Q$ for all  $n\ge 2$.
+\begin{crl}[title= $n$th roots of primes are irrational]
+	$\sqrt[n]{p}\notin \Q$ for all  $n\ge 2$ when $p$ is prime.
 \end{crl}
 \begin{example}
 	Let $p(X)=X^4+1$ and notice that $1\notin P$ for any prime ideal (otherwise its the whole ring and not a prime ideal), therefore we can't apply \hyperref[thm:eisen]{Eisenstein's Criterion} directly.\\
 	Consider
 	\begin{align*}
-	q(X)=&p(X+1)=(X+1)^4+1\\
-	=& (X^4+4X^3+6X^2+4X+1)+1\\
-	=& X^4+4X^3+6X^2+4X+2
+	q(X)&=p(X+1)=(X+1)^4+1\\
+	&= (X^4+4X^3+6X^2+4X+1)+1\\
+	&= X^4+4X^3+6X^2+4X+2
 	\end{align*}
-	See that $2,4,6\in 2\Z$ but $2\notin 4\Z$, therefore we can apply \hyperref[thm:eisen]{Eisenstein's Criterion} to $q(X)$.
-	Suppose $X^4+1=a(X)\rdot b(X)$ then 
+	See that $2,4,6\in 2\Z$ but $2\notin 4\Z$, therefore we can apply \hyperref[thm:eisen]{Eisenstein's Criterion} to $q(X)$ to conclude it is irreducible.
+	Now, suppose $p(X)$ was reducible into $X^4+1=a(X)\rdot b(X)$ then 
 	\[q(X)=(X+1)^4+1=a(X+1)\rdot b(X+1)\]
 	i.e if $X^4+1$ is reducible then so is $q(X)$.\\
-	But by \hyperref[thm:eisen]{Eisenstein's Criterion} $q(X)$ is irreducible, therefore $X^4+1$ is too.
+	But by \hyperref[thm:eisen]{Eisenstein's Criterion} $q(X)$ is irreducible, therefore $X^4+1$ is irreducible as well.
 \end{example}
 \end{document}

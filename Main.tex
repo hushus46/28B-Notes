@@ -13,6 +13,7 @@
 \usepackage{mathrsfs}
 \usepackage{fullpage}  
 \usepackage{graphicx}
+
 \usepackage{titling}
 \usepackage{titlesec}
 \usepackage{xpatch}
@@ -25,7 +26,7 @@
 \usepackage{breqn}
 \usepackage{titletoc}
 \usepackage{hyperref}
-\usepackage[all]{hypcap}
+\usepackage{caption}[hypcap=true]
 \hypersetup{
 	colorlinks,
 	linkcolor={blue!80!black},
@@ -163,8 +164,9 @@ boxed title style = {colback=green!35!black}
 \frenchspacing
 
 \newcommand{\divs}[2]{#1 \, | \, #2}
-\newcommand{\Note}{\textcolor{Mulberry}{\underline{\textbf{\textit{Note:}}} }}
+\newcommand{\Note}{\textcolor{Mulberry}{\underline{\textbf{\textit{Note:}}} } } 
 \newcommand{\Obs}{\textbf{\textcolor{Emerald}{Observe }}}
+\newcommand{\Exr}{\textbf{\textcolor{Plum}{\textbf{Exercise:}} }}
 \newcommand{\D}{\mathrm{d}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
@@ -172,6 +174,7 @@ boxed title style = {colback=green!35!black}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\vv}{\vec{v}}
+\newcommand{\vu}{\vec{u}}
 \newcommand{\vw}{\vec{w}}
 \newcommand{\vk}{\vec{k}}
 \newcommand{\modZ}[1]{\Z/#1\Z}
@@ -181,6 +184,10 @@ boxed title style = {colback=green!35!black}
 \DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\Img}{Im}
 \DeclareMathOperator{\ev}{Ev}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Id}{Id}
 \newcommand*\quot[2]{{^{\textstyle #1}\big/_{\textstyle #2}}}
 \newcommand{\verteq}{\rotatebox{90}{$\;\;=\;\;$}}
 \newcommand{\dotproduct}{\raisebox{.3ex}{\tiny$\bullet$}}
@@ -244,4 +251,6 @@ boxed title style = {colback=green!35!black}
 \subfile{L12/L12}
 \subfile{L13/L13}
 \subfile{L14/L14}
+\subfile{L15/L15}
+\subfile{L16/L16}
 \end{document}
