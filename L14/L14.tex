@@ -103,7 +103,7 @@ The goal of this lecture is to factor (or check for factors) of polynomials
 	\end{align*}
 	It is important to see that reducibility largely depends on the coefficient ring.
 \end{example}
-\begin{prop}[title = If irreducible in $(R/I)[X]$ then irreducible in $R[X]$,label=14.7]
+\begin{prop}[title = If irreducible in \texorpdfstring{$(R/I)[X]$}{R/I[X]} then irreducible in \texorpdfstring{$R[X]$}{R[X]},label=14.7]
 	Let $R$ be an integral domain and $I\subsetneq R$ a proper ideal. Let $p(X) \in R[X]$ be a non-constant, monic polynomial.\\
 	If $\obar{p(X)} \in (R/I)[X]$ is irreducible into polynomials of strictly lesser degree, then $p(X)$ is irreducible in $R[X]$.
 \end{prop}
@@ -121,7 +121,7 @@ The goal of this lecture is to factor (or check for factors) of polynomials
 	\end{itemize}
 	The second example shows the proposition cannot be an "if and only if" statement (i.e its converse is not always true).
 \end{example}
-\textbf{\textcolor{BrickRed}{\underline{Warning}}}: There exist polynomials which satisfy the converse of the proposition, e.g $X^4+1$, that are irreducible in $\Z[X]$ but are reducible in every $(\modZ{p})[X]$ for $p\in \Z $ prime.
+\textbf{\textcolor{BrickRed}{\underline{Warning}}}: There exist polynomials which violate the converse of the proposition, e.g $X^4+1$, that are irreducible in $\Z[X]$ but are reducible in every $(\modZ{p})[X]$ for $p\in \Z $ prime.
 \begin{example}
 	Let $p(X,Y) = X^2+XY+1\in \Z[X,Y] = (\Z[X])[Y]$, then if you mod out by all the terms including a factor of $Y$, you get polynomials of terms only in $X$, i.e
 	\[\Z[X,Y]/(y\rdot \Z[X,Y]) \cong \Z[X]\]

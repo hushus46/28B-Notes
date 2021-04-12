@@ -56,22 +56,22 @@ Suppose $a,b\in \R$ and $\vv,\vw \in \R^n$, then scalar multiplication has the f
 \end{dfn}
 \Note We can define a \textbf{right} $R$-module by $m\rdot r$ with scalar multiplication on the right.The only difference is associativity being $m\rdot (rs) = (m\rdot r)\rdot s$. Contrast this to property (ii) which says the action of $rs$ on $m$ is the action of $s$ first and then acting by $r$ , whereas now, it is the action of $r$ first then acting by $s$ and these two notions coincide only when $R$ is commutative. \textbf{We will always be talking about left $R$-modules unless explicitly stated}\\
 \Note If $R$ is a commutative ring then any left $R$-module has a natural right $R$-module structure as well:
-\[(rs)\rdot m = (sr)\rdot m \longleftrightarrow m\rdot (sr) = m\rdot (rs) = (m\rdot r)\rdot s\]
+$(rs)\rdot m = (sr)\rdot m \longleftrightarrow m\rdot (sr) = m\rdot (rs) = (m\rdot r)\rdot s$
 \begin{dfn}[title =  \texorpdfstring{$F$}{F}-vector space]
 	If $F$ is a field, then we refer to $F$-modules as $F$-\textbf{vector spaces}. In this sense $\R^n$ is an $\R$-vector space.
 \end{dfn}
 \Obs If $R\subset S$ is as subring and $M$ is an $S$-module then $M$ is also a $R$-module by restricting scalar multiplication to $R$. For example, $\C^2$ is a $\C$-vector space but it is also an $\R$-vector space. \\
 If $a\in \R,\, \vv = (v_1,v_2)\in \C^2$ then $a\rdot \vv = (av_1,av_2)\in \C^2$ still makes sense.
-\begin{example}
+\begin{example} 
 	For any ring $R$, consider
 	\[R^n \coloneqq \{(a_1,\dots,a_n)\mid a_i\in R, \, i=1,2,\dots,n\}\]
 	with component-wise addition 
 	\[(a_1,a_2,\dots,a_n)+(b_1,b_2,\dots,b_n) \coloneqq (a_1+b_1,a_2+b_2,\dots,a_n+b_n)\]
-	\Exr $(R^n,+)$ is an abelian group.\\
+	\Exr $(R^n,+)$ is an abelian group.
 	Scalar multiplication is also component-wise, for $a\in R$ and $(a_1,\dots,a_n)\in R^n$, defined as
 	\[a\rdot (a_1,\dots,a_n)\coloneqq (a\rdot a_1,\dots,a\rdot a_n)\]
 	\Exr $(R^n,+)$ is an $R$-module with this scalar multiplication.\\
-	This is called the \textbf{free $R$-Module of rank $n$}.
+	This is called the \textbf{free $R$-Module of rank $n$}. 
 \end{example}
 \begin{example}
 	The \textbf{trivial module} $0\coloneqq \{\vec{0}\}$ which has $\forall r \in R, \, r\rdot \vec{0} \coloneqq \vec{0}$.
