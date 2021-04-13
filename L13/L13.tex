@@ -93,13 +93,15 @@ In fact, we see that by shifting to the field of fractions, one of the elements 
 	\[p(X)=d\rdot p'(X),\quad d\in R\setminus R^\times, \quad \deg p =\deg p'\] 
 \end{crl}
 \begin{proof}~\\
-	This will be proved by contrapositive. In the first direction, it is to show that if $p(X)$ is reducible in $F[X]$ then it is reducible in $R[X]$
+	This will be proved by contrapositives.\\
+	$\Longleftarrow$\\
+	In this direction, it is to show that if $p(X)$ is reducible in $R[X]$ then it is reducible in $F[X]$.\\
 	Suppose $p(X)\in R[X]$ is reducible in $R[X]$ and $\gcd(a_0,a_1,\dots,a_n)=1$. That is, suppose
 	\[p(X)=a(X)\rdot b(X),\quad a(X), b(X) \notin R[X]^\times \]
 	Then since
 	$\gcd(a_0,a_1,\dots,a_n)=1$ the note in the statement of the corollary essentially says $a(X),b(X)$ are non-constant polynomials because you can not factor out of $p(X)$ a constant non-unit. So in fact that means $\deg a, \deg b\ge 1$.\\
 	However, we know $F[X]^\times$ is exactly $F^\times$, the non-zero constant polynomials. Hence $a(X),b(X)\in F[X]$ are not units in $F[X]$ and so $p(X)$ is reducible in $F[X]$.\\
-	The other direction is \hyperref[lem:gauss]{Gauss's Lemma}.
+	The other direction, $\Longrightarrow$, is the contrapositive of \hyperref[lem:gauss]{Gauss's Lemma}.
 \end{proof}
 \begin{thm}[title = \texorpdfstring{$R$ UFD $\Longleftrightarrow R[X]$ UFD}{R UFD iff R[X] UFD}]
 	$R$ is a UFD if and only if $R[X]$ is a UFD.
