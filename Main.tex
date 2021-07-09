@@ -19,7 +19,10 @@
 \usepackage{array}
 \usepackage{polynom}
 \usepackage{tikz}
+\usepackage{cancel}
 \usepackage{tikz-cd}
+\tikzcdset{scale cd/.style={every label/.append style={scale=#1},
+		cells={nodes={scale=#1}}}}
 \usetikzlibrary{shapes,fit}
 \setlist[enumerate]{label=(\roman*)}
 \usepackage{breqn}
@@ -181,6 +184,7 @@ boxed title style = {colback=green!35!black}
 \newcommand*\obar[1]{\overline{#1}}
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 \DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Coker}{Coker}
 \DeclareMathOperator{\Img}{Im}
 \DeclareMathOperator{\ev}{Ev}
 \DeclareMathOperator{\Span}{Span}
@@ -253,4 +257,7 @@ boxed title style = {colback=green!35!black}
 \subfile{L15/L15}
 \subfile{L16/L16}
 %\subfile{L17/L17}
+%\subfile{L18/L18}
+%\subfile{L19/L19}
+%\subfile{L20/L20}
 \end{document}

@@ -1,0 +1,149 @@
+\documentclass[../Main.tex]{subfiles}
+\setcounter{chapter}{17}
+
+\begin{document}
+\phantomsection
+\chapter{L18: Abstract linear algebra}
+\begin{dfn}
+	A subset $A$ of an $R$-module $M$ is said to be \textbf{linearly independent} if for $a_1,\dots,a_n\in R$ and $m_1,\dots,m_n\in A$ such that
+	\[a_1\rdot m_1+\dots+a_n\rdot m_n=0\]
+	Then $a_1=a_2=\dots=a_n=0$.\\
+	If $A$ is \textit{not} linearly independent then we say it is \textbf{linearly dependent}
+\end{dfn}
+\begin{example}
+	A basis $B$ for a free $R$-module is linarly independent i.e
+	\[B = \{1,X,X^2,X^3,\dots\}\]
+	is linearly independent in $\R[X]$(when viewed as an $R$-module).
+\end{example}
+\begin{dfn}
+	A \textbf{basis} of a free $R$-module is a linearly independent spanning set
+\end{dfn}
+\begin{example}
+	$\{0\}\subset M$ is not linearly independent (assumign $R\ne 0$) e.g $1\rdot 0=0=0\rdot 0$
+\end{example}
+\begin{example}
+	$\modZ{2}$ as a $(\modZ{4})$-module.\\
+	The only possible linearly independent subset is $\{\obar{1}\}$
+	\[\obar{2}\in \modZ{4} \implies \obar{2}_r\rdot \obar{1}_2=\obar{0}_2\in \modZ{2} \]
+\end{example}
+\begin{thm}
+	If $V$ is a finitely generated vector space over a field $F$, then $V$ is a free $F$-vector space
+\end{thm}
+\begin{proof}
+	Let $A=\{v_1,\dots,v_n\}$ be a finite spanning set of $V$.\\
+	We may suppose no proper subset of $A$ is spanning. We show that $A$ is linearly independent:\\
+	Suppose otherwise, then let $\alpha_1,\dots,\alpha_n\in F$ such that
+	\[\alpha_1v_1+\alpha_2v_2+\dots+\alpha_nv_n=0\]
+	such that $\alpha_1,\dots,\alpha_n$ not all zero.\\
+	After possibly rearraning, we may assume $\alpha_1\ne 0$. Since $F$ is a field, $\frac{1}{\alpha_1}\in F$ which implies
+	\begin{align*}
+	v_1 =& \frac{1}{\alpha_1}\rdot \left(-\alpha_2v_2-\alpha_3v_3-\dots-\alpha_nv_n\right)\\
+	=&\left(\frac{-\alpha_2}{\alpha_1}\right)\rdot v_2+\left(\frac{-\alpha_3}{\alpha_1}\right)\rdot v_2+\dots+\left(\frac{-\alpha_n}{\alpha_1}\right)\rdot v_2
+	\end{align*}
+	and hence $v_1\in \Span\{v_2,\dots,v_n\}$. But if any vector can be written by this span, then we have
+	\[\Span\{v_2,\dots,v_n\}=V\]
+	contradicting the fact that $A$ is minimal.
+	Hence $A$ is linearly independent.\\
+	It remains to show that $V$ is a free $F$-vector space. Suppose $v\in V$ and $a_i,b_i\in F$ with
+	\begin{align*}
+	v=&a_1\rdot v_2+a_2\rdot v_2+\dots+a_n\rdot v_n\\
+	=&b_1\rdot v_1+b_2\rdot v_2+\dots+b_n\rdot v_n
+	\end{align*}
+	Then we have
+	\[(a_1-b_1)\rdot v_1+(a_2-b_2)\rdot v_2+\dots+(a_n-b_n)\rdot v_n=0\]
+	Since $A$ is linearly independent then for all $i$
+	\[a_i-b_i=0\implies a_i=b_i\] 
+	Therefore, $V$ is free on $A$.
+\end{proof}
+\begin{crl}
+	If $V$ is a finitely generated $F$-vector space and $A$ is a minimal spannig set, then $V$ is a free $F$-vector space on $A$ and $A$ is a basis for $V$.
+\end{crl}
+\begin{crl}
+	If $V$ is an $F$-vector space with finite spanning set $A$, then $A$ contains a basis $B$ for $V$.
+\end{crl}
+\begin{proof}
+	Take a minimal spanning subset of $A$.
+\end{proof}
+\begin{thm}
+	Suppose $V$ is an $F$-vector space with basis $A=\{a_1,\dots,a_n\}$ and $B=\{b_1,\dots,b_m\}$ is a linearly independent set.\\
+	After possibly rearranging $A$, the sets
+	\[C_k \coloneqq \{b_1,\dots,b_k,a_{k+1},\dots,a_n\}\quad \forall 0\le k\le m\]
+	are bases for $V$. In particular $n\ge m$.
+\end{thm}
+\begin{proof}
+	Prove this by induction:\\
+	When $k=0$, $C_0=A=\{a_1,\dots,a_n\}$ this is already true.\\
+	Now suppose $C_k$ is a basis for $V$, we will show $C_{k+1}$ is a basis for $V$.
+	\begin{align*}
+	&C_k = \{b_1,\dots,b_k,a_{k+1},\dots,a_n\} \text{ spans } V\\
+	\implies &b_{k+1}=\alpha_1\rdot b_1+\alpha_2\rdot b_2+\dots+\alpha_k\rdot b_k+\alpha_{k+1}\rdot a_{k+1}+\dots+\alpha_n\rdot a_n
+	\end{align*}
+	Now $B$ is linearly independent and so there exists $a_{k+i} \ne 0$ for some $i\ge 1$.\\
+	After rearranging, we may assume $\alpha_{k+1}\ne 0$, and so
+	\begin{align*}
+	a_{k+1} =& \frac{1}{\alpha_{k+1}}\rdot \left(b_{k+1}-\alpha_1\rdot b_1-\dots-\alpha_k\rdot b_k-\alpha_{k+2}\rdot a_{k+2}-\dots-\alpha_n\rdot a_n\right)\\
+	=&\left(\frac{1}{\alpha_{k+1}}\right)\rdot b_{k+1}+\left(\frac{-\alpha_1}{\alpha_{k+1}}\right)\rdot b_1+\dots+\left(\frac{-\alpha_k}{\alpha_{k+1}}\right)\rdot b_k+\left(\frac{-\alpha_{k+2}}{\alpha_{k+1}}\right)\rdot a_{k+2}+\dots+\left(\frac{-\alpha_n}{\alpha_{k+1}}\right)\rdot b_n
+	\end{align*}
+	This implies 
+	\begin{align*}
+	&a_{k+1}\in \Span\{b_1,\dots,b_{k+1},a_{k+2},\dots,a_n\}=\Span C_{k+1}\\
+	\implies & \Span C_{k+1}\supset \Span\{b_1,\dots,b_k,a_{k+1},\dots,a_n\} = \Span C_k = v\\
+	\implies & \Span C_{k+1}=V
+	\end{align*}
+	It remains to show $C_{k+1}$ is linearly independent.\\
+	Suppose 
+	\begin{align*}
+	&\beta_1\rdot b_1+\dots+\beta_k\rdot b_k+\beta_{k+1}\rdot b_{k+1}+\gamma_{k+2}\rdot a_2 +\dots+\gamma_na_n=0\\
+	=& \left(\sum_{i=1}^k\beta_i\rdot b_i\right) + \beta_{k+1}\rdot \left(\sum_{i=1}^k\alpha_i\rdot b_i+\sum_{j=k+1}^{n}\alpha_j\rdot a_j\right) +\left(\sum_{j=k+2}^n \gamma_j\rdot \alpha_j\right)\\
+	=&\left[\sum_{i=1}^k(\beta_i+\beta_{k+1}\alpha_i)\rdot b_i\right] + (\beta_{k+1} \alpha_{k+1})\rdot a_{k+1}+\left[\sum_{j=k+2}^n(\beta_{k+1}\alpha_j+\gamma_j)\rdot a_j\right]
+	\end{align*}
+	Because $C_k$ is linearly independent then 
+	\[\beta_i+\beta_{k+1}\alpha_i = 0,\quad \beta_{k+1} \alpha_{k+1}=0,\quad\beta_{k+1}\alpha_j+\gamma_j=0 \]
+	By assumption $a_{k+1}\ne 0$ and so since $F$ is a field then $B_{k+1}=0$ and hence $\beta_i=\gamma_j=0$. Therefore, $C_{k+1}$ is linearly independent.
+\end{proof}
+\begin{crl}
+	If $V$ is an $F$-vector space with basis $B=\{b_1,\dots,b_n\}$, then any linearly independent set $A$ has at most $n$ elements and any spanning set $C$ has at least $n$ elements.
+\end{crl}
+\begin{crl}
+	Any two bases $B,B'$ of a finitely generated $F$-vector space have the same cardinality.
+\end{crl}
+\begin{dfn}
+	If $V$ is a finitely generated $F$-vector space, then the \textbf{dimension} of $V$ is 
+	\[\dim_FV\coloneqq \dim V \coloneqq \text{ cardinality of any basis of } V \]
+	We say $V$ is finite dimensional\\
+	If $V$ is not finitely generated, then we say it is \textbf{infinite dimensional} ($\dim V=\infty $)
+\end{dfn}\newpage
+\begin{example}
+	\begin{itemize}
+		\item $\dim \R^2=2$
+		\item $\dim\{\text{real polynomials of degree at most }3\} =4$
+		\item $\dim\R[X]=\infty $
+	\end{itemize}
+\end{example}
+\begin{crl}
+	If $V$ is a finite dimensional $F$ -vector space with $B=\{b_1,\dots,b_n\}$, then $B$ defines an $F$-vector space isomorphism
+	\[\Phi_B\colon V\stackrel{\cong}{\to} F^n\]
+\end{crl}
+\begin{proof}
+	First
+	\begin{align*}
+	\Phi_B\colon V&\to F^n\\
+	b_1&\mapsto e_1(1,0,0,\dots,0)\\
+	b_2&\mapsto e_2(0,1,0,\dots,0)\\
+	\dots&\\
+	b_n&\mapsto e_n(0,0,\dots,0,1)\\
+	\end{align*}
+	extend this linearly i.e
+	\begin{align*}
+	\Phi_B(\alpha_1\rdot b_1+\alpha_2\rdot b_2+\dots+\alpha_nb_n) =&\alpha_1\rdot \Phi_B(b_1)+\alpha_\rdot \Phi_B(b_2)+\dots+\alpha_\rdot \Phi_B(b_n)\\
+	=& \alpha_1\rdot e_1+\alpha_2\rdot e_2+\dots+\alpha_n\rdot e_n
+	\end{align*}
+	Check injectivity
+	\begin{align*}
+	\Ker \Phi_B = \{\alpha_1\rdot b_1+\dots+\alpha_n\rdot b_n\mid \alpha_1\rdot e_1+\alpha_2\rdot e_2+\dots+\alpha_n\rdot e_n=0\} = \{0\}
+	\end{align*}
+	Check surjectivity, we have
+	\[v=\alpha_1\rdot e_1 +\dots+\alpha_n\rdot e_n\in F^n \] then 
+	\[\Phi_B(\alpha_1\rdot b_1+\dots+\alpha_n\rdot b_n)=v\]
+\end{proof}
+\end{document}

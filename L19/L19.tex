@@ -1,0 +1,167 @@
+\documentclass[../Main.tex]{subfiles}
+\setcounter{chapter}{18}
+
+\begin{document}
+\phantomsection
+\chapter{L19: Rank-nullity and spaces}
+Recall: If $A=\{v_1,\dots,v_n\}$ is linearly independent in a finite dimensional vector space $V$ and $B=\{b_1,\dots,b_n\}$ is a basis.\\
+Then after possibly reordering
+\[C_i=\{v_1,\dots,v_i,b_{i+1},\dots,b_n\}\]
+is a basis for all $0\le i \le k$ and in particular, $k\le n$.
+\begin{crl}
+	If $A=\{a_1,\dots,a_n\}$ is a linearly independent set in a finite dimensional $F$-vector space $V$, then there is a basis $B\supset A$.
+\end{crl}
+\begin{proof}
+	Take any basis $D$ for $V$ and apply replacement to $A$ and $D$.
+\end{proof}
+\begin{thm}
+	Let $V$ be an $F$-vector space, $W\subset V$ a subspace. Then, in particular, $V/W$ is an $F$-vector space and \[\dim V/W + \dim W = \dim V\]
+	(if either side is infinite, then both are)
+\end{thm}
+\begin{proof}
+	Suppose $V$ is finite dimensional and $\dim V =n$ and $\dim W=m$.\\
+	Let $B=\{v_1,\dots,v_m\} \subset W$ be a basis for $W$. Then $B\subset V$ is linearly independent and by the building up lemma there exists
+	\[B' = \{v_1,\dots,v_m,v_{m+1},\dots,v_n\}\]
+	which is a basis for $V$.\\
+	Consider the quotient map
+	\begin{align*}\phi\colon V\to V/W 
+	\end{align*}
+\end{proof}
+\begin{dfn}
+	If $\varphi\colon V\to W$ is an $F$-linear transformation, we sometimes refer to the kernel of $\varphi$ as the \textbf{null space} of $\varphi$.\\
+	The \textbf{nullity} of $\varphi$ is the $\dim \Ker \varphi$.\\
+	The \textbf{rank} of $\varphi$ is the $\dim \Img \varphi$.\\
+	If $\Ker\varphi = 0$, then we say $\varphi$ is \textbf{non-singular}, otherwise we say $\varphi$ is \textbf{singular}.\\
+	The \textbf{cokernel} of $\varphi$ is 
+	\[\Coker \varphi\coloneqq W/\Img \varphi \]
+\end{dfn}
+\begin{crl}
+	If $\varphi\colon V\to W$ is an $F$ linear transformation, then:
+	\begin{enumerate}[label = (\arabic*)]
+		\item $\Ker\varphi\subset V$ and $\Img\varphi \subset W$ are subspaces.
+		\item (Rank-nullity) $\dim V = \dim \Ker \varphi + \dim \Img \varphi$.
+	\end{enumerate}
+\end{crl}
+\begin{proof}
+	First isomorphism theorem implies $\Img\varphi \cong V/\Ker\varphi$ and hence
+	\[\dim V = \dim \Ker \varphi + \dim \Img \varphi\]
+\end{proof}
+\begin{crl}
+	If $\varphi\colon V\to W$ is an $F$-linear transformation and $\dim V = \dim W$, then the following are equivalent:
+	\begin{enumerate}[label=(\arabic*)]
+		\item $\varphi$ is an isomorphism
+		\item $\Ker\phi = 0$ (i.e. $\varphi$ is injective)
+		\item $\Img\varphi =W$ (i.e. $\varphi$ is surjective)
+		\item If $B\subset V$ is a basis, then 
+		\[\phi(B)\coloneqq  \{\phi(v_1),\dots,\phi(v_n)\mid v_1,\dots,v_n\in B \}\]
+		is a basis for $W$.
+	\end{enumerate}
+\end{crl}
+\section*{The dual of a vector space}
+\begin{dfn}
+	Let $V$ be an $F$-vector space. The \textbf{dual space} is 
+	\[V^\ast \coloneqq \Hom_F(V,F) \]
+	Elements of $V^\ast$ are called \textbf{linear functionals}
+\end{dfn}
+\begin{example}
+	Let $V$ be the vector space of continuous functions $f\colon [0,1] \to \R$, then the integral operator is a linear functional on $V$
+	\begin{align*}
+		\int \colon V&\to \R \\
+		f&\mapsto \int_0^1 f\, \mathrm{dd} x
+	\end{align*}
+\end{example}
+\begin{lem}
+	If $B=\{v_1,\dots,v_n\}$ is a basis for $V$, then any linear functional $f\in V^\ast$ is determined by its values on $B$.
+\end{lem}
+\begin{proof}
+	If $v\in V$, then 
+	\begin{align*}
+		&v=a_1v_1+a_2v_2+\dots+a_nv_n\\
+		\implies & f(a_1+\dots+a_nv_n) = a_1f(v_1)+\dots+a_nf(v_n)\\
+		\implies& a_1\alpha_1+\dots+a_n\alpha_n
+	\end{align*}
+	given $\alpha_1=f(v_1),\dots,\alpha_n=f(v_n)$.
+\end{proof}
+\begin{dfn}
+	Let $B=\{v_1,\dots,v_n\}$ be a basis for $V$. Denote by $v_i^\ast \in V^\ast$ the linear functional
+	\[
+	v_i^\ast(v_j)\coloneqq \begin{cases}
+	1,&i=j\\
+	0,&i\ne j
+	\end{cases}
+	\]
+\end{dfn}
+\begin{thm}
+	$B^\ast=\{v_1^\ast,\dots,v_n^\ast\}$ is a basis for $V^\ast$. In particular, if $\dim V=n$, then $\dim V^\ast=n$.
+\end{thm}
+\begin{proof}
+	Let $f\in V^\ast$, $v\in V$ with $v=a_1v_1+\dots+a_nv_n$.\\
+	Then
+	\begin{align*}
+	f(v)=f(a_1v_1+\dots+a_nv_n) = a_1f(v_1)+\dots+a_nf(v_n)
+	\end{align*}
+	On the other hand,
+	\begin{align*}
+	v_1^\ast(v) = v_1^\ast (a_1v_1+\dots+a_nv_n) =a_1\underbrace{v_1^\ast(v_1)}_{=1}+a_2\cancelto{0}{v_1^\ast(v_2)}+\dots+a_n\cancelto{0}{v_1^\ast(v_n)} = a_1
+	\end{align*}
+	Through this same logic it shown
+	\[v_i^\ast(v)=a_i\quad i=\{1,\dots,n\}\]
+	Returning to the first equation
+	\begin{align*}
+	f(v)&=a_1f(v_1)+\dots+a_nf(v_n) \\
+	&= v_1^\ast(v)f(v_1)+\dots+v_n^\ast(v)f(v_n)\\
+	&=(f(v_1)v_1^\ast +\dots + f(v_n)v_n^\ast)(v)
+	\end{align*}
+	Hence $f=\sum_{i=1}^nf(v_i)v_i^\ast$ and $B^\ast$ is spanning.\\
+	On the other hand, if $\alpha_1,\dots,\alpha_n\in F$ such that 
+	\[\alpha_1v_1^\ast+\dots+\alpha_nv_n^\ast\]
+	Then
+	\[(\alpha_1v_1^\ast+\dots+\alpha_nv_n^\ast)(v_i)=\alpha_i=0\, \forall i\]
+	Therefore, $B^\ast$ is also linearly independent and we conclude $B^\ast$ is a basis for $V^\ast$.
+\end{proof}
+\Note If $\varphi\colon V\to W$ is a linear transformation, then there is an induced map
+\begin{align*}
+\varphi^\ast\colon W^\ast&\to V^\ast\\
+(f\colon W\to F)&\mapsto (f\circ\varphi\colon V\to W\to F)
+\end{align*}
+\begin{thm}
+	If $\varphi\colon V\to W$ is a linear transformation of finite dimensional vector spaces inducing $\varphi^\ast \colon W^\ast \to V^\ast$. Then,
+	\begin{align*}
+	\Ker\varphi^\ast &\cong \Coker\varphi\\
+	\Coker\varphi^\ast &\cong \Ker\varphi
+	\end{align*}
+	as $F$-vector spaces.
+\end{thm}
+\begin{proof}
+	Let $B=\{v_1,\dots,v_n\}$ a basis for $\Ker \varphi$, $B'=\{v_1,\dots,v_n,v_{n+1},\dots,v_m\}$ a basis for $V$ and $\varphi(B')=\{\varphi(v_{n+1}),\dots,\varphi(v_m)\}$ a basis for $\Img \varphi$.\\
+	Since $\Img\varphi \subset W$ is a subspace then
+	\[C=\{\varphi(v_{n+1}),\dots,\varphi(v_m),w_1,\dots,w_k\}\]
+	is a basis for $W$.\\
+	Dualizing, we get the dual basis 
+	\[C^\ast = \{\varphi(v_{n+1})^\ast,\dots,\varphi(v_m)^\ast,w_1^\ast,\dots,w_k^\ast\}\]
+	a basis for $W^\ast$.\\
+	Let $v\in V$ and consider
+	\begin{align*}
+	\varphi^\ast\colon W^\ast&\to V^\ast \\
+	\varphi^\ast[\varphi(v_{n+i})^\ast](v)&=\varphi(v_{n+i})^\ast(\varphi(v))
+	\end{align*}
+	Since we can write $v=\sum_{j=1}^m a_jv_j$ then
+	\[\varphi^\ast[\varphi(v_{n+i})^\ast](v) = \varphi(v_{n+i})^\ast\left(\sum_{j=n+1}^m a_j\varphi(v_j)\right) =a_{n+i}\]
+	and hence
+	\[\varphi^\ast(w_j^\ast)(v)=w_j^\ast(\varphi(v))=w_j^\ast\left(\sum_{j=n+1}^ma_j\varphi(v_j)\right)=0\]
+	implying
+	\begin{align*}
+	\Ker\varphi^\ast &= \Span\{w_1^\ast,\dots,w_k^\ast\}\\
+	\Img\varphi^\ast &= \Span\{v_{n+1}^\ast,\dots,v_m^\ast\}\\
+	\end{align*}
+	Therefore
+	\begin{align*}
+	\Coker\varphi = W/\Img\varphi = \frac{\Span\{\varphi(v_{n+1}),\dots,\varphi(v_m),w_1,\dots,w_k  \}}{\Span\{\varphi(v_{n+1}),\dots,\varphi(v_m) \}  } = \Span\{\obar{w}_1,\obar{w}_2,\dots,\obar{w}_k\}
+	\end{align*}
+	and $\Ker\varphi = \Span \{v_1,\dots,v_n\}$ to give
+		\begin{align*}
+	\Coker\varphi^\ast = V^\ast/\Img\varphi^\ast = \frac{\Span\{v_1,\dots,v_n,v_{n+1},\dots,v_m  \}}{\Span\{v_{n+1}^\ast,\dots,v_m^\ast \}  } = \Span\{\obar{v}_1,\obar{v}_2,\dots,\obar{v}_n\}
+	\end{align*}
+\end{proof}
+FOUR SUBSPACES GRAPHIC
+\end{document}
