@@ -1,6 +1,6 @@
 # Welcome to the notes directory for this class! 
 ## I aim to upload the lectures early after they are released, but sometimes I have other stuff going on.
-## Please notify me of typo errors (I'm sure they exist) or design suggestions: <husseinhijazi@brandeis.edu>
+## Please notify me of typo errors (I'm sure they exist) or design suggestions.
 
 ## If you are looking for the full set of notes in one PDF document, [click here!](https://hushus46.github.io/28B-Notes/Main.pdf)
 
